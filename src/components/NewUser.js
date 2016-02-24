@@ -1,4 +1,5 @@
 import React from 'react';
+import Config from '../config';
 
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -12,7 +13,7 @@ var NewUser = React.createClass({
   displayForm: function() {
     if (this.state.showForm) {
       return (
-        <form action="/users" method="POST">
+        <form action={Config.API_URL + '/users'} method="POST">
           <div>
             <label htmlFor="first_name">First name:</label>
             <input type="text" name="user[first_name]" id="first_name" placeholder="First name" />
