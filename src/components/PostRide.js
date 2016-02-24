@@ -57,14 +57,6 @@ export default PostRide;
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <TextField
-            hintText="E.g. Lighthouse Labs"
-            floatingLabelText="Where are you going?"
-          />
-          <TextField
-            hintText="Leave blank to use current location"
-            floatingLabelText="Where from?"
-          />
         </Dialog>
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import TextField from 'material-ui/lib/text-field';
 
 var SearchBar = React.createClass({
 
@@ -12,11 +13,17 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
-      <form action="/index" method="POST">
-        <div id="splash-input">
-          <input id="origin-field" placeholder={this.state.placeholder} onSubmit={this.changePlaceholder}/>
-        </div>
-      </form>
+      <TextField
+        id="origin-field"
+        hintText="E.g. Lighthouse Labs"
+        floatingLabelText="Where to?"
+      />
+
+      // <form action="/index" method="POST">
+      //   <div id="splash-input">
+      //     <input id="origin-field" placeholder={this.state.placeholder} onSubmit={this.changePlaceholder}/>
+      //   </div>
+      // </form>
     );
   }
 
