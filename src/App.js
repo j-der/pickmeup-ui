@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class App extends Component {
-  render() {
+import NavBar from './components/NavBar';
+import SearchBar from './components/SearchBar';
+
+
+var App = React.createClass({
+
+  render: function(){
     return (
-      <h1>Hello, world.</h1>
+      <div>
+        <NavBar />
+        <SearchBar />
+      </div>
     );
   }
-}
+
+});
+
+export default App;
