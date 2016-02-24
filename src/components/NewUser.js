@@ -13,7 +13,7 @@ var NewUser = React.createClass({
   displayForm: function() {
     if (this.state.showForm) {
       return (
-        <form action={Config.API_URL + '/users'} method="POST">
+        <form action={Config.API_URL} method="POST">
           <div>
             <label htmlFor="first_name">First name:</label>
             <input type="text" name="user[first_name]" id="first_name" placeholder="First name" />

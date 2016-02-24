@@ -3,7 +3,7 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
-
+import TextField from 'material-ui/lib/text-field';
 
 export default class PostRide extends React.Component {
 
@@ -57,7 +57,14 @@ export default PostRide;
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          Need to figure out how to insert a form inside this dialog box.
+          <TextField
+            hintText="E.g. Lighthouse Labs"
+            floatingLabelText="Where are you going?"
+          />
+          <TextField
+            hintText="Leave blank to use current location"
+            floatingLabelText="Where from?"
+          />
         </Dialog>
       </div>
     );
