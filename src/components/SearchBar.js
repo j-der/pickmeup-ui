@@ -1,7 +1,8 @@
 import React from 'react';
+import TextField from 'material-ui/lib/text-field';
 import Config from '../config';
-
 import FlatButton from 'material-ui/lib/flat-button';
+
 
 var SearchBar = React.createClass({
 
@@ -20,19 +21,22 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
-      <form onSubmit=>
-        <div id="splash-destination">
-          <input id="destination-field" name="destination" placeholder="Where to?" />
-        </div>
-        <div id="splash-origin">
-          <input id="origin-field" name="origin" placeholder="Where from?" />
-        </div>
-        <div>
+      // props of handleSubmit from IndexPage
+      <form onSubmit={this.props.handleSubmit}>
+          <TextField
+            id="destination-field"
+            hintText="E.g. Steamwhistle Brewery"
+            floatingLabelText="Where to?"
+          />
+        <TextField
+          id="origin-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where from?"
+        />
           <FlatButton
               label="Search"
               primary={true}
               type="submit" />
-        </div>
       </form>
     );
   }
@@ -40,3 +44,4 @@ var SearchBar = React.createClass({
 });
 
 export default SearchBar;
+
