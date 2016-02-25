@@ -13,11 +13,7 @@ var NewUser = React.createClass({
   displayForm: function() {
     if (this.state.showForm) {
       return (
-<<<<<<< HEAD
-        <form action="/users" data-remote="true" method="POST" encType="multipart/form-data">
-=======
         <form action={Config.API_URL} method="POST" encType="multipart/form-data">
->>>>>>> 0dea73e22496d426f9ca63d1e19f12988003c82d
           <div>
             <input type="file" name="user[avatar]" />
           </div>
