@@ -32,9 +32,23 @@ export default PostRide;
     this.setState({open: false});
   };
 
-  // submitForm = (e) => {
-  //   $.post()
-  // }
+//   submitForm = (e) => {
+//     $.post({
+//     dataType: JSON,
+//     success: success
+//     }),
+//     e.preventDefault();
+//   }
+
+
+// $(function() {
+//     $.ajax('/products', {
+//       dataType: 'json',
+//       success: function(products) {
+//         var $tableBody = $('products tbody');
+//         });
+//       }
+//     });
 
   render() {
     const actions = [

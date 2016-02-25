@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Main from './Main'
 import NavBar from './components/NavBar';
 import SearchBar from './components/SearchBar';
 
@@ -10,7 +10,7 @@ var App = React.createClass({
     return (
       <div>
         <NavBar />
-        <SearchBar />
+        {this.props.children}
       </div>
     );
   }
