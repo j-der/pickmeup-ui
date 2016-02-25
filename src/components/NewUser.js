@@ -20,7 +20,7 @@ export default class NewUser extends Component {
   }
 
   axiosPost = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     // console.log(this.refs.input1.value)
     axios.post('http://localhost:3000/users', {
       avatar: this.refs.avatar.value,
@@ -33,8 +33,7 @@ export default class NewUser extends Component {
     })
 
       .then(function(response){
-        axiosPost();
-
+        console.log('success, response: ', response)
         })
   }
 
