@@ -3,8 +3,7 @@ import TextField from 'material-ui/lib/text-field';
 import Config from '../config';
 import FlatButton from 'material-ui/lib/flat-button';
 
-
-var SearchBar = React.createClass({
+export default class SearchBar extends React.Component {
 
   // getInitialState: function() {
   //   return { placeholder: "Where to?", formMethod: "", formAction: "" }
@@ -19,7 +18,7 @@ var SearchBar = React.createClass({
   //   this.setState({ placeholder: "Where from?"});
   // },
 
-  render: function(){
+  render() {
     return (
 
       // props of handleSubmit from IndexPage
@@ -42,7 +41,5 @@ var SearchBar = React.createClass({
     );
   }
 
-});
-
-export default SearchBar;
+};
 
