@@ -1,5 +1,4 @@
 import React from 'react';
-import Map from './Map';
 
 export default class SearchAutoComplete extends Component {
 
@@ -82,10 +81,18 @@ export default class SearchAutoComplete extends Component {
 	  setupClickListener('changetype-geocode', ['geocode']);
 	}
 
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let destinationField = e.target.querySelector("#destination-field").value;
+    let originField = event.target.querySelector("#origin-field").value;
+    this.initMap(destinationField: destinationField, originField: originField);
+  }
+
+
 	render() {
 		return (
 			<div>
-				Hello!!!
 				<Map />
 			</div>
 			)
