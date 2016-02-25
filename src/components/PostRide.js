@@ -32,6 +32,10 @@ export default PostRide;
     this.setState({open: false});
   };
 
+  // submitForm = (e) => {
+  //   $.post()
+  // }
+
   render() {
     const actions = [
       <FlatButton
@@ -57,6 +61,16 @@ export default PostRide;
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
+        <TextField
+          id="destination-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where to?"
+        />
+        <TextField
+          id="origin-field"
+          hintText="E.g. Steamwhistle Brewery"
+          floatingLabelText="Where from?"
+        />
         </Dialog>
       </div>
     );

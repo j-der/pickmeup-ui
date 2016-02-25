@@ -13,12 +13,18 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
-      <TextField
-        id="origin-field"
-        hintText="E.g. Lighthouse Labs"
-        floatingLabelText="Where to?"
-      />
-
+      <div>
+        <TextField
+          id="destination-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where to?"
+        />
+        <TextField
+          id="origin-field"
+          hintText="E.g. Steamwhistle Brewery"
+          floatingLabelText="Where from?"
+        />
+      </div>
       // <form action="/index" method="POST">
       //   <div id="splash-input">
       //     <input id="origin-field" placeholder={this.state.placeholder} onSubmit={this.changePlaceholder}/>
