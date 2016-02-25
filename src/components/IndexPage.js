@@ -20,6 +20,7 @@ export default class IndexPage extends Component {
 		let originField = event.target.querySelector("#origin-field").value;
 		// handleSubmit causes changeState, d- and o-fields become the values set in changeState below
 		this.changeState({destinationField: destinationField, originField: originField});
+		browserHistory.push('/main');
 
 		// let request = axios.get('http://localhost:3000/search', {
 		// 	destination_field: destinationField,
@@ -42,7 +43,7 @@ export default class IndexPage extends Component {
 		return (
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
-				<SearchBar handleSubmit={this.handleSubmit}/>
+				{/* <SearchBar handleSubmit={this.handleSubmit}/> */}
 				<GoogleMap originField={this.state.originField} destinationField={this.state.destinationField}/>
 			</div>
 				//post to map with newState

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 
 var SplashPage = React.createClass({
 
-  firstSearch: function(event) {
+  handleSubmit: function(event) {
     event.preventDefault();
     browserHistory.push('/main');
   },
@@ -12,7 +12,7 @@ var SplashPage = React.createClass({
   render: function() {
     return (
       <div>
-        <SearchBar handleSubmit={this.firstSearch}/>
+        <SearchBar handleSubmit={this.handleSubmit}/>
       </div>
     );
   }

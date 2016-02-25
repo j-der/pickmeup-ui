@@ -1,6 +1,10 @@
 import React from 'react';
 
 var GoogleMap = React.createClass({
+
+  getInitialState: function() {
+    return {origin: null, destination: null}
+  },
   
   componentDidMount: function(){
 
@@ -43,6 +47,8 @@ var GoogleMap = React.createClass({
 	      </div>
 	      <div>
 	      	{this.props.destinationField ? this.props.destinationField : 'No destination'}
+          {console.log(this.state.origin)}
+          {console.log(this.state.destination)}
 	      </div>
 	      <div>
 	      	{this.props.originField ? this.props.originField : 'No origin'}

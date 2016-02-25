@@ -5,7 +5,6 @@ import SplashPage from './components/SplashPage';
 import IndexPage from './components/IndexPage';
 import PostRide from './components/PostRide';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import MapScripts from './components/MapScripts';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -17,7 +16,7 @@ injectTapEventPlugin();
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
+    <Route path='/' origin="" destination="" component={App}>
       <IndexRoute component={SplashPage}/>
       <Route path='/main'component={IndexPage}/>
     </Route>
