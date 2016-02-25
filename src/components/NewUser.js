@@ -1,50 +1,71 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Config from '../config';
 
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
+import axios from 'axios';
 
-var NewUser = React.createClass({
+export default class NewUser extends Component {
 
-  getInitialState: function() {
-    return {showForm: false}
-  },
+  // getInitialState() {
+  //   return {showForm: false}
+  // }
+  // this from ES5 is the same as the constructor below.
+  // constructor is a lot like def initialize from ruby
 
-  axiosPost: function() {
-    // test with console log
-    // test data retrieval
-    //axios stuff
-  }, 
+  constructor(props) {
+    super(props)
 
-  displayForm: function() {
+    this.state = {showForm: false}
+  }
+
+  axiosPost = (event) => {
+    event.preventDefault();
+    // console.log(this.refs.input1.value)
+    axios.post('http://localhost:3000/users', {
+      avatar: this.refs.avatar.value,
+      first_name: this.refs.firstName.value,
+      last_name: this.refs.lastName.value,
+      email: this.refs.email.value,
+      password: this.refs.password.value,
+      password_confirmation: this.refs.passwordConfirmation.value,
+      authenticity_token: this.refs.authenticityToken.value
+    })
+
+      .then(function(response){
+        console.log('success, response: ', response)
+        })
+  }
+
+  displayForm = () => {
     if (this.state.showForm) {
       return (
-        <form onSubmit={this.axiosPost()} encType="multipart/form-data">
+        <form onSubmit={this.axiosPost} encType="multipart/form-data">
           <div>
-            <input type="file" name="user[avatar]" />
+            <input ref="avatar" type="file" name="user[avatar]" />
           </div>
           <div>
             <label htmlFor="first_name">First name:</label>
-            <input type="text" name="user[first_name]" id="first_name" placeholder="First name" />
+            <input ref="firstName" type="text" name="user[first_name]" id="first_name" placeholder="First name" />
           </div>
           <div>
             <label htmlFor="last_name">Last name:</label>
-            <input type="text" name="user[last_name]" id="last_name" placeholder="Last name" />
+            <input ref="lastName" type="text" name="user[last_name]" id="last_name" placeholder="Last name" />
           </div>
           <div>
             <label htmlFor="email">Email:</label>
-            <input type="text" name="user[email]" id="email" placeholder="Email" />
+            <input ref="email" type="text" name="user[email]" id="email" placeholder="Email" />
           </div>
           <div>
             <label htmlFor="password">Choose a password:</label>
-            <input type="password" name="user[password]" id="password" placeholder="Password" />
+            <input ref="password" type="password" name="user[password]" id="password" placeholder="Password" />
           </div>
           <div>
             <label htmlFor="password_confirmation">Confirm your password:</label>
-            <input type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confirm your password" />
+            <input ref="passwordConfirmation" type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confirm your password" />
           </div>
           <div>
-        <input type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
+        <input ref="authenticityToken" type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
         </div>
           <div>
             <FlatButton
@@ -55,9 +76,9 @@ var NewUser = React.createClass({
         </form>
       )
     }
-  },
+  }
 
-  toggleForm: function() {
+  toggleForm = () => {
     if (this.state.showForm) {
       this.setState({
         showForm: false
@@ -68,9 +89,9 @@ var NewUser = React.createClass({
         showForm: true
       })
     }
-  },
+  }
 
-  render: function(){
+  render() {
     return (
       <div>
         <RaisedButton label="Sign Up!" className="sign-up-button" onClick={this.toggleForm} />
@@ -80,6 +101,4 @@ var NewUser = React.createClass({
   }
 
 
-})
-
-export default NewUser;
+}
