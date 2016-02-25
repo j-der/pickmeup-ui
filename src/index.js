@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Main from './Main';
+import SearchBar from './components/SearchBar';
+import PostRide from './components/PostRide';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -10,4 +14,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path='/' component={App}>
+      <IndexRoute component={SearchBar} />
+      <Route path='/main' component={Main} />
+    </Route>
+  </Router>,
+document.getElementById('root'));
