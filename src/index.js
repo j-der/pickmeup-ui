@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Main from './Main';
+import MainPage from './components/MainPage';
 import IndexPage from './components/IndexPage';
 import PostRide from './components/PostRide';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
@@ -27,7 +27,7 @@ ReactDOM.render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={IndexPage}/>
-      <Route path='/main' component={Main} />
+      <Route path='/main' component={MainPage} />
     </Route>
   </Router>,
 document.getElementById('root'));

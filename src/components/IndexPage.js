@@ -18,8 +18,8 @@ export default class IndexPage extends Component {
 		event.preventDefault();
 		let destinationField = event.target.querySelector("#destination-field").value;
 		let originField = event.target.querySelector("#origin-field").value;
-
-		this.changeState({destinationField: destinationField, originField: originField}); // handleSubmit causes changeState, d- and o-fields become the values set in changeState below
+		// handleSubmit causes changeState, d- and o-fields become the values set in changeState below
+		this.changeState({destinationField: destinationField, originField: originField});
 
 		// let request = axios.get('http://localhost:3000/search', {
 		// 	destination_field: destinationField,
