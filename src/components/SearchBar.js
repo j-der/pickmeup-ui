@@ -20,7 +20,7 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
-      <form action={Config.API_URL + '/rides'} method="POST">
+      <form onSubmit=>
         <div id="splash-destination">
           <input id="destination-field" name="destination" placeholder="Where to?" />
         </div>
