@@ -21,14 +21,6 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
-      <form>
-        <div id="splash-destination">
-          <input id="destination-field" name="destination" placeholder="Where to?" />
-        </div>
-        <div id="splash-origin">
-          <input id="origin-field" name="origin" placeholder="Where from?" />
-        </div>
-        <div>
 
       // props of handleSubmit from IndexPage
       <form onSubmit={this.props.handleSubmit}>
