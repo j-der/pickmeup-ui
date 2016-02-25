@@ -3,6 +3,7 @@ import Config from '../config';
 
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
+import axios from 'axios';
 
 var NewUser = React.createClass({
 
@@ -10,11 +11,23 @@ var NewUser = React.createClass({
     return {showForm: false}
   },
 
-  axiosPost: function() {
-    // test with console log
-    // test data retrieval
-    //axios stuff
-  }, 
+  axiosPost: (event) => {
+    // let firstName = "Bobby";
+    // let lastName = "Brown";
+    // let email = "bobby@brownies.com";
+    // let password = "password";
+    // let passwordConfirmation = "password";
+
+    axios.post('http://localhost:3000/users', {
+      first_name: "Bobby",
+      last_name: "Brown",
+      email: "whitney@brownies.com",
+      password: "password"})
+
+      .then(function(response){
+        console.log("post worked")
+        })
+  },
 
   displayForm: function() {
     if (this.state.showForm) {
