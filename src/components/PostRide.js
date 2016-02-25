@@ -32,23 +32,8 @@ export default PostRide;
     this.setState({open: false});
   };
 
-//   submitForm = (e) => {
-//     $.post({
-//     dataType: JSON,
-//     success: success
-//     }),
-//     e.preventDefault();
-//   }
 
 
-// $(function() {
-//     $.ajax('/products', {
-//       dataType: 'json',
-//       success: function(products) {
-//         var $tableBody = $('products tbody');
-//         });
-//       }
-//     });
 
   render() {
     const actions = [
@@ -61,7 +46,7 @@ export default PostRide;
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.submitForm}
       />,
     ];
 
