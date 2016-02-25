@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
-import Map from './Map';
+import GoogleMap from './GoogleMap';
 // import axios from 'axios';
 
 export default class IndexPage extends Component {
@@ -43,7 +43,7 @@ export default class IndexPage extends Component {
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
 				<SearchBar handleSubmit={this.handleSubmit}/>
-				<Map originField={this.state.originField} destinationField={this.state.destinationField}/>
+				<GoogleMap originField={this.state.originField} destinationField={this.state.destinationField}/>
 			</div>
 				//post to map with newState
 		)

@@ -24,20 +24,20 @@ var SearchBar = React.createClass({
 
       // props of handleSubmit from IndexPage
       <form onSubmit={this.props.handleSubmit}>
-          <TextField
-            id="destination-field"
-            hintText="E.g. Steamwhistle Brewery"
-            floatingLabelText="Where to?"
-          />
+        <TextField
+          id="destination-field"
+          hintText="E.g. Steamwhistle Brewery"
+          floatingLabelText="Where to?"
+        />
         <TextField
           id="origin-field"
           hintText="E.g. Lighthouse Labs"
           floatingLabelText="Where from?"
         />
-          <FlatButton
-              label="Search"
-              primary={true}
-              type="submit" />
+        <FlatButton
+            label="Search"
+            primary={true}
+            type="submit" />
       </form>
     );
   }

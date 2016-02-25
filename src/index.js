@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import MainPage from './components/MainPage';
+import SplashPage from './components/SplashPage';
 import IndexPage from './components/IndexPage';
 import PostRide from './components/PostRide';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import MapScripts from './components/MapScripts';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -14,20 +15,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-const HigherComponent = React.createClass({
-	render() {
-		return (
-			<SearchBar />
-
-		)
-	}
-})
-
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>
-      <IndexRoute component={IndexPage}/>
-      <Route path='/main' component={MainPage} />
+      <IndexRoute component={SplashPage}/>
+      <Route path='/main'component={IndexPage}/>
     </Route>
   </Router>,
 document.getElementById('root'));
