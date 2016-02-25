@@ -10,10 +10,16 @@ var NewUser = React.createClass({
     return {showForm: false}
   },
 
+  axiosPost: function() {
+    // test with console log
+    // test data retrieval
+    //axios stuff
+  }, 
+
   displayForm: function() {
     if (this.state.showForm) {
       return (
-        <form action={Config.API_URL} method="POST" encType="multipart/form-data">
+        <form onSubmit={this.axiosPost()} encType="multipart/form-data">
           <div>
             <input type="file" name="user[avatar]" />
           </div>
