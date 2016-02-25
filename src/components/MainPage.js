@@ -1,7 +1,7 @@
 import React from 'react'
-import Map from './components/Map'
+import Map from './Map'
 
-var Main = React.createClass({
+var MainPage = React.createClass({
   render: function() {
     return (
       <div>
@@ -11,4 +11,4 @@ var Main = React.createClass({
   }
 });
 
-export default Main;
+export default MainPage;

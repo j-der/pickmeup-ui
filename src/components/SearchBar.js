@@ -21,6 +21,7 @@ var SearchBar = React.createClass({
 
   render: function(){
     return (
+
       // props of handleSubmit from IndexPage
       <form onSubmit={this.props.handleSubmit}>
           <TextField
