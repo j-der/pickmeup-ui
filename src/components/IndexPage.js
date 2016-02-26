@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import GoogleMap from './GoogleMap';
-// import axios from 'axios';
 
 export default class IndexPage extends Component {
 

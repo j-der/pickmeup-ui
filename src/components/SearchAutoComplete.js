@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class SearchAutoComplete extends Component {
+import Geosuggest from 'react-geosuggest';
+import TextField from 'material-ui/lib/text-field';
+
+// export default class SearchAutoComplete extends Component {
+
+//   componentDidMount = () => {
+//     var input = document.getElementById('whereTo');
+//     var options = document.getElementById('whereTo'); 
+//     // now render google.maps.Autocomplete given the above input and options  
+//     // new google.maps.places.Autocomplete(input, options);
+//   };
+
+
+//   render() {
+//     return (
+//       <div>
+//       	Hello!
+//       	<input ref='searchField' id="whereTo" type="text" size="50"/>
+//       </div>
+//     );
+//   }
+// };
 
 	// This example requires the Places library. Include the libraries=places
 	// parameter when you first load the API. For example:
@@ -11,7 +32,7 @@ export default class SearchAutoComplete extends Component {
 	//     center: {lat: -33.8688, lng: 151.2195},
 	//     zoom: 13
 	//   });
-	//   var input = document.getElementById('destination-field'));
+	//   var input = document.getElementById('destination'));
 
 	//   var types = document.getElementById('type-selector');
 	//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -81,20 +102,40 @@ export default class SearchAutoComplete extends Component {
 	// }
 
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    let destinationField = e.target.querySelector("#destination-field").value;
-    let originField = e.target.querySelector("#origin-field").value;
-    console.log("heres the map");
-    this.initMap(destinationField: destinationField, originField: originField);
+// var React = require('react'),
+//   Geosuggest = require('./src/Geosuggest.jsx');
+
+var SearchAutoComplete = React.createClass({
+  /**
+   * Render the example app
+   */
+  render: function() {
+    var fixtures = [
+      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
+      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
+      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+    ];
+
+    return (
+      <div>
+        <Geosuggest, TextField
+          placeholder="Where to?"
+          initialValue={null}
+          fixtures={fixtures}
+          onSuggestSelect={this.onSuggestSelect}
+          location={new google.maps.LatLng(53.558572, 9.9278215)}
+          radius="20" />
+      </div>
+    )
+  },
+
+  /**
+   * When a suggest got selected
+   * @param  {Object} suggest The suggest
+   */
+  onSuggestSelect: function(suggest) {
+    console.log(suggest);
   }
+});
 
-
-	render() {
-		return (
-			<div>
-				<Map />
-			</div>
-			)
-	}
-}
+export default SearchAutoComplete;

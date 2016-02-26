@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import SearchBar from './components/SearchBar';
+import SearchAutoComplete from './components/SearchAutoComplete';
 
 
 var App = React.createClass({
@@ -9,6 +10,7 @@ var App = React.createClass({
     return (
       <div>
         <NavBar />
+        <SearchAutoComplete />
         {this.props.children}
       </div>
     );
