@@ -1,18 +1,38 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 var GoogleMap = React.createClass({
-  
-  componentDidMount: function(){
 
+  getInitialState: function() {
+    return {origin: null, destination: null}
+  },
+  
+  componentDidMount() {
+    var that = this;
     // componentDidMount is called by React directly after Map is rendered
     // the map must be initialized after the div is rendered or it will have nothing to grab onto
-    var gMap;
+    var gMap, geocoder;
     // define the init function that google maps need to initialize
     function initMap() {
-      gMap = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 43.652325, lng: -79.379377},
-        zoom: 14
+
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: that.props.originField}, function(results, status) {
+        if (status !== 'OK') {
+          browserHistory.push('/');
+        } else {
+          var lat = results[0].geometry.location.lat();
+          var lng = results[0].geometry.location.lng();
+        }
+
+        gMap = new google.maps.Map(document.getElementById('map'), {
+          center: {lat, lng},
+          zoom: 14
+        });
+
+        console.log('lat is', lat)
+        console.log('lng is', lng)
       });
+
     }
     // create a function to load the proper script in time for the intialize
     function loadScript() {
@@ -43,6 +63,8 @@ var GoogleMap = React.createClass({
 	      </div>
 	      <div>
 	      	{this.props.destinationField ? this.props.destinationField : 'No destination'}
+          {console.log(this.state.origin)}
+          {console.log(this.state.destination)}
 	      </div>
 	      <div>
 	      	{this.props.originField ? this.props.originField : 'No origin'}

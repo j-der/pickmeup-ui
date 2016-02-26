@@ -111,19 +111,18 @@ var SearchAutoComplete = React.createClass({
    */
   render: function() {
     var fixtures = [
-      {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
-      {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
-      {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+      {label: 'Lighthouse Labs', location: {lat: 43.64465, lng: -79.39503}},
+      {label: 'Steamwhistle Brewery', location: {lat: 43.64117, lng: -79.385186}},
+      {label: 'CN Tower', location: {lat: 43.6426, lng: -79.3871}}
     ];
 
     return (
       <div>
-        <Geosuggest, TextField
+        <Geosuggest
           placeholder="Where to?"
-          initialValue={null}
           fixtures={fixtures}
           onSuggestSelect={this.onSuggestSelect}
-          location={new google.maps.LatLng(53.558572, 9.9278215)}
+          location={new google.maps.LatLng(43.64465, -79.39503)}
           radius="20" />
       </div>
     )
