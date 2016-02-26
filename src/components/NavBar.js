@@ -49,24 +49,18 @@ const ToolbarExamplesSimple = () => (
       <ToolbarTitle
         text="pickmeup"
         style={{
-          fontFamily: 'gotham',
+          fontFamily: 'gotham, sans-serif',
           color: '#fff'
         }} />
     </ToolbarGroup>
-    <ToolbarGroup float="right">
-      <FontIcon className="muidocs-icon-custom-sort" />
-      <IconMenu
-        iconButtonElement={
-          <IconButton touch={true}>
-            <NavigationExpandMoreIcon />
-          </IconButton>
-        }
-      >
-        <MenuItem primaryText="Download" />
-        <MenuItem primaryText="More Info" />
-      </IconMenu>
-      <ToolbarSeparator />
-      <PostRide />
+    <ToolbarGroup
+      float="right"
+      style={{
+        paddingTop: '5px'
+      }}>
+        <PostRide />
+        <LogInForm />
+        <NewUser />
     </ToolbarGroup>
   </Toolbar>
 );

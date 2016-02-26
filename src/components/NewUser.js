@@ -95,10 +95,15 @@ export default class NewUser extends Component {
 
   render() {
     return (
-      <div>
-        <RaisedButton label="Sign Up!" className="sign-up-button" onClick={this.toggleForm} />
+      <span>
+        <RaisedButton
+          label="Sign Up!"
+          className="sign-up-button" onClick={this.toggleForm}
+          style={{
+            margin: '5px'
+          }} />
         {this.displayForm()}
-      </div>
+      </span>
     );
   }
 

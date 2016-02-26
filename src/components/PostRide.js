@@ -51,10 +51,14 @@ export default PostRide;
     ];
 
     return (
-      <div>
+      <span>
         <RaisedButton
           label="Post a Ride"
           onTouchTap={this.handleOpen}
+          style={{
+            marginRight: '10px',
+            backgroundColor: 'transparent'
+          }}
         />
         <Dialog
           title="Post a Ride!"
@@ -74,7 +78,7 @@ export default PostRide;
           floatingLabelText="Where from?"
         />
         </Dialog>
-      </div>
+      </span>
     );
   }
 }

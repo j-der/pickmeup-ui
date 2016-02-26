@@ -47,10 +47,15 @@ var LogInForm = React.createClass({
 
   render: function(){
     return (
-      <div>
-        <RaisedButton label="Log in" className="log-in-button" onClick={this.toggleLogInForm} />
+      <span>
+        <RaisedButton
+          label="Log in"
+          className="log-in-button" onClick={this.toggleLogInForm}
+          style={{
+            margin: '5px'
+          }} />
         {this.displayLogInForm()}
-      </div>
+      </span>
     );
   }
 
