@@ -4,14 +4,19 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import Popover from 'material-ui/lib/popover/popover';
 import PopoverAnimationFromTop from 'material-ui/lib/popover/popover-animation-from-top';
 
+const styles = {
+  popover: {
+    padding: 20,
+  },
+};
+
 var LogInForm = React.createClass({
 
   getInitialState: function() {
-    return {showForm: false}
+    return {open: false}
   },
 
   displayLogInForm: function() {
-    if (this.state.showForm) {
       return (
         <form action="/sessions" method="POST">
           <div>
@@ -30,20 +35,20 @@ var LogInForm = React.createClass({
           </div>
         </form>
       )
-    }
+
   },
 
-  toggleLogInForm: function() {
-    if (this.state.showForm) {
-      this.setState({
-        showForm: false
-      })
-    }
-    else {
-      this.setState({
-        showForm: true
-      })
-    }
+  toggleLogInForm: function(event) {
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  },
+
+  handleRequestClose: function() {
+    this.setState({
+      open: false,
+    });
   },
 
   render: function(){
@@ -55,7 +60,18 @@ var LogInForm = React.createClass({
           style={{
             margin: '5px'
           }} />
-        {this.displayLogInForm()}
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+          animation={PopoverAnimationFromTop}
+        >
+          <div style={styles.popover}>
+            {this.displayLogInForm()}
+          </div>
+        </Popover>
       </span>
     );
   }

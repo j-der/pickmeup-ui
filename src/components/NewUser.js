@@ -25,7 +25,7 @@ export default class NewUser extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {showForm: false}
+    this.state = {open: false}
   }
 
   axiosPost = (event) => {
@@ -110,18 +110,18 @@ export default class NewUser extends Component {
           style={{
             margin: '5px'
           }} />
-      <Popover
-        open={this.state.open}
-        anchorEl={this.state.anchorEl}
-        anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-        targetOrigin={{horizontal: 'left', vertical: 'top'}}
-        onRequestClose={this.handleRequestClose}
-        animation={PopoverAnimationFromTop}
-      >
-        <div style={styles.popover}>
-          {this.displayForm()}
-        </div>
-      </Popover>
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+          animation={PopoverAnimationFromTop}
+        >
+          <div style={styles.popover}>
+            {this.displayForm()}
+          </div>
+        </Popover>
       </span>
     );
   }
