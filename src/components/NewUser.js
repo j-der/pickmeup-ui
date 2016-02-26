@@ -100,7 +100,8 @@ export default class NewUser extends Component {
           label="Sign Up!"
           className="sign-up-button" onClick={this.toggleForm}
           style={{
-            margin: '5px'
+            margin: '5px',
+            backgroundColor: 'lightcoral'
           }} />
         {this.displayForm()}
       </span>
