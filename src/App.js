@@ -16,15 +16,26 @@ var App = React.createClass({
     browserHistory.push('/main');
   },
 
+  indexPageSearchSubmit: function(event, formData) {
+    event.preventDefault();
+    console.log("formData is", formData);
+    console.log("formData.To is", formData.To);
+    console.log("formData.From is", formData.From);
+    console.log("the state before setState is", this.state);
+    this.setState({To: formData.To, From: formData.From});
+    console.log("the state after setState is", this.state);
+  },
+
   render: function(){
-    // Children, imported from 'react', tells the children of this component access its methods and state
+    // Children is a helper imported from 'react', tells the children of this component access its methods and state
     // map will pass the children of App in Router, and tells each child about App's props and state
     let children = Children.map(this.props.children, child => {
       return cloneElement(child, {
         ...child.props,
         ...this.props,
         ...this.state,
-        splashPageSearchSubmit: this.splashPageSearchSubmit
+        splashPageSearchSubmit: this.splashPageSearchSubmit,
+        indexPageSearchSubmit: this.indexPageSearchSubmit
       })
     })
 

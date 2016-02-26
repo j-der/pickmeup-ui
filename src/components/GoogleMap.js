@@ -3,8 +3,8 @@ import { browserHistory } from 'react-router';
 
 var GoogleMap = React.createClass({
 
-  getInitialState: function() {
-    return {origin: null, destination: null}
+  getInitialState() {
+    return {mapVariable: null}
   },
   
   componentDidMount() {
@@ -17,6 +17,7 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: that.props.originField}, function(results, status) {
+        console.log("originField is", that.props.originField);
         if (status !== 'OK') {
           browserHistory.push('/');
         } else {
@@ -28,6 +29,8 @@ var GoogleMap = React.createClass({
           center: {lat, lng},
           zoom: 14
         });
+
+        that.setState({mapVariable: gMap})
 
         console.log('lat is', lat)
         console.log('lng is', lng)
@@ -56,6 +59,58 @@ var GoogleMap = React.createClass({
     });
   },
 
+  shouldComponentUpdate: function(nextProps, nextState) {
+     return nextProps.originField !== this.props.originField
+  },
+
+  componentWillUpdate: function(nextProps, nextState) {
+    // refactor this into a function to use here and in componentDidMount
+    var that = this;
+    var gMap, geocoder;
+
+    function initMap() {
+
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: nextProps.originField}, function(results, status) {
+        console.log("originField is", that.props.originField);
+        if (status !== 'OK') {
+          browserHistory.push('/');
+        } else {
+          var lat = results[0].geometry.location.lat();
+          var lng = results[0].geometry.location.lng();
+        }
+
+        gMap = new google.maps.Map(document.getElementById('map'), {
+          center: {lat, lng},
+          zoom: 14
+        });
+
+        that.setState({mapVariable: gMap})
+
+        console.log('lat is', lat)
+        console.log('lng is', lng)
+      });
+
+    }
+
+    function loadScript() {
+
+      return new Promise(function(resolve, reject) {
+        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places";
+        var script = document.createElement('script');
+        script.setAttribute("src", url);
+        document.head.appendChild(script)
+
+        script.onload = resolve;
+        script.onerror = reject;
+      });
+    }
+
+    loadScript().then(function(){
+        initMap()
+    });
+  },
+
   render: function() {
     return (
     	<div>
@@ -63,8 +118,6 @@ var GoogleMap = React.createClass({
 	      </div>
 	      <div>
 	      	{this.props.destinationField ? this.props.destinationField : 'No destination'}
-          {console.log(this.state.origin)}
-          {console.log(this.state.destination)}
 	      </div>
 	      <div>
 	      	{this.props.originField ? this.props.originField : 'No origin'}
