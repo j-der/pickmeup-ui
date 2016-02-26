@@ -1,25 +1,45 @@
 import React from 'react';
+import TextField from 'material-ui/lib/text-field';
+import Config from '../config';
+import FlatButton from 'material-ui/lib/flat-button';
 
-var SearchBar = React.createClass({
+export default class SearchBar extends React.Component {
 
-  getInitialState: function() {
-    return { placeholder: "Where to?" }
-  },
+  // getInitialState: function() {
+  //   return { placeholder: "Where to?", formMethod: "", formAction: "" }
+  // },
 
-  changePlaceholder: function(){
-    this.setState({ placeholder: "Where from?"});
-  },
+  // saveDestination: function(){
+  //   var destination = document.getElementById('destination-field').value;
+  //   this.setState({placeholder: "Where from?", formMethod: "POST", formAction: "/users"});
+  // },
 
-  render: function(){
+  // changePlaceholder: function(){
+  //   this.setState({ placeholder: "Where from?"});
+  // },
+
+  render() {
     return (
-      <form action="/index" method="POST">
-        <div id="splash-input">
-          <input id="origin-field" placeholder={this.state.placeholder} onSubmit={this.changePlaceholder}/>
-        </div>
+
+      // props of handleSubmit from IndexPage
+      <form onSubmit={this.props.handleSubmit}>
+        <TextField
+          id="destination-field"
+          hintText="E.g. Steamwhistle Brewery"
+          floatingLabelText="Where to?"
+        />
+        <TextField
+          id="origin-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where from?"
+        />
+        <FlatButton
+            label="Search"
+            primary={true}
+            type="submit" />
       </form>
     );
   }
 
-});
+};
 
-export default SearchBar;

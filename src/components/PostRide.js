@@ -3,7 +3,7 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
-
+import TextField from 'material-ui/lib/text-field';
 
 export default class PostRide extends React.Component {
 
@@ -32,6 +32,9 @@ export default PostRide;
     this.setState({open: false});
   };
 
+
+
+
   render() {
     const actions = [
       <FlatButton
@@ -43,7 +46,7 @@ export default PostRide;
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.submitForm}
       />,
     ];
 
@@ -57,7 +60,16 @@ export default PostRide;
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          Need to figure out how to insert a form inside this dialog box.
+        <TextField
+          id="destination-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where to?"
+        />,
+        <TextField
+          id="origin-field"
+          hintText="E.g. Steamwhistle Brewery"
+          floatingLabelText="Where from?"
+        />
         </Dialog>
       </div>
     );
