@@ -16,7 +16,7 @@ injectTapEventPlugin();
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
+    <Route path='/' origin="" destination="" component={App}>
       <IndexRoute component={SplashPage}/>
       <Route path='/main'component={IndexPage}/>
     </Route>
