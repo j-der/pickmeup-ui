@@ -1,55 +1,60 @@
 import React, { Component } from 'react';
 
 import Geosuggest from 'react-geosuggest';
-// import TextField from 'material-ui/lib/text-field';
-// import AutoComplete from 'material-ui/lib/auto-complete';
-import GoogleMap from './GoogleMap';
+import TextField from 'material-ui/lib/text-field';
 
-// export default class SearchAutoComplete extends Component {
 
-	var SearchAutoComplete = React.createClass({
+export default class SearchAutoComplete extends Component {
 
-		// constructor(props) {
-		// 	super(props);
 
-		// 	this.state = {
-		// 		dataSource: [],
-		// 	};
-		// }
+  render() {
+  	 const geoSuggest = [
+      <Geosuggest
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onChange={this.onChange}
+        onSuggestSelect={this.onSuggestSelect}
+        location={new google.maps.LatLng(43.64465, -79.39503)}
+        radius="20"
+       />
+     ];
 
-		// handleUpdateInput = (fixtures) = {
-		// 	this.setState({
-		// 		dataSource: [fixtures + fixtures],
-		// 	})
-		// }
+    return (
+    	<div>
+       <TextField
+       		floatingLabelText="Where to?"
+       	/>
+      </div>
+    )
+  }
 
-	  render: function() {
-	    var fixtures = [
-	      {label: 'Lighthouse Labs', location: {lat: 43.64465, lng: -79.39503}},
-	      {label: 'Steamwhistle Brewery', location: {lat: 43.64117, lng: -79.385186}},
-	      {label: 'CN Tower', location: {lat: 43.6426, lng: -79.3871}}
-	    ];
+  onFocus = () => {
+  	  <Geosuggest
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onChange={this.onChange}
+        onSuggestSelect={this.onSuggestSelect}
+        location={new google.maps.LatLng(43.64465, -79.39503)}
+        radius="20"
+      />
+  }
 
-	    return (
-	      <div>
-		        <Geosuggest
-		          placeholder="Where to?"
-		          fixtures={fixtures}
-		          onSuggestSelect={this.onSuggestSelect}
-		          location={new google.maps.LatLng(43.64465, -79.39503)}
-		          radius="20" />
-	      </div>
-	    )
-	  },
+  onBlur = () => {
+  	console.log('onBlur');
+  	;
+  }
 
-	   // When a suggest got selected
-	   // @param  {Object} suggest The suggest
-	  onSuggestSelect: function(suggest) {
-	    console.log(suggest);
-	  }
-	});
+  onChange = (value) => {
+  	console.log('input changes to:' + value);
+  }
 
-	export default SearchAutoComplete;
+   // When a suggest got selected
+   // @param  {Object} suggest The suggest
+  onSuggestSelect = (suggest) => {
+    let destinationField = suggest;
+  }
+};
+
 
 
 // 	render() {
