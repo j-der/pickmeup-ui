@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import GoogleMap from './GoogleMap';
+import { browserHistory } from 'react-router';
+// import axios from 'axios';
 
 export default class IndexPage extends Component {
 
@@ -9,7 +11,7 @@ export default class IndexPage extends Component {
 
 		this.state = {
 			destinationField: null,
-			originField: null,
+			originField: null
 		}
 	}
 
@@ -36,13 +38,15 @@ export default class IndexPage extends Component {
 			destinationField: newState.destinationField, // new values set for d- and o-fields.
 			originField: newState.originField
 		})
+
+
 	}
 
 	render() {
 		return (
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
-				{/* <SearchBar handleSubmit={this.handleSubmit}/> */}
+				<SearchBar handleSubmit={this.props.indexPageSearchSubmit}/>
 				<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
 			</div>
 				//post to map with newState
