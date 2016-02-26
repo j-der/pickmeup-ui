@@ -43,7 +43,7 @@ var GoogleMap = React.createClass({
       // it is passed two parameters for success and failure
       return new Promise(function(resolve, reject) {
         // creating a <script> and giving it an attribute src=url, then append it to the document
-        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places";
+        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places&callback=initAutocomplete";
         var script = document.createElement('script');
         script.setAttribute("src", url);
         document.head.appendChild(script)
