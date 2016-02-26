@@ -7,21 +7,16 @@ import axios from 'axios';
 
 export default class NewUser extends Component {
 
-  // getInitialState() {
-  //   return {showForm: false}
-  // }
-  // this from ES5 is the same as the constructor below.
-  // constructor is a lot like def initialize from ruby
-
   constructor(props) {
     super(props)
 
     this.state = {showForm: false}
+    // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
   }
 
-  axiosPost = (event) => {
+  axiosPost(event) {
     event.preventDefault();
-    // console.log(this.refs.input1.value)
+
     axios.post('http://localhost:3000/users', {
       avatar: this.refs.avatar.value,
       first_name: this.refs.firstName.value,
@@ -33,14 +28,15 @@ export default class NewUser extends Component {
     })
 
       .then(function(response){
+        // console.log(this.refs.firstName.value)
         console.log('success, response: ', response)
-        })
+        });
   }
 
-  displayForm = () => {
+ displayForm() {
     if (this.state.showForm) {
       return (
-        <form onSubmit={this.axiosPost} encType="multipart/form-data">
+        <form onSubmit={ev => this.axiosPost(ev)} encType="multipart/form-data">
 
           <div>
             <label htmlFor="first_name">URL to your photo:</label>

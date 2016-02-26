@@ -10,16 +10,19 @@ export default class PostRide extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {showPostForm: false}
+    this.state = {showPostForm: false,
+      title: 'Default Title',
+      //build default state here
+
+    }
   }
 
   axiosPost = (event) => {
     event.preventDefault();
     console.log("here")
-    console.log(this.refs.postOrigin)
     axios.post('http://localhost:3000/rides', {
-      title: this.refs.postTitle.value,
-      available_seats: this.refs.postAvailableSeats,value,
+      title: this.state.title, //if we use the onChange and value below and state setup above
+      available_seats: this.refs.postSeatsAvailable.value,
       origin: this.refs.postOrigin.value,
       destination: this.refs.postDestination.value
     })
@@ -27,9 +30,11 @@ export default class PostRide extends React.Component {
       .then(function(response){
         console.log('success, response: ', response)
         })
+      .error( res => console.log("Something bad happened", res) )
   }
 
   handleSubmit = () => {
+    console.log(this.refs.postTitle.value);
     console.log('handling submit');
   }
 
@@ -38,10 +43,13 @@ export default class PostRide extends React.Component {
       return (
         <div>
          <form onSubmit={this.axiosPost}>
+          <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
+
           <TextField
             id="post-title-field"
             hintText="E.g. Daily to downtown Toronto"
             floatingLabelText="Title"
+
             ref="postTitle"
           />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <TextField
