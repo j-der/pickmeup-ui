@@ -104,8 +104,3 @@ export default class NewUser extends Component {
 
 
 }
-
-
-// <div>
-//   <input ref="avatar" type="file" name="user[avatar]" />
-// </div>
