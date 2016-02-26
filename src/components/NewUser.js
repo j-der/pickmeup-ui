@@ -41,8 +41,10 @@ export default class NewUser extends Component {
     if (this.state.showForm) {
       return (
         <form onSubmit={this.axiosPost} encType="multipart/form-data">
+
           <div>
-            <input ref="avatar" type="file" name="user[avatar]" />
+            <label htmlFor="first_name">URL to your photo:</label>
+            <input ref="avatar" type="text" name="user[avatar]" id="avatar" placeholder="URL to your photo" />
           </div>
           <div>
             <label htmlFor="first_name">First name:</label>
@@ -102,3 +104,8 @@ export default class NewUser extends Component {
 
 
 }
+
+
+// <div>
+//   <input ref="avatar" type="file" name="user[avatar]" />
+// </div>
