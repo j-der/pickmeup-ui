@@ -3,22 +3,22 @@ import TextField from 'material-ui/lib/text-field';
 import Config from '../config';
 import FlatButton from 'material-ui/lib/flat-button';
 
+export default class SearchBar extends React.Component {
 
-var SearchBar = React.createClass({
+  constructor(props) {
+    super(props)
+    this.state = { To: "", From: "" }
+  }
 
-  getInitialState() {
-    return { To: "", From: "" }
-  },
-
-  handleToChange(event) {
+  handleToChange = (event) => {
     this.setState({To: event.target.value});
-  },
+  }
 
-  handleFromChange: function(event) {
+  handleFromChange = (event) => {
     this.setState({From: event.target.value});
-  },
+  }
 
-  render: function(){
+  render() {
     return (
 
       // props of handleSubmit from IndexPage
@@ -43,7 +43,5 @@ var SearchBar = React.createClass({
     );
   }
 
-});
-
-export default SearchBar;
+};
 

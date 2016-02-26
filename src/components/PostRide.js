@@ -64,7 +64,7 @@ export default PostRide;
           id="destination-field"
           hintText="E.g. Lighthouse Labs"
           floatingLabelText="Where to?"
-        />
+        />,
         <TextField
           id="origin-field"
           hintText="E.g. Steamwhistle Brewery"

@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 var GoogleMap = React.createClass({
 
@@ -15,9 +16,13 @@ var GoogleMap = React.createClass({
     function initMap() {
 
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: that.props.originField}, function(results) {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
+      geocoder.geocode({ address: that.props.originField}, function(results, status) {
+        if (status !== 'OK') {
+          browserHistory.push('/');
+        } else {
+          var lat = results[0].geometry.location.lat();
+          var lng = results[0].geometry.location.lng();
+        }
 
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
@@ -35,7 +40,7 @@ var GoogleMap = React.createClass({
       // it is passed two parameters for success and failure
       return new Promise(function(resolve, reject) {
         // creating a <script> and giving it an attribute src=url, then append it to the document
-        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk";
+        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places";
         var script = document.createElement('script');
         script.setAttribute("src", url);
         document.head.appendChild(script)
