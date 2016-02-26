@@ -4,6 +4,7 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
+import axios from 'axios';
 
 export default class PostRide extends React.Component {
 
@@ -32,9 +33,6 @@ export default PostRide;
     this.setState({open: false});
   };
 
-
-
-
   render() {
     const actions = [
       <FlatButton
@@ -46,7 +44,8 @@ export default PostRide;
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.submitForm}
+        // type="submit"
+        onTouchTap={this.axiosPost}
       />,
     ];
 
@@ -61,17 +60,49 @@ export default PostRide;
           onRequestClose={this.handleClose}
         >
         <TextField
-          id="destination-field"
+          id="post-title-field"
+          hintText="E.g. Daily to downtown Toronto"
+          floatingLabelText="Title"
+          ref="postTitle"
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TextField
+          id="post-available-seats"
+          hintText="E.g. 2"
+          floatingLabelText="Seats available"
+          ref="postSeatsAvailable"
+        />
+        <TextField
+          id="post-destination-field"
           hintText="E.g. Lighthouse Labs"
           floatingLabelText="Where to?"
-        />,
+          ref="postDestination"
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <TextField
-          id="origin-field"
+          id="post-origin-field"
           hintText="E.g. Steamwhistle Brewery"
           floatingLabelText="Where from?"
+          ref="postOrigin"
         />
         </Dialog>
       </div>
     );
   }
-}
+
+  axiosPost = (event) => {
+    event.preventDefault();
+    // console.log(this.refs.input1.value)
+    axios.post('http://localhost:3000/rides', {
+      origin: this.refs.postOrigin.value,
+      destination: this.refs.postDestination.value
+    })
+
+      .then(function(response){
+        console.log('success, response: ', response)
+        })
+    }
+  }
+
+
+
+
+

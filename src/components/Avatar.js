@@ -19,12 +19,9 @@ const colors = styles.Colors;
 
 const AvatarExampleSimple = () => (
   <List>
-    <ListItem
-      disabled={true}
-      leftAvatar={
+    <ListItem disabled={true} leftAvatar={
         <Avatar src="http://lorempixel.com/200/200/people" />
-      }
-    > Name of Person
+    }> Name of Person
     </ListItem>
   </List>
 );
