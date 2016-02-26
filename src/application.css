@@ -23,3 +23,15 @@ html, body {
 #destination-field:focus {
   border-color: #4d90fe;
 }
+
+.avatar {
+  position: relative;
+  display: block;
+}
+
+.nav-buttons {
+  border-color: orange;
+  border-style: solid;
+  display: block;
+  float: right;
+}

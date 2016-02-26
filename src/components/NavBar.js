@@ -9,13 +9,13 @@ var NavBar = React.createClass({
   render: function(){
     return (
       <div className="nav-bar">
-        <div className="avatar">
+        <span className="avatar">
           <Avatar />
-        </div>
-        <div className="nav-buttons">
+        </span>
+        <span className="nav-buttons">
+          <PostRide />
+        </span>
 
-        </div>
-      	<PostRide />
         <NewUser />
         <LogInForm />
 
