@@ -1,140 +1,123 @@
 import React, { Component } from 'react';
 
 import Geosuggest from 'react-geosuggest';
-import TextField from 'material-ui/lib/text-field';
+// import TextField from 'material-ui/lib/text-field';
+// import AutoComplete from 'material-ui/lib/auto-complete';
+import GoogleMap from './GoogleMap';
 
-// export default class SearchAutoComplete extends Component {
+export default class SearchAutoComplete extends Component {
 
-//   componentDidMount = () => {
-//     var input = document.getElementById('whereTo');
-//     var options = document.getElementById('whereTo'); 
-//     // now render google.maps.Autocomplete given the above input and options  
-//     // new google.maps.places.Autocomplete(input, options);
-//   };
+	var placeSearch, autocomplete;
+	var componentForm = {
+	  street_number: 'short_name',
+	  route: 'long_name',
+	  locality: 'long_name',
+	  administrative_area_level_1: 'short_name',
+	  country: 'long_name',
+	  postal_code: 'short_name'
+	};
 
+	initAutocomplete = () => {
 
-//   render() {
-//     return (
-//       <div>
-//       	Hello!
-//       	<input ref='searchField' id="whereTo" type="text" size="50"/>
-//       </div>
-//     );
-//   }
-// };
+		var autocomplete = new google.maps.places.Autocomplete(
+			(document.getElementById('autocomplete')),{types: ['address']});
 
-	// This example requires the Places library. Include the libraries=places
-	// parameter when you first load the API. For example:
-	// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+		autocomplete.addListener('place_changed', fillInAddress);
+	}
 
-	// function initMap() {
-	//   var map = new google.maps.Map(document.getElementById('map'), {
-	//     center: {lat: -33.8688, lng: 151.2195},
-	//     zoom: 13
-	//   });
-	//   var input = document.getElementById('destination'));
+	fillInAddress = () => {
+		var place = autocomplete.getPlace();
 
-	//   var types = document.getElementById('type-selector');
-	//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-	//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+		for (var component in componentForm) {
+			document.getElementById(component).value = '';
+			document.getElementById(component).disabled = false;
+		}
 
-	//   var autocomplete = new google.maps.places.Autocomplete(input);
-	//   autocomplete.bindTo('bounds', map);
+		for (var i = 0; i < place.address_components.length; i++) {
+		    var addressType = place.address_components[i].types[0];
+		    if (componentForm[addressType]) {
+		      var val = place.address_components[i][componentForm[addressType]];
+		      document.getElementById(addressType).value = val;
+		    }
+		  }
+	}
 
-	//   var infowindow = new google.maps.InfoWindow();
-	//   var marker = new google.maps.Marker({
-	//     map: map,
-	//     anchorPoint: new google.maps.Point(0, -29)
-	//   });
+	geolocate = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var geolocation = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+				var circle = new google.maps.Circle({
+					center: geolocation,
+					radius: position.coords.accuracy
+				});
+				autocomplete.setBounds(circle.getBounds());
+			});
+		}
+	}
 
-	//   autocomplete.addListener('place_changed', function() {
-	//     infowindow.close();
-	//     marker.setVisible(false);
-	//     var place = autocomplete.getPlace();
-	//     if (!place.geometry) {
-	//       window.alert("Autocomplete's returned place contains no geometry");
-	//       return;
-	//     }
+	// componentDidMount() {
+ //    var input = document.getElementById('destination');
+ //    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-	//     // If the place has a geometry, then present it on a map.
-	//     if (place.geometry.viewport) {
-	//       map.fitBounds(place.geometry.viewport);
-	//     } else {
-	//       map.setCenter(place.geometry.location);
-	//       map.setZoom(17);  // Why 17? Because it looks good.
-	//     }
-	//     marker.setIcon(/** @type {google.maps.Icon} */({
-	//       url: place.icon,
-	//       size: new google.maps.Size(71, 71),
-	//       origin: new google.maps.Point(0, 0),
-	//       anchor: new google.maps.Point(17, 34),
-	//       scaledSize: new google.maps.Size(35, 35)
-	//     }));
-	//     marker.setPosition(place.geometry.location);
-	//     marker.setVisible(true);
+ //    var autocomplete = new google.maps.places.Autocomplete(input, options);
 
-	//     var address = '';
-	//     if (place.address_components) {
-	//       address = [
-	//         (place.address_components[0] && place.address_components[0].short_name || ''),
-	//         (place.address_components[1] && place.address_components[1].short_name || ''),
-	//         (place.address_components[2] && place.address_components[2].short_name || '')
-	//       ].join(' ');
-	//     }
-
-	//     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-	//     infowindow.open(map, marker);
-	//   });
-
-	//   // Sets a listener on a radio button to change the filter type on Places
-	//   // Autocomplete.
-	//   function setupClickListener(id, types) {
-	//     var radioButton = document.getElementById(id);
-	//     radioButton.addEventListener('click', function() {
-	//       autocomplete.setTypes(types);
-	//     });
-	//   }
-
-	//   setupClickListener('changetype-all', []);
-	//   setupClickListener('changetype-address', ['address']);
-	//   setupClickListener('changetype-establishment', ['establishment']);
-	//   setupClickListener('changetype-geocode', ['geocode']);
+ //    var place = autocomplete.getPlace();
+	
 	// }
 
 
-// var React = require('react'),
-//   Geosuggest = require('./src/Geosuggest.jsx');
+	render() {
+		return (
+			<div>
+				<input id="autocomplete" type="text" className="controls" onFocus="geolocate()"/>
+			</div>)
+	}
+};
 
-var SearchAutoComplete = React.createClass({
-  /**
-   * Render the example app
-   */
-  render: function() {
-    var fixtures = [
-      {label: 'Lighthouse Labs', location: {lat: 43.64465, lng: -79.39503}},
-      {label: 'Steamwhistle Brewery', location: {lat: 43.64117, lng: -79.385186}},
-      {label: 'CN Tower', location: {lat: 43.6426, lng: -79.3871}}
-    ];
 
-    return (
-      <div>
-        <Geosuggest
-          placeholder="Where to?"
-          fixtures={fixtures}
-          onSuggestSelect={this.onSuggestSelect}
-          location={new google.maps.LatLng(43.64465, -79.39503)}
-          radius="20" />
-      </div>
-    )
-  },
+// var SearchAutoComplete = React.createClass({
 
-  /**
-   * When a suggest got selected
-   * @param  {Object} suggest The suggest
-   */
-  onSuggestSelect: function(suggest) {
-    console.log(suggest);
-  }
-});
+	// constructor(props) {
+	// 	super(props);
 
-export default SearchAutoComplete;
+	// 	this.state = {
+	// 		dataSource: [],
+	// 	};
+	// }
+
+	// handleUpdateInput = (fixtures) = {
+	// 	this.setState({
+	// 		dataSource: [fixtures + fixtures],
+	// 	})
+	// }
+
+//   render: function() {
+//     var fixtures = [
+//       {label: 'Lighthouse Labs', location: {lat: 43.64465, lng: -79.39503}},
+//       {label: 'Steamwhistle Brewery', location: {lat: 43.64117, lng: -79.385186}},
+//       {label: 'CN Tower', location: {lat: 43.6426, lng: -79.3871}}
+//     ];
+
+//     return (
+//       <div>
+// 	        <Geosuggest
+// 	          placeholder="Where to?"
+// 	          fixtures={fixtures}
+// 	          onSuggestSelect={this.onSuggestSelect}
+// 	          location={new google.maps.LatLng(43.64465, -79.39503)}
+// 	          radius="20" />
+//       </div>
+//     )
+//   },
+
+//    // When a suggest got selected
+//    // @param  {Object} suggest The suggest
+//   onSuggestSelect: function(suggest) {
+//     console.log(suggest);
+//   }
+// });
+
+// export default SearchAutoComplete;
