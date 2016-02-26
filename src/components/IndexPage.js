@@ -44,7 +44,7 @@ export default class IndexPage extends Component {
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
 				{/* <SearchBar handleSubmit={this.handleSubmit}/> */}
-				<GoogleMap originField={this.state.originField} destinationField={this.state.destinationField}/>
+				<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
 			</div>
 				//post to map with newState
 		)
