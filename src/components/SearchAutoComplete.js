@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/lib/text-field';
 

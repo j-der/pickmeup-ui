@@ -52,7 +52,10 @@ export default PostRide;
 
     return (
       <div>
-        <RaisedButton label="Post a Ride" onTouchTap={this.handleOpen} />
+        <RaisedButton
+          label="Post a Ride"
+          onTouchTap={this.handleOpen}
+        />
         <Dialog
           title="Post a Ride!"
           actions={actions}

@@ -2,7 +2,6 @@ import React, { Children, cloneElement } from 'react';
 import { browserHistory } from 'react-router';
 import NavBar from './components/NavBar';
 import SearchBar from './components/SearchBar';
-// import SearchAutoComplete from './components/SearchAutoComplete';
 
 
 var App = React.createClass({
@@ -43,7 +42,6 @@ var App = React.createClass({
     return (
       <div>
         <NavBar />
-        {/*<SearchAutoComplete />*/}
         {children}
       </div>
     );

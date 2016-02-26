@@ -24,6 +24,10 @@ html, body {
   border-color: #4d90fe;
 }
 
+#nav-bar {
+  color: lightblue;
+}
+
 .avatar {
   position: relative;
   display: block;
@@ -34,4 +38,8 @@ html, body {
   border-style: solid;
   display: block;
   float: right;
+}
+
+.splash-page {
+  text-align: center;
 }
