@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 import Config from '../config';
-
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import axios from 'axios';
+import Popover from 'material-ui/lib/popover/popover';
+import PopoverAnimationFromTop from 'material-ui/lib/popover/popover-animation-from-top';
+
+const styles = {
+  popover: {
+    padding: 20,
+  },
+};
 
 export default class NewUser extends Component {
+
+    // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
+    //
+  // getInitialState() {
+  //   return {showForm: false}
+  // }
+  // this from ES5 is the same as the constructor below.
+  // constructor is a lot like def initialize from ruby
+
+
 
   constructor(props) {
     super(props)
 
-    this.state = {showForm: false}
-    // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
+    this.state = {open: false}
+
   }
 
   axiosPost(event) {
@@ -33,8 +50,7 @@ export default class NewUser extends Component {
         });
   }
 
- displayForm() {
-    if (this.state.showForm) {
+  displayForm = () => {
       return (
         <form onSubmit={ev => this.axiosPost(ev)} encType="multipart/form-data">
 
@@ -73,30 +89,44 @@ export default class NewUser extends Component {
           </div>
         </form>
       )
-    }
+
   }
 
-  toggleForm = () => {
-    if (this.state.showForm) {
-      this.setState({
-        showForm: false
-      })
-    }
-    else {
-      this.setState({
-        showForm: true
-      })
-    }
-  }
+  toggleForm = (event) => {
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
     return (
-      <div>
-        <RaisedButton label="Sign Up!" className="sign-up-button" onClick={this.toggleForm} />
-        {this.displayForm()}
-      </div>
+      <span>
+          <RaisedButton
+          label="Sign Up!"
+          className="sign-up-button" onTouchTap={this.toggleForm}
+          style={{
+            margin: '5px'
+          }} />
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+          animation={PopoverAnimationFromTop}
+        >
+          <div style={styles.popover}>
+            {this.displayForm()}
+          </div>
+        </Popover>
+      </span>
     );
   }
-
-
 }

@@ -101,10 +101,13 @@ export default class PostRide extends React.Component {
 
 render() {
     return (
-      <div>
-        <RaisedButton label="Post a Ride" onClick={this.togglePostForm} />
+      <span>
+        <RaisedButton label="Post a Ride" onClick={this.togglePostForm} style={{
+            marginRight: '10px',
+            backgroundColor: 'transparent'
+          }}/>
         {this.displayPostForm()}
-      </div>
+      </span>
     );
   }
 }
