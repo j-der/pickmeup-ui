@@ -33,7 +33,7 @@ export default class NewUser extends Component {
 
   axiosPost(event) {
     event.preventDefault();
-
+    console.log(this.refs.firstName.value)
     axios.post('http://localhost:3000/users', {
       avatar: this.refs.avatar.value,
       first_name: this.refs.firstName.value,
