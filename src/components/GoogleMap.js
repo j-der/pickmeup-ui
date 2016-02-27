@@ -1,5 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import axios from 'axios';
 
 var GoogleMap = React.createClass({
 
@@ -27,6 +28,19 @@ var GoogleMap = React.createClass({
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
           zoom: 14
+        });
+
+        axios({
+          method: 'get',
+          url: 'http://localhost:3000/rides',
+          withCredentials: true,
+          headers: {'X-Requested-With': 'XMLHttpRequest'}
+        })
+        .then(function (response) {
+          console.log("this is the axios response", response);
+        })
+        .catch(function (response) {
+          console.log("this is the axios catch response", response);
         });
 
         that.setState({mapVariable: gMap})
