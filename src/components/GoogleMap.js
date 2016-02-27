@@ -30,17 +30,12 @@ var GoogleMap = React.createClass({
           zoom: 14
         });
 
-        axios({
-          method: 'get',
-          url: 'http://localhost:3000/rides',
-          withCredentials: true,
-          headers: {'X-Requested-With': 'XMLHttpRequest'}
-        })
+        axios.get('http://localhost:3000/rides')
         .then(function (response) {
-          console.log("this is the axios response", response);
+          console.log("the first response is", response.data);
         })
         .catch(function (response) {
-          console.log("this is the axios catch response", response);
+          console.log("the axios catch response is", response);
         });
 
         that.setState({mapVariable: gMap})
