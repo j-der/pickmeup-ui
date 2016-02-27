@@ -17,7 +17,6 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: that.props.originField}, function(results, status) {
-        console.log("originField is", that.props.originField);
         if (status !== 'OK') {
           browserHistory.push('/');
         } else {
@@ -31,9 +30,6 @@ var GoogleMap = React.createClass({
         });
 
         that.setState({mapVariable: gMap})
-
-        console.log('lat is', lat)
-        console.log('lng is', lng)
       });
 
     }
@@ -72,7 +68,6 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: nextProps.originField}, function(results, status) {
-        console.log("originField is", that.props.originField);
         if (status !== 'OK') {
           browserHistory.push('/');
         } else {
@@ -86,9 +81,6 @@ var GoogleMap = React.createClass({
         });
 
         that.setState({mapVariable: gMap})
-
-        console.log('lat is', lat)
-        console.log('lng is', lng)
       });
 
     }
@@ -115,12 +107,6 @@ var GoogleMap = React.createClass({
     return (
     	<div>
 	      <div id="map">
-	      </div>
-	      <div>
-	      	{this.props.destinationField ? this.props.destinationField : 'No destination'}
-	      </div>
-	      <div>
-	      	{this.props.originField ? this.props.originField : 'No origin'}
 	      </div>
     	</div>
     );

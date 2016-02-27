@@ -14,6 +14,8 @@ const styles = {
 
 export default class NewUser extends Component {
 
+    // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
+    //
   // getInitialState() {
   //   return {showForm: false}
   // }
@@ -26,11 +28,12 @@ export default class NewUser extends Component {
     super(props)
 
     this.state = {open: false}
+
   }
 
-  axiosPost = (event) => {
+  axiosPost(event) {
     event.preventDefault();
-    // console.log(this.refs.input1.value)
+
     axios.post('http://localhost:3000/users', {
       avatar: this.refs.avatar.value,
       first_name: this.refs.firstName.value,
@@ -42,13 +45,14 @@ export default class NewUser extends Component {
     })
 
       .then(function(response){
+        // console.log(this.refs.firstName.value)
         console.log('success, response: ', response)
-        })
+        });
   }
 
   displayForm = () => {
       return (
-        <form onSubmit={this.axiosPost} encType="multipart/form-data">
+        <form onSubmit={ev => this.axiosPost(ev)} encType="multipart/form-data">
 
           <div>
             <label htmlFor="first_name">URL to your photo:</label>
@@ -85,7 +89,7 @@ export default class NewUser extends Component {
           </div>
         </form>
       )
-    
+
   }
 
   toggleForm = (event) => {
@@ -125,12 +129,4 @@ export default class NewUser extends Component {
       </span>
     );
   }
-
-
 }
-
-
-
-// <div>
-//   <input ref="avatar" type="file" name="user[avatar]" />
-// </div>
