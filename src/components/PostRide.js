@@ -11,7 +11,7 @@ export default class PostRide extends React.Component {
   constructor(props) {
     super(props)
     this.state = {showPostForm: false,
-      title: 'Default Title',
+      title: 'Default Title'
       //build default state here
 
     }
@@ -20,11 +20,12 @@ export default class PostRide extends React.Component {
   axiosPost = (event) => {
     event.preventDefault();
     console.log("here")
+    console.log(this.refs.postTitle.getValue())
     axios.post('http://localhost:3000/rides', {
-      title: this.state.title, //if we use the onChange and value below and state setup above
-      available_seats: this.refs.postSeatsAvailable.value,
-      origin: this.refs.postOrigin.value,
-      destination: this.refs.postDestination.value
+      title: this.refs.postTitle.getValue(),
+      available_seats: this.refs.postSeatsAvailable.getValue(),
+      origin: this.refs.postOrigin.getValue(),
+      destination: this.refs.postDestination.getValue()
     })
 
       .then(function(response){
@@ -33,23 +34,21 @@ export default class PostRide extends React.Component {
       .error( res => console.log("Something bad happened", res) )
   }
 
-  handleSubmit = () => {
-    console.log(this.refs.postTitle.value);
-    console.log('handling submit');
-  }
+  // handleSubmit = () => {
+  //   console.log(this);
+  //   console.log('handling submit');
+  // }
 
   displayPostForm = () => {
     if (this.state.showPostForm) {
       return (
         <div>
          <form onSubmit={this.axiosPost}>
-          <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
 
           <TextField
             id="post-title-field"
             hintText="E.g. Daily to downtown Toronto"
             floatingLabelText="Title"
-
             ref="postTitle"
           />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <TextField
@@ -111,3 +110,7 @@ render() {
     );
   }
 }
+
+
+
+// <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
