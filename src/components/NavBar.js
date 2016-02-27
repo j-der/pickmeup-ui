@@ -6,6 +6,7 @@ import NewUser from './NewUser';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
+import ModalWindow from './ModalWindow';
 // import MenuItem from 'material-ui/lib/menus/menu-item';
 // import DropDownMenu from 'material-ui/lib/DropDownMenu';
 
@@ -33,6 +34,7 @@ const ToolbarExamplesSimple = () => (
         <LogInForm />
         <NewUser />
         <Avatar />
+        <ModalWindow />
     </ToolbarGroup>
   </Toolbar>
 );
