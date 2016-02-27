@@ -29,7 +29,7 @@ export default class ModalWindow extends React.Component {
 
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+        <RaisedButton label="Modal Window Button" onTouchTap={this.handleOpen} />
         <Dialog
           title="Sign up with pickmeUp"
           actions={actions}

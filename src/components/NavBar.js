@@ -32,7 +32,7 @@ const ToolbarExamplesSimple = () => (
       }}>
         <PostRide />
         <LogInForm />
-        <NewUser />
+
         <Avatar />
         <ModalWindow />
     </ToolbarGroup>
