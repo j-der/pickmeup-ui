@@ -1,28 +1,4 @@
 import React from 'react';
-// import PostRide from './PostRide';
-// import NewUser from './NewUser';
-// import LogInForm from './LogInForm';
-// import Avatar from './Avatar';
-// import AppBar from 'material-ui/lib/app-bar';
-
-// var NavBar = React.createClass({
-
-//   render: function(){
-//     return (
-//       <div>
-
-//         <Avatar />
-//         <PostRide />
-//         <NewUser />
-//         <LogInForm />
-//       </div>
-//     );
-//   }
-
-// });
-
-// export default NavBar;
-
 import Avatar from './Avatar';
 import PostRide from './PostRide';
 import LogInForm from './LogInForm';
@@ -56,6 +32,7 @@ const ToolbarExamplesSimple = () => (
         <PostRide />
         <LogInForm />
         <NewUser />
+        <Avatar />
     </ToolbarGroup>
   </Toolbar>
 );
