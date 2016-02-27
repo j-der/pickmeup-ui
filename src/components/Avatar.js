@@ -1,5 +1,4 @@
 // import React from 'react';
-// import Avatar from 'material-ui/lib/avatar';
 
 // export default class NewUser extends Component {
 
@@ -18,15 +17,17 @@ import ListItem from 'material-ui/lib/lists/list-item';
 const colors = styles.Colors;
 
 const AvatarExampleSimple = () => (
-  <List>
-    <ListItem
-      disabled={true}
-      leftAvatar={
-        <Avatar src="http://lorempixel.com/200/200/people" />
-      }
-    > Name of Person
-    </ListItem>
-  </List>
+	<span>
+	  <List>
+	    <ListItem
+	      disabled={true}
+	      leftAvatar={
+	        <Avatar src="http://lorempixel.com/200/200/people" />
+	      }
+	    > Name of Person
+	    </ListItem>
+	  </List>
+	</span>
 );
 
 export default AvatarExampleSimple;
