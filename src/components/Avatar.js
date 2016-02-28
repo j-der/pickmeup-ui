@@ -1,11 +1,3 @@
-// import React from 'react';
-
-// export default class NewUser extends Component {
-
-//   leftAvatar={
-//         <Avatar src="lorempixel.com/200/200/people" />}
-// }
-
 import React from 'react';
 import Avatar from 'material-ui/lib/avatar';
 import FileFolder from 'material-ui/lib/svg-icons/file/folder';
