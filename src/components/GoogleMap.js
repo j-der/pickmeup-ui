@@ -29,10 +29,25 @@ var GoogleMap = React.createClass({
           center: {lat, lng},
           zoom: 14
         });
-
+        // get rides from database
         axios.get('http://localhost:3000/rides')
         .then(function (response) {
-          console.log("the first response is", response.data);
+          var lat, lng;
+          var rides = response.data;
+          rides.forEach(
+            function (ride){
+              geocoder.geocode({address: ride.origin}, function (results) {
+              lat = results[0].geometry.location.lat();
+              lng = results[0].geometry.location.lng();
+              
+              var marker = new google.maps.Marker({
+                position: {lat, lng},
+                map: gMap,
+              });
+            });
+            }
+          );
+
         })
         .catch(function (response) {
           console.log("the axios catch response is", response);
@@ -87,6 +102,29 @@ var GoogleMap = React.createClass({
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
           zoom: 14
+        });
+
+        axios.get('http://localhost:3000/rides')
+        .then(function (response) {
+          var lat, lng;
+          var rides = response.data;
+          rides.forEach(
+            function (ride){
+              geocoder.geocode({address: ride.origin}, function (results) {
+              lat = results[0].geometry.location.lat();
+              lng = results[0].geometry.location.lng();
+              
+              var marker = new google.maps.Marker({
+                position: {lat, lng},
+                map: gMap,
+              });
+            });
+            }
+          );
+
+        })
+        .catch(function (response) {
+          console.log("the axios catch response is", response);
         });
 
         that.setState({mapVariable: gMap})
