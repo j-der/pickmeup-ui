@@ -9,6 +9,19 @@ import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 // import MenuItem from 'material-ui/lib/menus/menu-item';
 // import DropDownMenu from 'material-ui/lib/DropDownMenu';
 
+// will need a componentWillUnmount method to remove <NewUser /> and <LogInForm /> components when user session is true
+//pseudocode
+//componentWillUnmount = () => {
+  //if (current_session) {
+      // var newUserBtn = <NewUser />;
+      // newUserBtn.addEventListener(current_session=true, unmount);
+  // }
+// }
+
+//unmount = () => {
+  // React.unmountComponentAtNode(document.getElementById('new-user'));
+  // newUserBtn.remove();
+// }
 
 const ToolbarExamplesSimple = () => (
   <Toolbar
@@ -38,13 +51,3 @@ const ToolbarExamplesSimple = () => (
 );
 
 export default ToolbarExamplesSimple;
-
-      // <DropDownMenu value={3}>
-      //   <MenuItem value={1} primaryText="All Broadcasts" />
-      //   <MenuItem value={2} primaryText="All Voice" />
-      //   <MenuItem value={3} primaryText="All Text" />
-      //   <MenuItem value={4} primaryText="Complete Voice" />
-      //   <MenuItem value={5} primaryText="Complete Text" />
-      //   <MenuItem value={6} primaryText="Active Voice" />
-      //   <MenuItem value={7} primaryText="Active Text" />
-      // </DropDownMenu>

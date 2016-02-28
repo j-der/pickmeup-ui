@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class RideTweets extends React.Component {
 	loadRidesFromServer = () => {
-		var rides;
+		var rides, title, seats;
 		console.log('RIDES LOADING')
 		axios.get('http://localhost:3000/rides')
 			.then(function (response) {
@@ -11,10 +11,12 @@ export default class RideTweets extends React.Component {
 			rides = response.data;
 			rides.forEach(
 				function(tweet){
-					let title = tweet.title;
-					let seats = tweet.available_seats
+					title = tweet.title;
+					seats = tweet.available_seats
 					console.log(title, seats);
 				})
+			displayTweets(
+				function(){});
 		})
 			.catch(function (response) {
 			console.log(response)
@@ -33,10 +35,15 @@ export default class RideTweets extends React.Component {
 					name = user.first_name
 					console.log(name);
 				})
+			{displayTweets()};
 		})
 			.catch(function (response) {
 			console.log(response)
 		});
+	}
+
+	displayTweets = () => {
+		console.log("DISPLAYING TWEETS!!")
 	}
 
 	// constructor(props) {
@@ -45,15 +52,18 @@ export default class RideTweets extends React.Component {
 	// }
 
 	componentDidMount() {
-	    this.loadRidesFromServer();
-	    this.loadUsersFromServer();
+    this.loadRidesFromServer();
+    this.loadUsersFromServer();
+	}
+
+	componentDidUpdate() {
+		this.displayTweets();
 	}
 
 	render() {
 		return(
 			<div>
 				Ride Tweets
-
 			</div>
 		);
 	}
