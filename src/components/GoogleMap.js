@@ -33,7 +33,7 @@ var GoogleMap = React.createClass({
         axios.get('http://localhost:3000/rides')
         .then(function (response) {
           var lat, lng;
-          var rides = response.data;
+          var rides = response.data.rides;
           rides.forEach(
             function (ride){
               geocoder.geocode({address: ride.origin}, function (results) {
@@ -108,13 +108,17 @@ var GoogleMap = React.createClass({
           zoom: 14
         });
 
-        axios.get('http://localhost:3000/rides')
+        axios.get('http://localhost:3000/rides', {
+          params: {
+            userDestination: userDestination
+          }
+        })
         .then(function (response) {
           var rideLocation;
-          var rides = response.data;
+          var rides = response.data.rides;
 
           rides.forEach(
-            function (ride){
+            function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 console.log("userOrigin is:", userOrigin); //to use for markers if a match
                 rideLocation = results[0].geometry.location;
@@ -126,7 +130,6 @@ var GoogleMap = React.createClass({
               });
             }
           );
-
         })
         .catch(function (response) {
           console.log("the axios catch response is", response);
