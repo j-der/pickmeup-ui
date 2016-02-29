@@ -6,12 +6,6 @@ import axios from 'axios';
 import Popover from 'material-ui/lib/popover/popover';
 import PopoverAnimationFromTop from 'material-ui/lib/popover/popover-animation-from-top';
 
-const styles = {
-  popover: {
-    padding: 20,
-  },
-};
-
 export default class NewUser extends Component {
 
     // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
@@ -22,13 +16,8 @@ export default class NewUser extends Component {
   // this from ES5 is the same as the constructor below.
   // constructor is a lot like def initialize from ruby
 
-
-
   constructor(props) {
     super(props)
-
-    this.state = {open: false}
-
   }
 
   axiosPost(event) {
@@ -50,9 +39,10 @@ export default class NewUser extends Component {
         });
   }
 
-  displayForm = () => {
-      return (
-        <form onSubmit={ev => this.axiosPost(ev)} encType="multipart/form-data">
+  render() {
+    return (
+      <div>
+       <form onSubmit={ev => this.axiosPost(ev)} encType="multipart/form-data">
 
           <div>
             <label htmlFor="first_name">URL to your photo:</label>
@@ -83,50 +73,13 @@ export default class NewUser extends Component {
         </div>
           <div>
             <FlatButton
+              onClick={this.props.handleClose}
               label="Submit"
               primary={true}
               type="submit" />
           </div>
         </form>
-      )
-
-  }
-
-  toggleForm = (event) => {
-    this.setState({
-      open: true,
-      anchorEl: event.currentTarget,
-    });
-  };
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
-
-  render() {
-    return (
-      <span>
-          <RaisedButton
-          label="Sign Up!"
-          className="sign-up-button" onTouchTap={this.toggleForm}
-          style={{
-            margin: '5px'
-          }} />
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          onRequestClose={this.handleRequestClose}
-          animation={PopoverAnimationFromTop}
-        >
-          <div style={styles.popover}>
-            {this.displayForm()}
-          </div>
-        </Popover>
-      </span>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Children, cloneElement } from 'react';
 import { browserHistory } from 'react-router';
 import NavBar from './components/NavBar';
 import SearchBar from './components/SearchBar';
+import RideTweets from './components/RideTweets';
 
 
 var App = React.createClass({
@@ -36,6 +37,7 @@ var App = React.createClass({
 
     return (
       <div>
+      	<RideTweets />
         <NavBar />
         {children}
       </div>
