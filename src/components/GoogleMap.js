@@ -86,12 +86,16 @@ var GoogleMap = React.createClass({
   componentWillUpdate: function(nextProps, nextState) {
     // refactor this into a function to use here and in componentDidMount
     var that = this;
-    var gMap, geocoder;
+    var gMap, geocoder, service;
 
     function initMap() {
 
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: nextProps.originField}, function(results, status) {
+      service = new google.maps.places.PlacesService(map);
+      var userOrigin = nextProps.originField;
+      var userDestination = nextProps.destinationField;
+
+      geocoder.geocode({ address: userOrigin}, function(results, status) {
         if (status !== 'OK') {
           browserHistory.push('/');
         } else {
@@ -106,19 +110,20 @@ var GoogleMap = React.createClass({
 
         axios.get('http://localhost:3000/rides')
         .then(function (response) {
-          var lat, lng;
+          var rideLocation;
           var rides = response.data;
+
           rides.forEach(
             function (ride){
               geocoder.geocode({address: ride.origin}, function (results) {
-              lat = results[0].geometry.location.lat();
-              lng = results[0].geometry.location.lng();
+                console.log("userOrigin is:", userOrigin); //to use for markers if a match
+                rideLocation = results[0].geometry.location;
               
-              var marker = new google.maps.Marker({
-                position: {lat, lng},
-                map: gMap,
+                var marker = new google.maps.Marker({
+                  position: rideLocation,
+                  map: gMap,
+                });
               });
-            });
             }
           );
 
