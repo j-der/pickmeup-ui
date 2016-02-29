@@ -1,62 +1,81 @@
 import React from 'react';
 import axios from 'axios';
 
+
 export default class RideTweets extends React.Component {
-	loadRidesFromServer = () => {
-		var rides, title, seats;
-		console.log('RIDES LOADING')
-		axios.get('http://localhost:3000/rides')
-			.then(function (response) {
-			console.log(response);
-			rides = response.data;
-			rides.forEach(
-				function(tweet){
-					title = tweet.title;
-					seats = tweet.available_seats
-					console.log(title, seats);
-				})
-			displayTweets(
-				function(){});
-		})
-			.catch(function (response) {
-			console.log(response)
-		});
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			name: '',
+			title: '',
+			seats: '',
+		};
+		console.log('from constructor, the state is', this.state);
 	}
 
-	loadUsersFromServer = () => {
-		var name;
-		console.log('USERS LOADING')
-		axios.get('http://localhost:3000/users')
-			.then(function (response) {
-			console.log(response);
-			var userNames = response.data;
-			userNames.forEach(
-				function(user){
-					name = user.first_name
-					console.log(name);
-				})
-			{displayTweets()};
-		})
-			.catch(function (response) {
-			console.log(response)
-		});
-	}
-
-	displayTweets = () => {
-		console.log("DISPLAYING TWEETS!!")
-	}
-
-	// constructor(props) {
-	// 	super(props)
-	// 	this.state = console.log('hello')
+	// loadRidesFromServer = () => {
+	// 	var rides, title, seats;
+	// 	console.log('RIDES LOADING...')
+	// 	axios.get('http://localhost:3000/rides')
+	// 		.then(function (response) {
+	// 		console.log(response);
+	// 		rides = response.data;
+	// 		rides.forEach(
+	// 			function(tweet){
+	// 				title = tweet.title;
+	// 				seats = tweet.available_seats
+	// 				// console.log(title, seats);
+	// 			})
+	// 	})
+	// 		.catch(function (response) {
+	// 		// console.log(response)
+	// 	});
 	// }
 
-	componentDidMount() {
-    this.loadRidesFromServer();
-    this.loadUsersFromServer();
-	}
+	// loadUsersFromServer = () => {
+	// 		var name;
+	// 		console.log('USERS LOADING...')
+	// 		axios.get('http://localhost:3000/users')
+	// 			.then(function (response) {
+	// 			console.log(response);
+	// 			var userNames = response.data;
+	// 			userNames.forEach(
+	// 				function(user){
+	// 					name = user.first_name;
+	// 					console.log(name);
+	// 				});
+	// 			})
+	// 			.catch(function (response) {
+	// 			// console.log(response)
+	// 			})
+	// 	}
 
-	componentDidUpdate() {
+	displayTweets = () => {
+		console.log('DISPLAYING TWEETS!!');
+			var rides, title, seats;
+			console.log('RIDES LOADING...')
+			axios.get('http://localhost:3000/rides')
+				.then(function (response) {
+				console.log('this is the response', response);
+				rides = response.data;
+				console.log('this is the response.data', rides);
+				rides.forEach(
+					function(tweet){
+						console.log('this is the tweet', tweet);
+						title = tweet.title;
+						console.log(title);
+						seats = tweet.available_seats
+						name = tweet.user_first_name
+						console.log(title, seats);
+					})
+			})
+				.catch(function (response) {
+				// console.log(response)
+			});
+		}
+
+	componentDidMount() {
 		this.displayTweets();
 	}
 
@@ -70,6 +89,9 @@ export default class RideTweets extends React.Component {
 }
 				// on div load, axios.get request to Rails API - SELECT * FROM rides;
 
+			// loadUsersFromServer().then(function(){
+			// 	displayTweets()
+			// });
 // var UserTweet = React.createClass({
 
 //   userDetails: function(users){
