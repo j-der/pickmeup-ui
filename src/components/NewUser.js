@@ -6,12 +6,6 @@ import axios from 'axios';
 import Popover from 'material-ui/lib/popover/popover';
 import PopoverAnimationFromTop from 'material-ui/lib/popover/popover-animation-from-top';
 
-const styles = {
-  popover: {
-    padding: 20,
-  },
-};
-
 export default class NewUser extends Component {
 
     // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
@@ -21,8 +15,6 @@ export default class NewUser extends Component {
   // }
   // this from ES5 is the same as the constructor below.
   // constructor is a lot like def initialize from ruby
-
-
 
   constructor(props) {
     super(props)

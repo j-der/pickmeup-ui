@@ -2,8 +2,8 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
-import NewUser from './newuser';
-import PostRide from './postride';
+import NewUser from './NewUser';
+import PostRide from './PostRide';
 
 export default class ModalWindow extends React.Component {
   constructor(props) {
@@ -23,16 +23,17 @@ export default class ModalWindow extends React.Component {
 
   render() {
     const actions = [
-      // <NewUser handleClose={this.handleClose} />,
+      <NewUser handleClose={this.handleClose} />,
       <PostRide handleClose={this.handleClose} />
     ];
 
     return (
       <div>
-        <RaisedButton label="Modal Window Button" onTouchTap={this.handleOpen} />
+        <RaisedButton
+          onTouchTap={this.handleOpen}>{this.props.label}</RaisedButton>
         <Dialog
-          title="Sign up with pickmeUp"
-          actions={actions}
+          title={this.props.title}
+          actions={actions[this.props.index]}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}

@@ -13,9 +13,7 @@ export default class PostRide extends React.Component {
   }
 
   axiosPost = (event) => {
-    event.preventDefault();
-    console.log("here")
-    console.log(this.refs.postTitle.getValue())
+
     axios.post('http://localhost:3000/rides', {
       title: this.refs.postTitle.getValue(),
       available_seats: this.refs.postSeatsAvailable.getValue(),
@@ -33,7 +31,6 @@ export default class PostRide extends React.Component {
       return (
         <div>
           <form onSubmit={this.axiosPost}>
-
           <TextField
             id="post-title-field"
             hintText="E.g. Daily to downtown Toronto"
@@ -64,7 +61,7 @@ export default class PostRide extends React.Component {
             primary={true}
             keyboardFocused={true}
             type="submit"
-            onTouchTap={this.props.handleClose}
+            onClick={this.props.handleClose}
           />
           <FlatButton
             label="Cancel"
