@@ -10,17 +10,10 @@ export default class PostRide extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {showPostForm: false,
-      title: 'Default Title'
-      //build default state here
-
-    }
   }
 
   axiosPost = (event) => {
-    event.preventDefault();
-    console.log("here")
-    console.log(this.refs.postTitle.getValue())
+
     axios.post('http://localhost:3000/rides', {
       title: this.refs.postTitle.getValue(),
       available_seats: this.refs.postSeatsAvailable.getValue(),
@@ -34,17 +27,10 @@ export default class PostRide extends React.Component {
       .error( res => console.log("Something bad happened", res) )
   }
 
-  // handleSubmit = () => {
-  //   console.log(this);
-  //   console.log('handling submit');
-  // }
-
-  displayPostForm = () => {
-    if (this.state.showPostForm) {
+  render() {
       return (
         <div>
-         <form onSubmit={this.axiosPost}>
-
+          <form onSubmit={this.axiosPost}>
           <TextField
             id="post-title-field"
             hintText="E.g. Daily to downtown Toronto"
@@ -71,50 +57,22 @@ export default class PostRide extends React.Component {
             ref="postOrigin"
           /><br/>
           <FlatButton
-            label="Submit"
+            label="Buckle up!"
             primary={true}
             keyboardFocused={true}
             type="submit"
+            onClick={this.props.handleClose}
           />
           <FlatButton
             label="Cancel"
             secondary={true}
-            onTouchTap={this.togglePostForm}
+            onTouchTap={this.props.handleClose}
           />
-        </form>
+          </form>
         </div>
-        // console.log("showing form")
-
-      )
+      );
     }
   }
-
-  togglePostForm = () => {
-    if (this.state.showPostForm) {
-      this.setState({showPostForm: false})
-    }
-    else {
-      this.setState({showPostForm: true})
-    }
-  }
-
-render() {
-    return (
-      <span>
-        <RaisedButton
-          label="Post a Ride"
-          onClick={this.togglePostForm}
-          style={{
-            marginRight: '10px',
-            backgroundColor: '#000000',
-            color: 'cyan300'
-          }}/>
-        {this.displayPostForm()}
-      </span>
-    );
-  }
-}
-
 
 
 // <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
