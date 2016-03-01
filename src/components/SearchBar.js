@@ -38,6 +38,7 @@ export default class SearchBar extends React.Component {
         <FlatButton
             label="Search"
             primary={true}
+            keyboardFocused={true}
             type="submit" />
       </form>
     );
