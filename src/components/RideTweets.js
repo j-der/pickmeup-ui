@@ -9,6 +9,7 @@ import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/lib/icon-button';
+import ModalWindow from './ModalWindow';
 
 const styles = {
   root: {
@@ -102,12 +103,11 @@ export default class RideTweets extends React.Component {
 	        		<p>Number of seats available: {tile.available_seats}</p>
 	        	</CardText>
 		        	<CardActions expandable={true}>
-		        			<FlatButton
-		        				label="Request a Seat"
-		        				primary={true}
-		        				keyboardFocused={true}
-		        				style={styles.request}
-		        			/>
+	        			<ModalWindow
+	        				title="Request a Seat!"
+	        				label="Request a Seat"
+	        				index="2"
+	        				style={styles.request} />
 		        	</CardActions>
 			    </Card>
 			    ))}

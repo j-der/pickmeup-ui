@@ -44,3 +44,9 @@ html, body {
 .splash-page {
   text-align: center;
 }
+
+.form-style {
+  display: block;
+  text-align: left;
+  background-color: blue;
+}

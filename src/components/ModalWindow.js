@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import NewUser from './NewUser';
 import PostRide from './PostRide';
+import RequestSeat from './RequestSeat';
 
 export default class ModalWindow extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ export default class ModalWindow extends React.Component {
   render() {
     const actions = [
       <NewUser handleClose={this.handleClose} />,
-      <PostRide handleClose={this.handleClose} />
+      <PostRide handleClose={this.handleClose} />,
+      <RequestSeat handleClose={this.handleClose} />
     ];
 
     return (
