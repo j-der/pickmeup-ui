@@ -25,15 +25,28 @@ import NavButton from './NavButton';
   // newUserBtn.remove();
 // }
 
+const styles = {
+  root: {
+    background: 'lightblue',
+    paddingLeft: 40,
+  },
+  button: {
+    background: 'transparent',
+    color: 'black',
+  },
+  toolbar: {
+    paddingTop: '5px',
+    display: 'inline-flex'
+  }
+}
+
 const ToolbarExamplesSimple = () => (
+
   <Toolbar
-    style={{
-      background: 'lightblue',
-      paddingLeft: '40px'
-    }}>
+    style={styles.root}>
     <ToolbarGroup firstChild={true} float="left">
       <ToolbarTitle
-        text="pickmeup"
+        text="pickmeUp"
         style={{
           fontFamily: 'gotham, sans-serif',
           color: '#fff'
@@ -41,11 +54,9 @@ const ToolbarExamplesSimple = () => (
     </ToolbarGroup>
     <ToolbarGroup
       float="right"
-      style={{
-        paddingTop: '5px'
-      }}>
-        <ModalWindow title="Sign up with pickmeUp!" label="Sign up" index="0"/>
-        <ModalWindow title="Post a ride" label="Post a ride"index="1"/>
+      style={styles.toolbar}>
+        <ModalWindow title="Post a ride" label="Post a ride" index="1" />
+        <ModalWindow title="Sign up with pickmeUp!" label="Sign up" index="0" style={styles.button} />
         <LogInForm />
         <Avatar />
     </ToolbarGroup>

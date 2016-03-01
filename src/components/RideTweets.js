@@ -15,11 +15,13 @@ const styles = {
     display: 'block',
     flexWrap: 'wrap',
     height: '100%',
-    width: '40%',
+    width: '30%',
+    float: 'left'
   },
   card: {
     overflowY: 'auto',
     margin: 5,
+    height: 'auto',
   },
 
 	request: {
@@ -28,8 +30,6 @@ const styles = {
 		color: 'black'
 	}
 };
-
-
 
 export default class RideTweets extends React.Component {
 
@@ -40,6 +40,7 @@ export default class RideTweets extends React.Component {
 			seats: [],
 			names: [],
 			ids: [],
+			avatars: [],
 			rides: []
 		}
 	}
@@ -69,6 +70,7 @@ export default class RideTweets extends React.Component {
 			this.state.seats.push(ride.available_seats)
 			this.state.names.push(ride.user_first_name)
 			this.state.ids.push(ride.id)
+			this.state.avatars.push(ride.user_avatar)
 		})
 		// console.log('this is this.state', this.state)
 		this.setState( (previousState, currentProps) => {
@@ -91,7 +93,7 @@ export default class RideTweets extends React.Component {
 		        <CardHeader
 		          title={tile.title}
 		          subtitle={tile.user_first_name}
-		          avatar={tile.avatar}
+		          avatar={tile.user_avatar}
 		          actAsExpander={true}
 		          showExpandableButton={true}
 		         />
@@ -113,49 +115,3 @@ export default class RideTweets extends React.Component {
 		);
 	}
 }
-
-
-						// <Card style={styles.card}>
-						// 	<CardHeader
-						// 	title={this.state.titles[0]}
-						// 	actAsExpander={true}
-						// 	showExpandableButton={true}
-						// 	/>
-						// 	<CardText expandable={true}>
-						// 		<p>Number of seats available: {this.state.seats[0]}</p>
-						// 	</CardText>
-						// 	<CardActions expandable={true}>
-						// 			<FlatButton
-						// 				label="Request a Seat"
-						// 				primary={true}
-						// 				keyboardFocused={true}
-						// 				style={styles.request}
-						// 			/>
-						// 	</CardActions>
-						// </Card>
-
-
-
-// const CardExampleWithoutAvatar = () => (
-//   <Card>
-//     <CardHeader
-//       title="Without Avatar"
-//       subtitle="Subtitle"
-//       actAsExpander={true}
-//       showExpandableButton={true}
-//     />
-//     <CardText expandable={true}>
-//       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-//       Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-//       Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-//       Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-//     </CardText>
-//     <CardActions expandable={true}>
-//       <FlatButton label="Action1"/>
-//       <FlatButton label="Action2"/>
-//     </CardActions>
-//   </Card>
-// );
-
-
-// export default CardExampleWithoutAvatar;

@@ -39,6 +39,7 @@ export default class NewUser extends Component {
   }
 
   render() {
+
     return (
       <div>
        <form onSubmit={this.axiosPost}>
@@ -85,6 +86,11 @@ export default class NewUser extends Component {
           label="Submit"
           type="submit"
           primary={true}
+        />
+        <FlatButton
+          label="Cancel"
+          secondary={true}
+          onTouchTap={this.props.handleClose}
         />
         </form>
       </div>
