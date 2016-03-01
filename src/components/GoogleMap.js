@@ -30,24 +30,28 @@ var GoogleMap = React.createClass({
           zoom: 14
         });
         // get rides from database
-        axios.get('http://localhost:3000/rides')
+        axios.get('http://localhost:3000/rides', {
+          params: {
+            userDestination: userDestination
+          }
+        })
         .then(function (response) {
-          var lat, lng;
+          var rideLocation;
           var rides = response.data.rides;
+
           rides.forEach(
-            function (ride){
+            function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
-              lat = results[0].geometry.location.lat();
-              lng = results[0].geometry.location.lng();
+                console.log("userOrigin is:", userOrigin); //to use for markers if a match
+                rideLocation = results[0].geometry.location;
               
-              var marker = new google.maps.Marker({
-                position: {lat, lng},
-                map: gMap,
+                var marker = new google.maps.Marker({
+                  position: rideLocation,
+                  map: gMap,
+                });
               });
-            });
             }
           );
-
         })
         .catch(function (response) {
           console.log("the axios catch response is", response);
