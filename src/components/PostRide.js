@@ -13,7 +13,7 @@ export default class PostRide extends React.Component {
   }
 
   axiosPost = (event) => {
-
+    event.preventDefault();
     axios.post('http://localhost:3000/rides', {
       title: this.refs.postTitle.getValue(),
       available_seats: this.refs.postSeatsAvailable.getValue(),

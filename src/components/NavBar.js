@@ -48,7 +48,6 @@ const ToolbarExamplesSimple = () => (
         <ModalWindow title="Post a ride" label="Post a ride"index="1"/>
         <LogInForm />
         <Avatar />
-        <PostRide />
     </ToolbarGroup>
   </Toolbar>
 );
