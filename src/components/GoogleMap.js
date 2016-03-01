@@ -12,12 +12,16 @@ var GoogleMap = React.createClass({
     var that = this;
     // componentDidMount is called by React directly after Map is rendered
     // the map must be initialized after the div is rendered or it will have nothing to grab onto
-    var gMap, geocoder;
+    var gMap, geocoder, service;
     // define the init function that google maps need to initialize
     function initMap() {
 
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: that.props.originField}, function(results, status) {
+      service = new google.maps.places.PlacesService(map);
+      var userOrigin = that.props.originField
+      var userDestination = that.props.destinationField
+
+      geocoder.geocode({ address: userOrigin}, function(results, status) {
         if (status !== 'OK') {
           browserHistory.push('/');
         } else {
@@ -42,7 +46,6 @@ var GoogleMap = React.createClass({
           rides.forEach(
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
-                console.log("userOrigin is:", userOrigin); //to use for markers if a match
                 rideLocation = results[0].geometry.location;
               
                 var marker = new google.maps.Marker({
@@ -124,7 +127,6 @@ var GoogleMap = React.createClass({
           rides.forEach(
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
-                console.log("userOrigin is:", userOrigin); //to use for markers if a match
                 rideLocation = results[0].geometry.location;
               
                 var marker = new google.maps.Marker({
