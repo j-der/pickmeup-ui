@@ -37,9 +37,9 @@ var App = React.createClass({
 
     return (
       <div>
-      	<RideTweets />
         <NavBar />
         {children}
+        <RideTweets />
       </div>
     );
   }

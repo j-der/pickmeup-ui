@@ -5,19 +5,74 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
+import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
+import IconButton from 'material-ui/lib/icon-button';
 
-var rides, seats, title, name, dataContent;
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    margin: 10,
+    height: '100%'
+  },
+  card: {
+    width: '30%',
+    overflowY: 'auto',
+  },
+
+	request: {
+		float: 'right',
+		margin: '5px',
+		color: 'black'
+	}
+};
+
+const cardData = [
+	{
+		title: 'Trinity Bellwoods to Caledon',
+		name: 'Tessa',
+		seats: 4,
+		avatar: 'http://lorempixel.com/150/150/people/',
+	},
+	{
+		title: 'Toronto to the Yukon',
+		name: 'Leonardo',
+		seats: 2,
+		avatar: 'http://lorempixel.com/150/150/nature/',
+	},
+	{
+		title: 'Mississauga to San Francisco',
+		name: 'Nicholas',
+		seats: 3,
+		avatar: 'http://lorempixel.com/150/150/sports/',
+	},
+];
 
 export default class RideTweets extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state = {
+			titles: [],
+			seats: [],
+			names: [],
+			rides: []
+		}
+	}
+
+	componentWillMount() {
+	  this.loadRidesDetails();
+	  console.log("component did mount")
+	}
+
 	loadRidesDetails = () => {
 		axios.get('http://localhost:3000/rides')
-			.then(function (response) {
+			.then( (response) => {
 			console.log('this is the response', response);
-			dataContent = response.data;
-			rides = dataContent.rides;
-			console.log('this is the response.data', rides);
-			title = rides.title;		})
+			this.setState({rides: response.data.rides})
+		})
 			.catch(function (response) {
 			// console.log(response)
 		})
@@ -26,31 +81,74 @@ export default class RideTweets extends React.Component {
 	}
 
 	displayTweets = () => {
-		for(var i = 0; i < rides.length; i++) {
-			console.log(rides[i].title);
-		}
+		this.state.rides.forEach( (ride) =>{
+			this.state.titles.push(ride.title)
+			this.state.seats.push(ride.available_seats)
+			this.state.names.push(ride.user_first_name)
+		})
+		console.log('these are rides', this.state)
+		this.setState()
 	}
 
-
-
 	render() {
-		this.loadRidesDetails();
+
 		return(
-			<div>
-				<Card>
-					<CardHeader
-					title="title"
-					actAsExpander={true}
-					showExpandableButton={true}
-					/>
-					<CardText expandable={true}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</CardText>
-				</Card>
-							</div>
+
+			<div style={styles.root}>
+				{cardData.map(tile => (
+			    <Card
+			      padding={1}
+			      style={styles.card}
+			      key={tile.title}
+			    >
+		        <CardHeader
+		          title={tile.title}
+		          avatar={tile.avatar}
+		          actAsExpander={true}
+		          showExpandableButton={true}
+		         />
+	        	<CardText
+	        		title={tile.name}
+	        		expandable={true}
+	        		>
+	        		{tile.author}
+	        		<p>Number of seats available: {tile.seats}</p>
+	        	</CardText>
+		        	<CardActions expandable={true}>
+		        			<FlatButton
+		        				label="Request a Seat"
+		        				primary={true}
+		        				keyboardFocused={true}
+		        				style={styles.request}
+		        			/>
+		        	</CardActions>
+			    </Card>
+			    ))}
+			  </div>
 		);
 	}
 }
+
+
+						// <Card style={styles.card}>
+						// 	<CardHeader
+						// 	title={this.state.titles[0]}
+						// 	actAsExpander={true}
+						// 	showExpandableButton={true}
+						// 	/>
+						// 	<CardText expandable={true}>
+						// 		<p>Number of seats available: {this.state.seats[0]}</p>
+						// 	</CardText>
+						// 	<CardActions expandable={true}>
+						// 			<FlatButton
+						// 				label="Request a Seat"
+						// 				primary={true}
+						// 				keyboardFocused={true}
+						// 				style={styles.request}
+						// 			/>
+						// 	</CardActions>
+						// </Card>
+
 
 
 // const CardExampleWithoutAvatar = () => (
