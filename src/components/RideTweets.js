@@ -6,7 +6,7 @@ import CardHeader from 'material-ui/lib/card/card-header';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
-var rides, title, seats, name, dataContent;
+var rides, seats, title, name, dataContent;
 
 export default class RideTweets extends React.Component {
 
@@ -17,35 +17,29 @@ export default class RideTweets extends React.Component {
 			dataContent = response.data;
 			rides = dataContent.rides;
 			console.log('this is the response.data', rides);
-			rides.forEach(
-				function (ride) {
-					title = ride.title;
-					seats = ride.available_seats
-					name = ride.user_first_name
-				})
-		})
+			title = rides.title;		})
 			.catch(function (response) {
 			// console.log(response)
-		});
-	}
+		})
+			.then(this.displayTweets)
 
+	}
 
 	displayTweets = () => {
-		console.log('hello', this.loadRidesDetails())
+		for(var i = 0; i < rides.length; i++) {
+			console.log(rides[i].title);
+		}
 	}
 
-	componentDidMount() {
-	    this.displayTweets()
-	}
 
 
 	render() {
-
+		this.loadRidesDetails();
 		return(
 			<div>
 				<Card>
 					<CardHeader
-					title={title}
+					title="title"
 					actAsExpander={true}
 					showExpandableButton={true}
 					/>
@@ -53,7 +47,7 @@ export default class RideTweets extends React.Component {
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</CardText>
 				</Card>
-			</div>
+							</div>
 		);
 	}
 }
