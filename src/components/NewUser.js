@@ -35,6 +35,8 @@ export default class NewUser extends Component {
       .then(function(response){
         // console.log(this.refs.firstName.value)
         console.log('success, response: ', response)
+
+        localStorage.userId = response.data.id
         });
   }
 

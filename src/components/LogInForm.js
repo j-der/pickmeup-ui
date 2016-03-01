@@ -64,6 +64,7 @@ var LogInForm = React.createClass({
           style={{
             margin: 5
           }} />
+
         <Popover
           open={this.state.open}
           anchorEl={this.state.anchorEl}
