@@ -12,14 +12,14 @@ import IconButton from 'material-ui/lib/icon-button';
 
 const styles = {
   root: {
-    display: 'flex',
+    display: 'block',
     flexWrap: 'wrap',
-    margin: 10,
-    height: '100%'
+    height: '100%',
+    width: '40%',
   },
   card: {
-    width: '30%',
     overflowY: 'auto',
+    margin: 5,
   },
 
 	request: {
@@ -29,26 +29,7 @@ const styles = {
 	}
 };
 
-const cardData = [
-	{
-		title: 'Trinity Bellwoods to Caledon',
-		name: 'Tessa',
-		seats: 4,
-		avatar: 'http://lorempixel.com/150/150/people/',
-	},
-	{
-		title: 'Toronto to the Yukon',
-		name: 'Leonardo',
-		seats: 2,
-		avatar: 'http://lorempixel.com/150/150/nature/',
-	},
-	{
-		title: 'Mississauga to San Francisco',
-		name: 'Nicholas',
-		seats: 3,
-		avatar: 'http://lorempixel.com/150/150/sports/',
-	},
-];
+
 
 export default class RideTweets extends React.Component {
 
@@ -58,19 +39,20 @@ export default class RideTweets extends React.Component {
 			titles: [],
 			seats: [],
 			names: [],
+			ids: [],
 			rides: []
 		}
 	}
 
 	componentWillMount() {
 	  this.loadRidesDetails();
-	  console.log("component did mount")
+	  // console.log("component did mount")
 	}
 
 	loadRidesDetails = () => {
 		axios.get('http://localhost:3000/rides')
 			.then( (response) => {
-			console.log('this is the response', response);
+			// console.log('this is the response', response);
 			this.setState({rides: response.data.rides})
 		})
 			.catch(function (response) {
@@ -81,38 +63,41 @@ export default class RideTweets extends React.Component {
 	}
 
 	displayTweets = () => {
-		this.state.rides.forEach( (ride) =>{
+		// console.log('this is this.state.rides', this.state.rides)
+		this.state.rides.forEach( (ride) => {
 			this.state.titles.push(ride.title)
 			this.state.seats.push(ride.available_seats)
 			this.state.names.push(ride.user_first_name)
+			this.state.ids.push(ride.id)
 		})
-		console.log('these are rides', this.state)
-		this.setState()
+		// console.log('this is this.state', this.state)
+		this.setState( (previousState, currentProps) => {
+		})
 	}
 
 	render() {
-
+		// console.log('this.state:', this.state)
+		// console.log('this.state.titles:', this.state.titles[0])
+		// console.log('this is title', this.state.titles)
 		return(
 
 			<div style={styles.root}>
-				{cardData.map(tile => (
+				{this.state.rides.map(tile => (
 			    <Card
 			      padding={1}
 			      style={styles.card}
-			      key={tile.title}
+			      key={tile.id}
 			    >
 		        <CardHeader
 		          title={tile.title}
+		          subtitle={tile.user_first_name}
 		          avatar={tile.avatar}
 		          actAsExpander={true}
 		          showExpandableButton={true}
 		         />
-	        	<CardText
-	        		title={tile.name}
-	        		expandable={true}
-	        		>
-	        		{tile.author}
-	        		<p>Number of seats available: {tile.seats}</p>
+	        	<CardText expandable={true}>
+	        		<p>{tile.user_first_name}</p>
+	        		<p>Number of seats available: {tile.available_seats}</p>
 	        	</CardText>
 		        	<CardActions expandable={true}>
 		        			<FlatButton
