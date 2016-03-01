@@ -4,27 +4,20 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import Popover from 'material-ui/lib/popover/popover';
 import PopoverAnimationFromTop from 'material-ui/lib/popover/popover-animation-from-top';
 
-
 const styles = {
   popover: {
     padding: 20,
   },
 };
 
-export default class LogInForm extends Component {
+var LogInForm = React.createClass({
 
   getInitialState: function() {
     return {open: false}
   },
 
-  axiosPost = (event) => {
-    event.preventDefault();
-
-    axios.post('http://localhost:3000/sessions', {
-      email: this.
-    })
-  }
-  displayLogInForm: function() {
+  displayLogInForm: function(e) {
+    e.preventDefault();
       return (
         <form action="/sessions" method="POST">
           <div>
@@ -64,8 +57,7 @@ export default class LogInForm extends Component {
       <span>
         <RaisedButton
           label="Log in"
-          className="log-in-button"
-          onClick={this.toggleLogInForm}
+          className="log-in-button" onClick={this.toggleLogInForm}
           style={{
             margin: '5px'
           }} />
@@ -85,4 +77,6 @@ export default class LogInForm extends Component {
     );
   }
 
-}
+});
+
+export default LogInForm;
