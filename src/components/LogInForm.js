@@ -23,14 +23,18 @@ var LogInForm = React.createClass({
             <label htmlFor="email">Email:</label>
             <input type="text" name="user[email]" placeholder="Email" />
           </div>
+          <br />
           <div>
             <label htmlFor="password">Password:</label>
             <input type="password" name="user[password]" placeholder="Password" />
           </div>
+          <br />
           <div>
             <FlatButton
               label="Let's Roll"
               primary={true}
+              keyboardFocused={true}
+              style={{marginTop: 10, marginLeft: -10}}
               type="submit" />
           </div>
         </form>
@@ -56,10 +60,9 @@ var LogInForm = React.createClass({
       <span>
         <RaisedButton
           label="Log in"
-          className="log-in-button"
           onClick={this.toggleLogInForm}
           style={{
-            margin: '5px'
+            margin: 5
           }} />
         <Popover
           open={this.state.open}

@@ -9,7 +9,7 @@ import ListItem from 'material-ui/lib/lists/list-item';
 const colors = styles.Colors;
 
 const AvatarExampleSimple = () => (
-	<span>
+	<div>
 	  <List>
 	    <ListItem
 	      disabled={true}
@@ -19,7 +19,7 @@ const AvatarExampleSimple = () => (
 	    > Name of Person
 	    </ListItem>
 	  </List>
-	</span>
+	</div>
 );
 
 export default AvatarExampleSimple;
