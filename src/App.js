@@ -36,7 +36,6 @@ var App = React.createClass({
 
     return (
       <div>
-        <NavBar />
         {children}
       </div>
     );

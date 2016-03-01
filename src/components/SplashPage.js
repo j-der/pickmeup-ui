@@ -1,12 +1,15 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import NavBar from './NavBar'
 
 var SplashPage = React.createClass({
 
   render: function() {
     return (
       <div>
-        <SearchBar handleSubmit={this.props.splashPageSearchSubmit}/>
+        <NavBar />
+        <SearchBar />
+
       </div>
     );
   }
