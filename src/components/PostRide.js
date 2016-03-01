@@ -28,9 +28,12 @@ export default class PostRide extends React.Component {
   }
 
   render() {
+
       return (
         <div>
-          <form onSubmit={this.axiosPost}>
+          <form
+            onSubmit={this.axiosPost}
+            className = "form-style">
           <TextField
             id="post-title-field"
             hintText="E.g. Daily to downtown Toronto"
