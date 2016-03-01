@@ -16,8 +16,7 @@ var LogInForm = React.createClass({
     return {open: false}
   },
 
-  displayLogInForm: function(e) {
-    e.preventDefault();
+  displayLogInForm: function() {
       return (
         <form action="/sessions" method="POST">
           <div>

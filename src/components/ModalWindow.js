@@ -29,8 +29,7 @@ export default class ModalWindow extends React.Component {
 
     return (
       <div>
-        <RaisedButton onTouchTap={this.handleOpen} style={{margin: 5}}>{this.props.label}
-        </RaisedButton>
+        <RaisedButton onTouchTap={this.handleOpen} label={this.props.label} style={{margin: 5}} />
 
         <Dialog
           title={this.props.title}
