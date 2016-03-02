@@ -52,25 +52,35 @@ export default class RideTweets extends React.Component {
 	}
 
 	componentWillMount() {
-	  this.loadRidesDetails();
+	  this.loadRidesDetails(this.props.destinationField);
 	  // console.log("component did mount")
 	}
 
-	loadRidesDetails = () => {
-		axios.get('http://localhost:3000/rides')
+	loadRidesDetails = (userDestination) => {
+		var rideArray;
+		axios.get('http://localhost:3000/rides', {
+			params: {
+				userDestination: userDestination
+			}
+		})
 			.then( (response) => {
-			// console.log('this is the response', response);
-			this.setState({rides: response.data.rides})
+			rideArray = response.data.rides
+			this.setState({rides: response.data.rides});
+			this.displayTweets();
 		})
 			.catch(function (response) {
-			// console.log(response)
+			console.log("error in loadRideDetails catch:", response);
 		})
-			.then(this.displayTweets)
-
 	}
 
+  componentWillUpdate(nextProps) {
+  	if (nextProps.originField !== this.props.originField || nextProps.destinationField !== this.props.destinationField) {
+	  	this.loadRidesDetails(nextProps.destinationField);
+	  }
+  }
+
+
 	displayTweets = () => {
-		// console.log('this is this.state.rides', this.state.rides)
 		this.state.rides.forEach( (ride) => {
 			this.state.titles.push(ride.title)
 			this.state.seats.push(ride.available_seats)
@@ -79,9 +89,6 @@ export default class RideTweets extends React.Component {
 			this.state.avatars.push(ride.user_avatar)
 			this.state.details.push(ride.details)
 		})
-		// console.log('this is this.state', this.state)
-
-		// this.setState()
 	}
 
 	render() {

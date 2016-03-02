@@ -18,8 +18,8 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       service = new google.maps.places.PlacesService(map);
-      var userOrigin = that.props.originField
-      var userDestination = that.props.destinationField
+      var userOrigin = that.props.originField;
+      var userDestination = that.props.destinationField;
 
       geocoder.geocode({ address: userOrigin}, function(results, status) {
         if (status !== 'OK') {
@@ -48,17 +48,22 @@ var GoogleMap = React.createClass({
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
 
-                var marker = new google.maps.Marker({
-                  position: rideLocation,
-                  map: gMap,
-                  title: rideLocation.title
+                var contentString = '<div id="content">'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
+                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '</div>'+
+                  '</div>';
+
+                var infoWindow = new google.maps.InfoWindow({
+                  content: contentString
                 });
-                (function(marker, rideLocation) {
-                  google.maps.event.addListener(marker, "click", function(e) {
-                    infoWindow.setContent(rideLocation.title);
-                    infoWindow.open(map, marker);
-                  });
-                })(marker, rideLocation);
+                var marker = new google.maps.Marker({
+                  position: {lat: rideLocation.lat(), lng: rideLocation.lng()},
+                  map: gMap
+                });
+                marker.addListener('click', function() {
+                  infoWindow.open(gMap, marker);
+                });
               });
             }
           );
@@ -94,7 +99,7 @@ var GoogleMap = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
-     return nextProps.originField !== this.props.originField
+    return nextProps.originField !== this.props.originField || nextProps.destinationField !== this.props.destinationField
   },
 
   componentWillUpdate: function(nextProps, nextState) {
@@ -128,7 +133,6 @@ var GoogleMap = React.createClass({
           }
         })
         .then(function (response) {
-          console.log("right after gMap", userDestination);
           var rideLocation;
           var rides = response.data.rides;
 
@@ -136,14 +140,13 @@ var GoogleMap = React.createClass({
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
-                console.log("ride is this:", ride);
                 var contentString = '<div id="content">'+
-                  '<h1 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h1>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
                   '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
 
-                var infowindow = new google.maps.InfoWindow({
+                var infoWindow = new google.maps.InfoWindow({
                   content: contentString
                 });
                 var marker = new google.maps.Marker({
@@ -151,15 +154,9 @@ var GoogleMap = React.createClass({
                   map: gMap
                 });
                 marker.addListener('click', function() {
-                  infowindow.open(gMap, marker);
+                  infoWindow.open(gMap, marker);
                 });
 
-                (function(marker, rideLocation) {
-                  google.maps.event.addListener(marker, "click", function(e) {
-                    infoWindow.setContent(rideLocation.title);
-                    infoWindow.open(map, marker);
-                  });
-                })(marker, rideLocation);
               });
             }
           );
