@@ -70,7 +70,7 @@ h1.splash-title {
   width: 237px;
   font-size: 36px;
   line-height: 40px;
-  font-family: 'Muli';
+  font-family: sans-serif;
   color: #ecf0f1;
   height: 40px;
   position: absolute;
@@ -110,6 +110,7 @@ p.scrolly {
   display: inline;
   float: left;
   margin: 0;
+font-size:
 }
 ul {
   margin-top: 0;
@@ -124,6 +125,9 @@ ul {
 ul li {
   line-height: 40px;
   margin: 0;
+}
+li {
+  width: 300px;
 }
 @-webkit-keyframes opacity {
   0% {
