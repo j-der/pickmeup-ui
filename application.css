@@ -55,7 +55,7 @@ html, body {
 }
 
 .splash-search {
-  display: block;
+  text-align: center;
 }
 
 h1.splash-title {
@@ -63,8 +63,6 @@ h1.splash-title {
   font-family: sans-serif;
   color: rgba(255, 255, 255, 0.74);
 }
-
-
 
 .content {
   width: 237px;
@@ -110,7 +108,7 @@ p.scrolly {
   display: inline;
   float: left;
   margin: 0;
-font-size:
+  font-size:
 }
 ul {
   margin-top: 0;
