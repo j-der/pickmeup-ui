@@ -100,7 +100,7 @@ input:-webkit-autofill {
 
 .splash-search {
   text-align: center;
-  padding-top: 200px;
+  padding-top: 75px;
 }
 
 .main-search{
@@ -108,24 +108,23 @@ input:-webkit-autofill {
 }
 
 .content {
-  width: 237px;
-  font-size: 36px;
-  line-height: 40px;
+  width: 600px;
+  font-size: 65px;
+  line-height: 75px;
   font-family: sans-serif;
   color: #ecf0f1;
-  height: 40px;
+  height: 75px;
   position: absolute;
   top: 25%;
-  left: 50%;
+  left: 20%;
   margin-top: -15px;
   margin-left: -118px;
 }
 
 .visible {
   float: left;
-  font-weight: 600;
   overflow: hidden;
-  height: 40px;
+  height: 75px;
 }
 h2.scrolly {
   display: inline;
@@ -144,7 +143,7 @@ ul {
   -o-animation: 6s linear 0s normal none infinite change;
 }
 ul li {
-  line-height: 40px;
+  line-height: 75px;
   margin: 0;
 }
 li {
@@ -180,22 +179,22 @@ li {
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
-  }
-  40% {
-    margin-top: -40px;
-  }
-  50% {
-    margin-top: -80px;
-  }
-  65% {
-    margin-top: -80px;
+    margin-top: -75px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -75px;
+  }
+  50% {
+    margin-top: -150px;
+  }
+  65% {
+    margin-top: -150px;
+  }
+  75% {
+    margin-top: -75px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -75px;
   }
   100% {
     margin-top: 0;
@@ -209,22 +208,22 @@ li {
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
+    margin-top: -75px;
   }
   40% {
-    margin-top: -40px;
+    margin-top: -75px;
   }
   50% {
-    margin-top: -80px;
+    margin-top: -150px;
   }
   65% {
-    margin-top: -80px;
+    margin-top: -150px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -75px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -75px;
   }
   100% {
     margin-top: 0;
