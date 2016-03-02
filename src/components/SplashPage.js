@@ -10,10 +10,19 @@ var SplashPage = React.createClass({
     return (
       <div>
         <div className="splash-image">
-
-          <div clasName="splash-nav"><NavBar /></div>
-          <h1 className="splash-title">Find a ride.</h1>
-          <div className="splash-search"><SearchBar /></div>
+        <div className="content">
+        <div className="visible">
+          <p>Find a&nbsp;</p>
+          <ul>
+            <li>Ride</li>
+            <li>Carpool</li>
+            <li>Buddy</li>
+            <li>Route</li>
+          </ul>
+        </div>
+        </div>
+        <div clasName="splash-nav"><NavBar /></div>
+        <div className="splash-search"><SearchBar /></div>
         </div>
       </div>
     );
