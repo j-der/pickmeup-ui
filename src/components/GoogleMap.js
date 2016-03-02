@@ -18,8 +18,8 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       service = new google.maps.places.PlacesService(map);
-      var userOrigin = that.props.originField
-      var userDestination = that.props.destinationField
+      var userOrigin = that.props.originField;
+      var userDestination = that.props.destinationField;
 
       geocoder.geocode({ address: userOrigin}, function(results, status) {
         if (status !== 'OK') {

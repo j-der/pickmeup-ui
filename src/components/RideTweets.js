@@ -52,24 +52,44 @@ export default class RideTweets extends React.Component {
 	}
 
 	componentWillMount() {
-	  this.loadRidesDetails();
+		console.log("calling componentWillMount")
+	  this.loadRidesDetails(this.props.destinationField);
 	  // console.log("component did mount")
 	}
 
-	loadRidesDetails = () => {
-		axios.get('http://localhost:3000/rides')
+	loadRidesDetails = (userDestination) => {
+		console.log("calling loadRidesDetails")
+		var rideArray;
+		axios.get('http://localhost:3000/rides', {
+			params: {
+				userDestination: userDestination
+			}
+		})
 			.then( (response) => {
-			// console.log('this is the response', response);
-			this.setState({rides: response.data.rides})
+			rideArray = response.data.rides
+			this.setState({rides: response.data.rides});
+			this.displayTweets();
 		})
 			.catch(function (response) {
-			// console.log(response)
+			console.log("error in loadRideDetails catch:", response);
 		})
-			.then(this.displayTweets)
-
 	}
 
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log("calling shouldComponentUpdate tweets", nextProps.originField !== this.props.originField || nextProps.destinationField !== this.props.destinationField)
+ //    return nextProps.originField !== this.props.originField || nextProps.destinationField !== this.props.destinationField || nextState !== this.state
+ //  }
+
+  componentWillUpdate(nextProps) {
+  	console.log("calling componentWillUpdate")
+  	if (nextProps.originField !== this.props.originField || nextProps.destinationField !== this.props.destinationField) {
+	  	this.loadRidesDetails(nextProps.destinationField);
+	  }
+  }
+
+
 	displayTweets = () => {
+		console.log("calling displayTweets")
 		// console.log('this is this.state.rides', this.state.rides)
 		this.state.rides.forEach( (ride) => {
 			this.state.titles.push(ride.title)
