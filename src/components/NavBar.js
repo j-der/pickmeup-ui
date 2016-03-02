@@ -28,8 +28,12 @@ import DropDownMenu from './DropDownMenu'
 
 const styles = {
   root: {
-    background: '#FF4081',
+    background: '#ff4081',
     paddingLeft: 40,
+  },
+  navbarTitle: {
+    fontFamily: 'Gotham Light',
+    color: '#fff',
   },
   button: {
     background: 'transparent',
@@ -48,10 +52,7 @@ const ToolbarExamplesSimple = () => (
     <ToolbarGroup firstChild={true} float="left">
       <ToolbarTitle
         text="pickmeUp"
-        style={{
-          fontFamily: 'gotham, sans-serif',
-          color: '#fff'
-        }} />
+        style={styles.navbarTitle} />
     </ToolbarGroup>
     <ToolbarGroup
       float="right"
