@@ -32,7 +32,8 @@ const styles = {
 	},
 
 	color: {
-		backgroundColor: '#ff9665',
+		background: 'white',
+		background: 'linear-gradient(white , lightgray)',
 	}
 };
 
@@ -109,16 +110,12 @@ export default class RideTweets extends React.Component {
 	        		<p>{tile.user_first_name}</p>
 	        		<p>Number of seats available: {tile.available_seats}</p>
 	        		<p>{tile.details}</p>
-	        	</CardText>
-		        	<CardActions
-		        		expandable={true}
-		        		style={styles.color}>
 	        			<ModalWindow
 	        				title="Request a Seat!"
 	        				label="Request a Seat"
 	        				index="2"
 	        				style={styles.request} />
-		        	</CardActions>
+		        </CardText>
 			    </Card>
 			    ))}
 			  </div>

@@ -48,7 +48,7 @@ const ToolbarExamplesSimple = () => (
       <ToolbarTitle
         text="pickmeUp"
         style={{
-          fontFamily: 'gotham, sans-serif',
+          fontFamily: 'Righteous, sans-serif',
           color: '#fff'
         }} />
     </ToolbarGroup>
