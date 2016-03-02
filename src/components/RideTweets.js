@@ -29,6 +29,10 @@ const styles = {
 		float: 'right',
 		margin: '5px',
 		color: 'black'
+	},
+
+	color: {
+		backgroundColor: '#ff9665',
 	}
 };
 
@@ -42,6 +46,7 @@ export default class RideTweets extends React.Component {
 			names: [],
 			ids: [],
 			avatars: [],
+			details: [],
 			rides: []
 		}
 	}
@@ -72,6 +77,7 @@ export default class RideTweets extends React.Component {
 			this.state.names.push(ride.user_first_name)
 			this.state.ids.push(ride.id)
 			this.state.avatars.push(ride.user_avatar)
+			this.state.details.push(ride.details)
 		})
 		// console.log('this is this.state', this.state)
 		this.setState( (previousState, currentProps) => {
@@ -98,11 +104,16 @@ export default class RideTweets extends React.Component {
 		          actAsExpander={true}
 		          showExpandableButton={true}
 		         />
-	        	<CardText expandable={true}>
+	        	<CardText
+	        		expandable={true}
+	        		style={styles.color}>
 	        		<p>{tile.user_first_name}</p>
 	        		<p>Number of seats available: {tile.available_seats}</p>
+	        		<p>{tile.details}</p>
 	        	</CardText>
-		        	<CardActions expandable={true}>
+		        	<CardActions
+		        		expandable={true}
+		        		style={styles.color}>
 	        			<ModalWindow
 	        				title="Request a Seat!"
 	        				label="Request a Seat"

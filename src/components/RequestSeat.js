@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import axios from 'axios';
 import CardText from 'material-ui/lib/card/card-text';
-
+import Snackbar from 'material-ui/lib/snackbar';
 
 
 const styles = {
@@ -23,6 +23,8 @@ export default class PostRide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      autoHideDuration: 4000,
+      message: 'You\'ve successfully requested a seat!',
       open: false,
     };
   }
@@ -30,8 +32,35 @@ export default class PostRide extends React.Component {
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
-    this.props.handleClose()
+
+    this.handleTouchTap()
   }
+
+  handleTouchTap = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleActionTouchTap = () => {
+    this.setState({
+      open: false,
+    });
+    alert('Seat request cancelled');
+  };
+
+  handleChangeDuration = (event) => {
+    const value = event.target.value;
+    this.setState({
+      autoHideDuration: value.length > 0 ? parseInt(value) : 0,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
       return (
@@ -70,6 +99,14 @@ export default class PostRide extends React.Component {
               label="Cancel"
               secondary={true}
               onTouchTap={this.props.handleClose}
+            />
+            <Snackbar
+              open={this.state.open}
+              message={this.state.message}
+              action="undo"
+              autoHideDuration={this.state.autoHideDuration}
+              onActionTouchTap={this.handleActionTouchTap}
+              onRequestClose={this.handleRequestClose}
             />
             </form>
         </div>
