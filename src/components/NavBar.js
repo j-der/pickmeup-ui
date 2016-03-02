@@ -31,7 +31,7 @@ const styles = {
     paddingLeft: 40,
   },
   navbarTitle: {
-    fontFamily: 'avenir',
+    fontFamily: 'Gotham Light',
     color: '#fff',
   },
   button: {
