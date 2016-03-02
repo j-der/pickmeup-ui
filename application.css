@@ -55,51 +55,28 @@ html, body {
 }
 
 .splash-search {
-  display: block;
+  text-align: center;
+  padding-top: 200px;
 }
 
-h1.splash-title {
-  font-size: 50px;
-  font-family: sans-serif;
-  color: rgba(255, 255, 255, 0.74);
+.main-search{
+  text-align: center;
 }
-
-
 
 .content {
   width: 237px;
   font-size: 36px;
   line-height: 40px;
-  font-family: 'Muli';
+  font-family: sans-serif;
   color: #ecf0f1;
   height: 40px;
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   margin-top: -15px;
   margin-left: -118px;
 }
-/*.content:before {
-  content: '[';
-  position: absolute;
-  left: -30px;
-  line-height: 40px;
-}
-.content:after {
-  content: ']';
-  position: absolute;
-  right: -30px;
-  line-height: 40px;
-}
-.content:after,
-.content:before {
-  color: #16a085;
-  font-size: 42px;
-  animation: 2s linear 0s normal none infinite opacity;
-  -webkit-animation: 2s ease-out 0s normal none infinite opacity;
-  -moz-animation: 2s ease-out 0s normal none infinite opacity;
-  -o-animation: 2s ease-out 0s normal none infinite opacity;
-}*/
+
 .visible {
   float: left;
   font-weight: 600;
@@ -110,6 +87,7 @@ p.scrolly {
   display: inline;
   float: left;
   margin: 0;
+  font-size:
 }
 ul {
   margin-top: 0;
@@ -124,6 +102,9 @@ ul {
 ul li {
   line-height: 40px;
   margin: 0;
+}
+li {
+  width: 300px;
 }
 @-webkit-keyframes opacity {
   0% {
