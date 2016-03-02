@@ -27,7 +27,7 @@ import NavButton from './NavButton';
 
 const styles = {
   root: {
-    background: 'lightblue',
+    background: '#3a2d37',
     paddingLeft: 40,
   },
   button: {
