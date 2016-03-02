@@ -28,7 +28,7 @@ const styles = {
 	request: {
 		float: 'right',
 		margin: '5px',
-		color: 'black'
+		color: 'black',
 	},
 
 	color: {
@@ -80,8 +80,8 @@ export default class RideTweets extends React.Component {
 			this.state.details.push(ride.details)
 		})
 		// console.log('this is this.state', this.state)
-		// this.setState( (previousState, currentProps) => {
-		// })
+
+		// this.setState()
 	}
 
 	render() {
@@ -90,7 +90,7 @@ export default class RideTweets extends React.Component {
 		// console.log('this is title', this.state.titles)
 		return(
 
-			<div style={styles.root}>
+			<div className="ride-tweets">
 				{this.state.rides.map(tile => (
 			    <Card
 			      padding={1}

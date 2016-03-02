@@ -36,7 +36,7 @@ var App = React.createClass({
 
     return (
       <div>
-        <NavBar />
+        <div className="splash-nav"><NavBar /></div>
         {children}
       </div>
     );
