@@ -56,7 +56,13 @@ html, body {
 
 .splash-search {
   text-align: center;
-  padding-top: 200px;
+  background-color: tomato;
+  width: 100%;
+}
+
+.splash-search-div {
+  text-align: center;
+  padding-top: 300px;
 }
 
 .main-search{
@@ -186,3 +192,5 @@ li {
     margin-top: 0;
   }
 }
+
+

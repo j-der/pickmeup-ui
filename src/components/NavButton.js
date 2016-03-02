@@ -14,7 +14,7 @@ export default class NavButton extends Component {
   render() {
     return(
       <span>
-        <RaisedButton>{this.props.text} </RaisedButton>
+        <FlatButton>{this.props.text} </FlatButton>
 
       </span>
       )
