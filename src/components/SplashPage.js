@@ -12,7 +12,7 @@ var SplashPage = React.createClass({
         <div className="splash-image">
 
           <div clasName="splash-nav"><NavBar /></div>
-          <h1>Find a ride.</h1>
+          <h1 className="splash-title">Find a ride.</h1>
           <div className="splash-search"><SearchBar /></div>
         </div>
       </div>
