@@ -59,6 +59,10 @@ html, body {
   padding-top: 200px;
 }
 
+.main-search{
+  text-align: center;
+}
+
 .content {
   width: 237px;
   font-size: 36px;

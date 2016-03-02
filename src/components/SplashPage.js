@@ -9,7 +9,7 @@ var SplashPage = React.createClass({
     return (
       <div>
         <div className="splash-image">
-          <div className="splash-search-div"><SearchBar handleSubmit={this.props.splashPageSearchSubmit}/></div>
+          <div className="splash-search-div"><SearchBar cssClass="splash-search" handleSubmit={this.props.splashPageSearchSubmit}/></div>
         </div>
         <div className="content">
           <div className="visible">
