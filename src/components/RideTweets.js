@@ -81,6 +81,7 @@ export default class RideTweets extends React.Component {
 			this.state.details.push(ride.details)
 		})
 		// console.log('this is this.state', this.state)
+
 		// this.setState()
 	}
 

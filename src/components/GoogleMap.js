@@ -7,7 +7,7 @@ var GoogleMap = React.createClass({
   getInitialState() {
     return {mapVariable: null}
   },
-  
+
   componentDidMount() {
     var that = this;
     // componentDidMount is called by React directly after Map is rendered
@@ -47,7 +47,7 @@ var GoogleMap = React.createClass({
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
-              
+
                 var marker = new google.maps.Marker({
                   position: rideLocation,
                   map: gMap,

@@ -3,7 +3,6 @@ import SearchBar from './SearchBar';
 import GoogleMap from './GoogleMap';
 import { browserHistory } from 'react-router';
 import RideTweets from './RideTweets';
-import Snackbar from 'material-ui/lib/snackbar';
 // import axios from 'axios';
 
 export default class IndexPage extends Component {
@@ -13,7 +12,7 @@ export default class IndexPage extends Component {
 
 		this.state = {
 			destinationField: null,
-			originField: null,
+			originField: null
 		}
 	}
 
