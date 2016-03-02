@@ -8,6 +8,7 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import ModalWindow from './ModalWindow';
 import NavButton from './NavButton';
+import DropDownMenu from './DropDownMenu'
 // import MenuItem from 'material-ui/lib/menus/menu-item';
 // import DropDownMenu from 'material-ui/lib/DropDownMenu';
 
@@ -56,9 +57,8 @@ const ToolbarExamplesSimple = () => (
       float="right"
       style={styles.toolbar}>
         <ModalWindow title="Post a ride" label="Post a ride" index="1" />
-        <ModalWindow title="Sign up with pickmeUp!" label="Sign up" index="0" style={styles.button} />
-        <LogInForm />
-
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <DropDownMenu />
     </ToolbarGroup>
   </Toolbar>
 );
