@@ -52,7 +52,7 @@ export default class IndexPage extends Component {
 					<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
 				</span>
 				<span>
-					<RideTweets />
+					<RideTweets originField={this.props.From} destinationField={this.props.To}/>
 				</span>
 			</div>
 				//post to map with newState
