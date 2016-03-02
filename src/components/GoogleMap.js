@@ -18,8 +18,8 @@ var GoogleMap = React.createClass({
 
       geocoder = new google.maps.Geocoder();
       service = new google.maps.places.PlacesService(map);
-      var userOrigin = that.props.originField
-      var userDestination = that.props.destinationField
+      var userOrigin = that.props.originField;
+      var userDestination = that.props.destinationField;
 
       geocoder.geocode({ address: userOrigin}, function(results, status) {
         if (status !== 'OK') {
@@ -49,7 +49,7 @@ var GoogleMap = React.createClass({
                 rideLocation = results[0].geometry.location;
 
                 var contentString = '<div id="content">'+
-                  '<h1 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h1>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
                   '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
@@ -141,7 +141,7 @@ var GoogleMap = React.createClass({
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
                 var contentString = '<div id="content">'+
-                  '<h1 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h1>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
                   '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
