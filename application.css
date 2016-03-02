@@ -10,9 +10,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-  font-size: 50px;
   font-family: 'Roboto', sans-serif;
-  color: rgba(255, 255, 255, 0.74);
 }
 
 #map {
@@ -69,21 +67,18 @@ p {
   display: block;
 }
 
-<<<<<<< HEAD
 .ride-tweets {
   display: 'block',
   flexWrap: 'wrap',
   width: '35%',
   float: 'left';
   overflow: 'auto';
-=======
+
 h1.splash-title {
   font-size: 50px;
   font-family: sans-serif;
   color: rgba(255, 255, 255, 0.74);
 }
-
-
 
 .content {
   width: 237px;
@@ -129,6 +124,8 @@ p.scrolly {
   display: inline;
   float: left;
   margin: 0;
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.74);
 }
 ul {
   margin-top: 0;
@@ -223,5 +220,4 @@ ul li {
   100% {
     margin-top: 0;
   }
->>>>>>> 4ea2c0545f38a6b316ea7e702c61711f93733965
 }
