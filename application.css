@@ -106,7 +106,7 @@ h1.splash-title {
   overflow: hidden;
   height: 40px;
 }
-p {
+p.scrolly {
   display: inline;
   float: left;
   margin: 0;
