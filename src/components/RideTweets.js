@@ -89,7 +89,7 @@ export default class RideTweets extends React.Component {
 		// console.log('this is title', this.state.titles)
 		return(
 
-			<div style={styles.root}>
+			<div className="ride-tweets">
 				{this.state.rides.map(tile => (
 			    <Card
 			      padding={1}

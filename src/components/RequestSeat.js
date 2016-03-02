@@ -100,14 +100,6 @@ export default class PostRide extends React.Component {
               secondary={true}
               onTouchTap={this.props.handleClose}
             />
-            <Snackbar
-              open={this.state.open}
-              message={this.state.message}
-              action="undo"
-              autoHideDuration={this.state.autoHideDuration}
-              onActionTouchTap={this.handleActionTouchTap}
-              onRequestClose={this.handleRequestClose}
-            />
             </form>
         </div>
       );
@@ -116,3 +108,13 @@ export default class PostRide extends React.Component {
 
 
 // <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
+
+
+// <Snackbar
+//   open={this.state.open}
+//   message={this.state.message}
+//   action="undo"
+//   autoHideDuration={this.state.autoHideDuration}
+//   onActionTouchTap={this.handleActionTouchTap}
+//   onRequestClose={this.handleRequestClose}
+// />
