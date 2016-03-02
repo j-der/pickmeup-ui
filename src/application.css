@@ -3,7 +3,11 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
+h1 {
+  font-size: 50px;
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.74);
+}
 #map {
   height: 500px;
   width: 500px;
@@ -53,10 +57,12 @@ html, body {
 }
 
 .splash-image {
-  background: url(../images/background.jpg) no-repeat top center scroll;
+  background: url(../images/rear-mirror-1119717_1920.jpg) no-repeat top center scroll;
   background-size: cover;
   width: 100%;
   height: 100%;
+}
 
-
+.splash-search {
+  display: block;
 }
