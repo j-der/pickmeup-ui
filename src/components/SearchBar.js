@@ -24,6 +24,7 @@ export default class SearchBar extends React.Component {
       // props of handleSubmit from IndexPage
       <form className="splash-search" onSubmit={event => this.props.handleSubmit(event, this.state)}>
         <TextField
+          className="form-autofill"
           onChange={this.handleToChange}
           id="destination-field"
           hintText="E.g. Steamwhistle Brewery"

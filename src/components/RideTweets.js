@@ -12,17 +12,9 @@ import IconButton from 'material-ui/lib/icon-button';
 import ModalWindow from './ModalWindow';
 
 const styles = {
-  root: {
-    display: 'block',
-    flexWrap: 'wrap',
-    height: '100%',
-    width: '30%',
-    float: 'left'
-  },
   card: {
-    overflowY: 'auto',
-    margin: 5,
-    height: 'auto',
+    marginTop: 1,
+    marginBottom: 4,
   },
 
 	request: {
