@@ -128,6 +128,7 @@ var GoogleMap = React.createClass({
           }
         })
         .then(function (response) {
+          console.log("right after gMap", userDestination);
           var rideLocation;
           var rides = response.data.rides;
 
@@ -135,11 +136,22 @@ var GoogleMap = React.createClass({
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
-              
+                console.log("ride is this:", ride);
+                var contentString = '<div id="content">'+
+                  '<h1 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h1>'+
+                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '</div>'+
+                  '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
                 var marker = new google.maps.Marker({
-                  position: rideLocation,
-                  map: gMap,
-                  title: rideLocation.title,
+                  position: {lat: rideLocation.lat(), lng: rideLocation.lng()},
+                  map: gMap
+                });
+                marker.addListener('click', function() {
+                  infowindow.open(gMap, marker);
                 });
 
                 (function(marker, rideLocation) {

@@ -49,8 +49,12 @@ export default class IndexPage extends Component {
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
 				<SearchBar handleSubmit={this.props.indexPageSearchSubmit}/>
-				<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
-				<RideTweets />
+				<span>
+					<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
+				</span>
+				<span>
+					<RideTweets originField={this.props.From} destinationField={this.props.To}/>
+				</span>
 				<Snackbar
 				  open={this.props.state.open}
 				  message={this.props.state.message}
