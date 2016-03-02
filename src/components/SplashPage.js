@@ -11,7 +11,7 @@ var SplashPage = React.createClass({
         <div className="splash-image">
         <div className="content">
         <div className="visible">
-          <p>Find a&nbsp;</p>
+          <p className="scrolly">Find a&nbsp;</p>
           <ul>
             <li>Ride</li>
             <li>Carpool</li>
