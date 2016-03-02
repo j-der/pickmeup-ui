@@ -22,7 +22,7 @@ var SplashPage = React.createClass({
         </div>
         </div>
         <div clasName="splash-nav"><NavBar /></div>
-        <div className="splash-search"><SearchBar /></div>
+        <div className="splash-search"><SearchBar handleSubmit={this.props.splashPageSearchSubmit}/></div>
         </div>
       </div>
     );
