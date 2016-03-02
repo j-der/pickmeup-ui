@@ -73,8 +73,8 @@ export default class RideTweets extends React.Component {
 			this.state.avatars.push(ride.user_avatar)
 		})
 		// console.log('this is this.state', this.state)
-		this.setState( (previousState, currentProps) => {
-		})
+		// this.setState( (previousState, currentProps) => {
+		// })
 	}
 
 	render() {

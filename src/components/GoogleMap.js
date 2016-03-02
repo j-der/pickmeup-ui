@@ -129,7 +129,6 @@ var GoogleMap = React.createClass({
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
-                console.log("ride is this:", ride);
                 var contentString = '<div id="content">'+
                   '<h1 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h1>'+
                   '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
