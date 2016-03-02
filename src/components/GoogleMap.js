@@ -7,7 +7,7 @@ var GoogleMap = React.createClass({
   getInitialState() {
     return {mapVariable: null}
   },
-  
+
   componentDidMount() {
     var that = this;
     // componentDidMount is called by React directly after Map is rendered
@@ -47,11 +47,18 @@ var GoogleMap = React.createClass({
             function (ride) {
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
-              
+
                 var marker = new google.maps.Marker({
                   position: rideLocation,
                   map: gMap,
+                  title: rideLocation.title
                 });
+                (function(marker, rideLocation) {
+                  google.maps.event.addListener(marker, "click", function(e) {
+                    infoWindow.setContent(rideLocation.title);
+                    infoWindow.open(map, marker);
+                  });
+                })(marker, rideLocation);
               });
             }
           );
@@ -70,7 +77,7 @@ var GoogleMap = React.createClass({
       // it is passed two parameters for success and failure
       return new Promise(function(resolve, reject) {
         // creating a <script> and giving it an attribute src=url, then append it to the document
-        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places";
+        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCu0KSRgrBizub3FSRecbFnCvPzG4HVfcQ&libraries=places";
         var script = document.createElement('script');
         script.setAttribute("src", url);
         document.head.appendChild(script)
@@ -145,6 +152,13 @@ var GoogleMap = React.createClass({
                 marker.addListener('click', function() {
                   infowindow.open(gMap, marker);
                 });
+
+                (function(marker, rideLocation) {
+                  google.maps.event.addListener(marker, "click", function(e) {
+                    infoWindow.setContent(rideLocation.title);
+                    infoWindow.open(map, marker);
+                  });
+                })(marker, rideLocation);
               });
             }
           );
@@ -161,7 +175,7 @@ var GoogleMap = React.createClass({
     function loadScript() {
 
       return new Promise(function(resolve, reject) {
-        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJfqqterywMRGBN3IYziMGwJ5tsD6aGCk&libraries=places";
+        var url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCu0KSRgrBizub3FSRecbFnCvPzG4HVfcQ&libraries=places";
         var script = document.createElement('script');
         script.setAttribute("src", url);
         document.head.appendChild(script)

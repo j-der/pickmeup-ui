@@ -27,7 +27,7 @@ import NavButton from './NavButton';
 
 const styles = {
   root: {
-    background: 'lightblue',
+    background: '#FF4081',
     paddingLeft: 40,
   },
   button: {
@@ -58,7 +58,7 @@ const ToolbarExamplesSimple = () => (
         <ModalWindow title="Post a ride" label="Post a ride" index="1" />
         <ModalWindow title="Sign up with pickmeUp!" label="Sign up" index="0" style={styles.button} />
         <LogInForm />
-        <Avatar />
+
     </ToolbarGroup>
   </Toolbar>
 );

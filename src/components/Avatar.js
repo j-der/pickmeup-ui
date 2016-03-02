@@ -10,15 +10,14 @@ const colors = styles.Colors;
 
 const AvatarExampleSimple = () => (
 	<div>
-	  <List>
-	    <ListItem
-	      disabled={true}
-	      leftAvatar={
-	        <Avatar src="http://lorempixel.com/200/200/people" />
-	      }
-	    > Name of Person
-	    </ListItem>
-	  </List>
+    <ListItem
+      disabled={true}
+      leftAvatar={
+        <Avatar
+        	src="http://lorempixel.com/200/200/people" />
+      }
+    >
+    </ListItem>
 	</div>
 );
 

@@ -59,3 +59,12 @@ export default class IndexPage extends Component {
 		)
 	}
 }
+
+// <Snackbar
+//   open={this.props.state.open}
+//   message={this.props.state.message}
+//   action="undo"
+//   autoHideDuration={this.props.state.autoHideDuration}
+//   onActionTouchTap={this.props.handleActionTouchTap}
+//   onRequestClose={this.props.handleRequestClose}
+// />

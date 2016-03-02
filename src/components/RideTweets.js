@@ -9,6 +9,7 @@ import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/lib/icon-button';
+import ModalWindow from './ModalWindow';
 
 const styles = {
   root: {
@@ -27,7 +28,11 @@ const styles = {
 	request: {
 		float: 'right',
 		margin: '5px',
-		color: 'black'
+		color: 'black',
+	},
+
+	color: {
+		backgroundColor: '#ff9665',
 	}
 };
 
@@ -41,6 +46,7 @@ export default class RideTweets extends React.Component {
 			names: [],
 			ids: [],
 			avatars: [],
+			details: [],
 			rides: []
 		}
 	}
@@ -71,6 +77,7 @@ export default class RideTweets extends React.Component {
 			this.state.names.push(ride.user_first_name)
 			this.state.ids.push(ride.id)
 			this.state.avatars.push(ride.user_avatar)
+			this.state.details.push(ride.details)
 		})
 		// console.log('this is this.state', this.state)
 		// this.setState( (previousState, currentProps) => {
@@ -83,7 +90,7 @@ export default class RideTweets extends React.Component {
 		// console.log('this is title', this.state.titles)
 		return(
 
-			<div style={styles.root}>
+			<div className="ride-tweets">
 				{this.state.rides.map(tile => (
 			    <Card
 			      padding={1}
@@ -97,17 +104,21 @@ export default class RideTweets extends React.Component {
 		          actAsExpander={true}
 		          showExpandableButton={true}
 		         />
-	        	<CardText expandable={true}>
+	        	<CardText
+	        		expandable={true}
+	        		style={styles.color}>
 	        		<p>{tile.user_first_name}</p>
 	        		<p>Number of seats available: {tile.available_seats}</p>
+	        		<p>{tile.details}</p>
 	        	</CardText>
-		        	<CardActions expandable={true}>
-		        			<FlatButton
-		        				label="Request a Seat"
-		        				primary={true}
-		        				keyboardFocused={true}
-		        				style={styles.request}
-		        			/>
+		        	<CardActions
+		        		expandable={true}
+		        		style={styles.color}>
+	        			<ModalWindow
+	        				title="Request a Seat!"
+	        				label="Request a Seat"
+	        				index="2"
+	        				style={styles.request} />
 		        	</CardActions>
 			    </Card>
 			    ))}
