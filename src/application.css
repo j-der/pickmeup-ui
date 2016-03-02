@@ -43,10 +43,20 @@ html, body {
 
 .splash-page {
   text-align: center;
+  background-color: blue;
 }
 
 .form-style {
   display: block;
   text-align: left;
   background-color: blue;
+}
+
+.splash-image {
+  background: url(../images/background.jpg) no-repeat top center scroll;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+
+
 }
