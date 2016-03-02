@@ -56,8 +56,10 @@ html, body {
 
 .splash-search {
   text-align: center;
-  background-color: tomato;
-  width: 100%;
+  background-color: rgba(255, 255, 255, 0.34);
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 30 30 30 30;
 }
 
 .splash-search-div {
