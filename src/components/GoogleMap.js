@@ -38,7 +38,7 @@ var GoogleMap = React.createClass({
         var originWindow = new google.maps.InfoWindow({
          position: {lat, lng},
          map: gMap,
-         content: "Your starting point!"
+         content: "Your starting point! Zoom out to see available rides."
        })
 
         // get rides from database
@@ -139,7 +139,7 @@ var GoogleMap = React.createClass({
         var originWindow = new google.maps.InfoWindow({
          position: {lat, lng},
          map: gMap,
-         content: "Your starting point!"
+         content: "Your starting point! Zoom out to see available rides."
        })
 
         axios.get('http://localhost:3000/rides', {
