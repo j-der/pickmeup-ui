@@ -43,7 +43,8 @@ export default class NewUser extends Component {
   render() {
 
     return (
-      <div>
+      <div className="modal-content">
+      <p className="normal">Join pickmeUp and connect with others today! Sign up as a driver or a passenger.</p>
        <form
        onSubmit={this.axiosPost}
        className="form-style">
@@ -90,6 +91,7 @@ export default class NewUser extends Component {
           label="Submit"
           type="submit"
           primary={true}
+          keyboardFocused={true}
         />
         <FlatButton
           label="Cancel"

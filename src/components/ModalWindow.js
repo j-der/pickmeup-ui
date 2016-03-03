@@ -23,6 +23,7 @@ export default class ModalWindow extends React.Component {
     this.setState({open: false});
   };
 
+
   // componentWillReceiveProps(nextProps) {
   //   this.setState({open: true})
   // };
