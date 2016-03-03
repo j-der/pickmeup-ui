@@ -49,11 +49,9 @@ var GoogleMap = React.createClass({
         .then(function (response) {
           var rideLocation;
           var rides = response.data.rides;
-          console.log("rides is:", rides);
 
           rides.forEach(
             function (ride) {
-              console.log("ride is:", ride);
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
 
@@ -70,7 +68,6 @@ var GoogleMap = React.createClass({
                   position: {lat: rideLocation.lat(), lng: rideLocation.lng()},
                   map: gMap
                 });
-                console.log("marker", marker);
                 marker.addListener('click', function() {
                   infoWindow.open(gMap, marker);
                 });
