@@ -242,9 +242,13 @@ li {
 
 .normal {
   text-align: left;
-  margin-top: -25px;
 }
 
 .hidden-flat-button {
   display: none;
+}
+
+.modal-content {
+  margin-top: -25px;
+  padding: 10px;
 }

@@ -37,7 +37,7 @@ export default class SearchBar extends React.Component {
           hintText="E.g. Lighthouse Labs"
           floatingLabelText="Where from?"
         />
-        <RaisedButton
+        <FlatButton
             label="Search"
             primary={true}
             keyboardFocused={true}
