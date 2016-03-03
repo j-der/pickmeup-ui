@@ -2,9 +2,241 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Gotham Light';
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Gotham Light';
+  color: #000;
+}
+
+p {
+  font-family: 'Avenir'
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../fonts/AVENIRLTSTD-HEAVY.OTF');
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url('../fonts/Gotham-Bold_21010.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('../fonts/Gotham_21023.ttf');
 }
 
 #map {
-  height: 500px;
-  width: 500px;
+  height: 90%;
+  width: 65%;
+  float: right;
+  margin-top: 1;
 }
+
+#destination-field {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#destination-field:focus {
+  border-color: #4d90fe;
+}
+
+.navbar-title {
+  fontFamily: 'Avenir, sans-serif',
+  color: '#fff',
+}
+
+
+.avatar {
+  position: relative;
+  display: block;
+}
+
+.nav-buttons {
+  border-color: orange;
+  border-style: solid;
+  display: block;
+  float: right;
+}
+
+.ride-tweets {
+  width: 35%;
+  height: 90%;
+  float: left;
+  overflow: auto;
+}
+
+.splash-page {
+  text-align: center;
+  background-color: blue;
+}
+
+.form-style {
+  display: block;
+  text-align: left;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 1) inset;
+}
+
+.splash-image {
+  background: url(../images/rear-mirror-1119717_1920.jpg) no-repeat top center scroll;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-search {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.34);
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 30 30 50 30;
+}
+
+.splash-search-div {
+  text-align: center;
+  padding-top: 300px;
+}
+
+.main-search{
+  text-align: center;
+}
+
+.content {
+  width: 237px;
+  font-size: 36px;
+  line-height: 40px;
+  font-family: sans-serif;
+  color: #ecf0f1;
+  height: 40px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -118px;
+}
+
+.visible {
+  float: left;
+  font-weight: 600;
+  overflow: hidden;
+  height: 40px;
+}
+h2.scrolly {
+  display: inline;
+  float: left;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+}
+ul {
+  margin-top: 0;
+  padding-left: 110px;
+  text-align: left;
+  list-style: none;
+  animation: 6s linear 0s normal none infinite change;
+  -webkit-animation: 6s linear 0s normal none infinite change;
+  -moz-animation: 6s linear 0s normal none infinite change;
+  -o-animation: 6s linear 0s normal none infinite change;
+}
+ul li {
+  line-height: 40px;
+  margin: 0;
+}
+li {
+  width: 300px;
+}
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes change {
+  0% {
+    margin-top: 0;
+  }
+  15% {
+    margin-top: 0;
+  }
+  25% {
+    margin-top: -40px;
+  }
+  40% {
+    margin-top: -40px;
+  }
+  50% {
+    margin-top: -80px;
+  }
+  65% {
+    margin-top: -80px;
+  }
+  75% {
+    margin-top: -40px;
+  }
+  85% {
+    margin-top: -40px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@keyframes change {
+  0% {
+    margin-top: 0;
+  }
+  15% {
+    margin-top: 0;
+  }
+  25% {
+    margin-top: -40px;
+  }
+  40% {
+    margin-top: -40px;
+  }
+  50% {
+    margin-top: -80px;
+  }
+  65% {
+    margin-top: -80px;
+  }
+  75% {
+    margin-top: -40px;
+  }
+  85% {
+    margin-top: -40px;
+  }
+  100% {
+    margin-top: 0;
+  }
+
+}
+
+

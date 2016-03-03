@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import GoogleMap from './GoogleMap';
+import { browserHistory } from 'react-router';
+import RideTweets from './RideTweets';
 // import axios from 'axios';
 
 export default class IndexPage extends Component {
@@ -10,7 +12,7 @@ export default class IndexPage extends Component {
 
 		this.state = {
 			destinationField: null,
-			originField: null,
+			originField: null
 		}
 	}
 
@@ -20,6 +22,7 @@ export default class IndexPage extends Component {
 		let originField = event.target.querySelector("#origin-field").value;
 		// handleSubmit causes changeState, d- and o-fields become the values set in changeState below
 		this.changeState({destinationField: destinationField, originField: originField});
+		browserHistory.push('/main');
 
 		// let request = axios.get('http://localhost:3000/search', {
 		// 	destination_field: destinationField,
@@ -36,17 +39,32 @@ export default class IndexPage extends Component {
 			destinationField: newState.destinationField, // new values set for d- and o-fields.
 			originField: newState.originField
 		})
+
+
 	}
 
 	render() {
 		return (
 			//handleSubmit will become the properties of the handleSubmit function above
 			<div>
-				<SearchBar handleSubmit={this.handleSubmit}/>
-				{console.log("heres a map")}
-				<GoogleMap originField={this.state.originField} destinationField={this.state.destinationField}/>
+				<SearchBar cssClass="main-search" handleSubmit={this.props.indexPageSearchSubmit}/>
+				<span>
+					<GoogleMap originField={this.props.From} destinationField={this.props.To}/>
+				</span>
+				<span>
+					<RideTweets originField={this.props.From} destinationField={this.props.To}/>
+				</span>
 			</div>
 				//post to map with newState
 		)
 	}
 }
+
+// <Snackbar
+//   open={this.props.state.open}
+//   message={this.props.state.message}
+//   action="undo"
+//   autoHideDuration={this.props.state.autoHideDuration}
+//   onActionTouchTap={this.props.handleActionTouchTap}
+//   onRequestClose={this.props.handleRequestClose}
+// />

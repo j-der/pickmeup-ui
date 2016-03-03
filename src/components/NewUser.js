@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Config from '../config';
-
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
+import TextField from 'material-ui/lib/text-field';
 import axios from 'axios';
 
 export default class NewUser extends Component {
 
+    // this.axiosPost = this.axiosPost.bind(this) can use this instead of ev =>
+    //
   // getInitialState() {
   //   return {showForm: false}
   // }
@@ -15,97 +17,87 @@ export default class NewUser extends Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {showForm: false}
   }
 
   axiosPost = (event) => {
     event.preventDefault();
-    // console.log(this.refs.input1.value)
+    console.log(this.refs.firstName.value)
     axios.post('http://localhost:3000/users', {
-      avatar: this.refs.avatar.value,
-      first_name: this.refs.firstName.value,
-      last_name: this.refs.lastName.value,
-      email: this.refs.email.value,
-      password: this.refs.password.value,
-      password_confirmation: this.refs.passwordConfirmation.value,
-      authenticity_token: this.refs.authenticityToken.value
+      avatar: this.refs.avatar.getValue(),
+      first_name: this.refs.firstName.getValue(),
+      last_name: this.refs.lastName.getValue(),
+      email: this.refs.email.getValue(),
+      password: this.refs.password.getValue(),
+      password_confirmation: this.refs.passwordConfirmation.getValue()
+      // authenticity_token: this.refs.authenticityToken.value
     })
 
       .then(function(response){
+        // console.log(this.refs.firstName.value)
         console.log('success, response: ', response)
-        })
-  }
 
-  displayForm = () => {
-    if (this.state.showForm) {
-      return (
-        <form onSubmit={this.axiosPost} encType="multipart/form-data">
-
-          <div>
-            <label htmlFor="first_name">URL to your photo:</label>
-            <input ref="avatar" type="text" name="user[avatar]" id="avatar" placeholder="URL to your photo" />
-          </div>
-          <div>
-            <label htmlFor="first_name">First name:</label>
-            <input ref="firstName" type="text" name="user[first_name]" id="first_name" placeholder="First name" />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last name:</label>
-            <input ref="lastName" type="text" name="user[last_name]" id="last_name" placeholder="Last name" />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input ref="email" type="text" name="user[email]" id="email" placeholder="Email" />
-          </div>
-          <div>
-            <label htmlFor="password">Choose a password:</label>
-            <input ref="password" type="password" name="user[password]" id="password" placeholder="Password" />
-          </div>
-          <div>
-            <label htmlFor="password_confirmation">Confirm your password:</label>
-            <input ref="passwordConfirmation" type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confirm your password" />
-          </div>
-          <div>
-        <input ref="authenticityToken" type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
-        </div>
-          <div>
-            <FlatButton
-              label="Submit"
-              primary={true}
-              type="submit" />
-          </div>
-        </form>
-      )
-    }
-  }
-
-  toggleForm = () => {
-    if (this.state.showForm) {
-      this.setState({
-        showForm: false
-      })
-    }
-    else {
-      this.setState({
-        showForm: true
-      })
-    }
+        localStorage.userId = response.data.id
+        });
   }
 
   render() {
+
     return (
       <div>
-        <RaisedButton label="Sign Up!" className="sign-up-button" onClick={this.toggleForm} />
-        {this.displayForm()}
+       <form onSubmit={this.axiosPost}>
+       <TextField
+        id="avatar-field"
+        hintText="A photo"
+        floatingLabelText="Avatar"
+        ref="avatar"
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TextField
+        id="first-name-field"
+        hintText="E.g. Donald"
+        floatingLabelText="First name"
+        ref="firstName"
+        />
+        <TextField
+          id="last-name-field"
+          hintText="E.g. Duck"
+          floatingLabelText="Last name"
+          ref="lastName"
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TextField
+          id="email-field"
+          hintText="E.g. donaldduck@example.com"
+          floatingLabelText="Email"
+          ref="email"
+        />
+        <TextField
+          id="password-field"
+          hintText="Pick something secure"
+          type="password"
+          floatingLabelText="Password"
+          ref="password"
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TextField
+          id="password-confirmation-field"
+          hintText="Pick something secure"
+          type="password"
+          floatingLabelText="Confirm your password"
+          ref="passwordConfirmation"
+        /><br />
+        <FlatButton
+          onClick={this.props.handleClose}
+          label="Submit"
+          type="submit"
+          primary={true}
+        />
+        <FlatButton
+          label="Cancel"
+          secondary={true}
+          onTouchTap={this.props.handleClose}
+        />
+        </form>
       </div>
+
     );
   }
-
-
 }
 
-
-// <div>
-//   <input ref="avatar" type="file" name="user[avatar]" />
-// </div>

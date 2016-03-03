@@ -1,18 +1,26 @@
 import React from 'react'
 import SearchBar from './SearchBar'
-import { browserHistory } from 'react-router'
+// import the css className
+
 
 var SplashPage = React.createClass({
-
-  firstSearch: function(event) {
-    event.preventDefault();
-    browserHistory.push('/main');
-  },
 
   render: function() {
     return (
       <div>
-        <SearchBar handleSubmit={this.firstSearch}/>
+        <div className="splash-image">
+          <div className="splash-search-div"><SearchBar cssClass="splash-search" handleSubmit={this.props.splashPageSearchSubmit}/></div>
+        </div>
+        <div className="content">
+          <div className="visible">
+            <h2 className="scrolly">Find a&nbsp;</h2>
+            <ul>
+              <li>Ride</li>
+              <li>Carpool</li>
+              <li>Route</li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

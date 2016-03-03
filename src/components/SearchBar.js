@@ -5,30 +5,33 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 export default class SearchBar extends React.Component {
 
-  // getInitialState: function() {
-  //   return { placeholder: "Where to?", formMethod: "", formAction: "" }
-  // },
+  constructor(props) {
+    super(props)
+    this.state = { To: "", From: "" }
+  }
 
-  // saveDestination: function(){
-  //   var destination = document.getElementById('destination-field').value;
-  //   this.setState({placeholder: "Where from?", formMethod: "POST", formAction: "/users"});
-  // },
+  handleToChange = (event) => {
+    this.setState({To: event.target.value});
+  }
 
-  // changePlaceholder: function(){
-  //   this.setState({ placeholder: "Where from?"});
-  // },
+  handleFromChange = (event) => {
+    this.setState({From: event.target.value});
+  }
 
   render() {
     return (
 
       // props of handleSubmit from IndexPage
-      <form onSubmit={this.props.handleSubmit}>
+      <form className={this.props.cssClass} onSubmit={event => this.props.handleSubmit(event, this.state)}>
         <TextField
+          className="form-autofill"
+          onChange={this.handleToChange}
           id="destination-field"
           hintText="E.g. Steamwhistle Brewery"
           floatingLabelText="Where to?"
-        />
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <TextField
+          onChange={this.handleFromChange}
           id="origin-field"
           hintText="E.g. Lighthouse Labs"
           floatingLabelText="Where from?"
@@ -36,10 +39,11 @@ export default class SearchBar extends React.Component {
         <FlatButton
             label="Search"
             primary={true}
+            keyboardFocused={true}
             type="submit" />
+
       </form>
     );
   }
 
 };
-
