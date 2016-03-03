@@ -59,11 +59,8 @@ export default class RideTweets extends React.Component {
 			}
 		})
 			.then( (response) => {
-<<<<<<< HEAD
-=======
-				console.log('response is: ', response)
+			console.log('response is: ', response)
 			rideArray = response.data.rides
->>>>>>> jd-wednesday
 			this.setState({rides: response.data.rides});
 			this.displayTweets();
 		})
