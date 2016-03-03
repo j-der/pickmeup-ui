@@ -31,7 +31,8 @@ var GoogleMap = React.createClass({
 
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
-          zoom: 14
+          zoom: 14, 
+          scrollwheel: false
         });
         // get rides from database
         axios.get('http://localhost:3000/rides', {
@@ -124,7 +125,8 @@ var GoogleMap = React.createClass({
 
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
-          zoom: 14
+          zoom: 14,
+          scrollwheel: false
         });
 
         axios.get('http://localhost:3000/rides', {
