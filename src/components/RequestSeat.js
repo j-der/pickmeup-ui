@@ -23,7 +23,7 @@ export default class PostRide extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        autoHideDuration: 4000,
+        autoHideDuration: 3000,
         message: 'Seat request sent!',
         open: false,
       };
@@ -75,12 +75,12 @@ export default class PostRide extends React.Component {
             floatingLabelText="Your name"
             ref="requestName"
           />
-          <br/>
+          <div>
           <TextField
             hintText="E.g. Hi there! I'm interested!"
             floatingLabelText="Message"
           />
-          <br/>
+          </div>
           <FlatButton
             label="Send Request"
             primary={true}
@@ -96,7 +96,7 @@ export default class PostRide extends React.Component {
          <Snackbar
           open={this.state.open}
           message={this.state.message}
-          action="undo"
+          action="got it"
           autoHideDuration={this.state.autoHideDuration}
           onActionTouchTap={this.handleActionTouchTap}
           onRequestClose={this.handleRequestClose}
