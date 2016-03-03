@@ -39,7 +39,7 @@ export default class PostRide extends React.Component {
       this.setState({
         open: false,
       });
-      this.handleRequestClose
+      alert('Seat request cancelled.');
     };
 
     handleChangeDuration = (event) => {
@@ -58,8 +58,8 @@ export default class PostRide extends React.Component {
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
-
     this.handleTouchTap()
+    this.props.handleClose()
   }
 
 
@@ -75,27 +75,38 @@ export default class PostRide extends React.Component {
             floatingLabelText="Your name"
             ref="requestName"
           />
-          <br/>
+          <div>
           <TextField
             hintText="E.g. Hi there! I'm interested!"
             floatingLabelText="Message"
           />
-          <br/>
+          </div>
           <FlatButton
             label="Send Request"
             primary={true}
             keyboardFocused={true}
             type="submit"
-            onTouchTap={this.props.handleClose}
+            onTouchTap={this.handleTouchTap}
           />
           <FlatButton
-            label="Cancel"
+            label="Close"
             secondary={true}
             onTouchTap={this.props.handleClose}
           />
+         <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action="got it"
+          autoHideDuration={this.state.autoHideDuration}
+          onActionTouchTap={this.handleActionTouchTap}
+          onRequestClose={this.handleRequestClose}
+        />
           </form>
         </div>
       );
     }
   }
+
+
+// <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
 
