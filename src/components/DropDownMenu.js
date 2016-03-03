@@ -6,20 +6,58 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import ContentFilter from 'material-ui/lib/svg-icons/content/filter-list';
 import ModalWindow from './ModalWindow';
 
-const AvatarExampleSimple = () => (
-  <div>
-    <IconMenu
-      iconButtonElement={<IconButton><ContentFilter /></IconButton>}
-      anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-      targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
-      <ModalWindow title="How it works" label="How it works" index="3"/>
-      <ModalWindow title="Post a ride" label="Post a ride" index="1"/>
-      <ModalWindow title="Sign up" label="Sign up" index="0" />
-      <ModalWindow title="Log in" label="Log in" index="2" />
+export default class DropDownMenu extends React.Component {
 
-    </IconMenu>
-  </div>
-);
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
-export default AvatarExampleSimple;
+  showModal = () => {
+    if (this.state.modal)
+      return <ModalWindow open={true} title={this.state.modal.title} label={this.state.modal.label} index={this.state.modal.index} />
+  };
+
+  closeDropdown = (event, index) => {
+    const modals = [
+      {
+        title: 'Sign Up',
+        label: 'Sign Up',
+        index: index
+      },
+      {},
+      {
+        title: 'Log in',
+        label: 'Log in',
+        index: index
+      },
+      {
+        title: 'How it Works',
+        label: 'How it Works',
+        index: index
+      }]
+
+    this.setState({open: false, modal: modals[index]})
+  };
+
+  render() {
+    return (
+      <div>
+        <IconMenu
+          iconButtonElement={<IconButton><ContentFilter /></IconButton>}
+          anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          onChange={this.closeDropdown}
+          open={this.state.open ? false : null}
+        >
+          <MenuItem primaryText="Sign up" value={0}/>
+          <MenuItem primaryText="Log in" value={2}/>
+          <MenuItem primaryText="How it Works" value={3}/>
+        </IconMenu>
+        {this.showModal()}
+
+      </div>
+    )
+  }
+
+}

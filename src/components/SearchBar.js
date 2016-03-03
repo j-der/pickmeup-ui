@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import Config from '../config';
 import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 
 export default class SearchBar extends React.Component {
 
