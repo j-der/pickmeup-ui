@@ -23,8 +23,8 @@ export default class PostRide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      autoHideDuration: 3000,
-      message: 'Seat request sent!',
+      autoHideDuration: 4000,
+      message: 'You\'ve successfully requested a seat!',
       open: false,
     };
   }
@@ -32,8 +32,8 @@ export default class PostRide extends React.Component {
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
+
     this.handleTouchTap()
-    this.handleRequestClose()
   }
 
   handleTouchTap = () => {
@@ -68,46 +68,33 @@ export default class PostRide extends React.Component {
           <form
             onSubmit={this.sendEmail}
             className="form-style">
-            <div>
-            <TextField
-              style={styles.textfield}
-              id="name-field"
-              floatingLabelText="Your name"
-              ref="requestName"
-            />
-            </div>
-            <div>
-            <TextField
+          <TextField
+            style={styles.textfield}
+            id="name-field"
+            floatingLabelText="Your name"
+            ref="requestName"
+          />
+          <br/>
+          <TextField
             hintText="E.g. Hi there! I'm interested!"
             floatingLabelText="Message"
-            />
-            </div>
-            <FlatButton
-              label="Send Request"
-              primary={true}
-              keyboardFocused={true}
-              type="submit"
-              onTouchTap={this.sendEmail}
-            />
-            <FlatButton
-              label="Cancel"
-              secondary={true}
-              onTouchTap={this.props.handleClose}
-            />
-            <Snackbar
-              open={this.state.open}
-              message={this.state.message}
-              action="undo"
-              autoHideDuration={this.state.autoHideDuration}
-              onActionTouchTap={this.handleActionTouchTap}
-              onRequestClose={this.handleRequestClose}
-            />
-            </form>
+          />
+          <br/>
+          <FlatButton
+            label="Send Request"
+            primary={true}
+            keyboardFocused={true}
+            type="submit"
+            onTouchTap={this.props.handleClose}
+          />
+          <FlatButton
+            label="Cancel"
+            secondary={true}
+            onTouchTap={this.props.handleClose}
+          />
+          </form>
         </div>
       );
     }
   }
-
-
-// <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
 
