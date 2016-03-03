@@ -65,7 +65,9 @@ export default class PostRide extends React.Component {
   render() {
       return (
         <div>
-          <form onSubmit={this.sendEmail}>
+          <form
+            onSubmit={this.sendEmail}
+            className="form-style">
             <div>
             <TextField
               style={styles.textfield}

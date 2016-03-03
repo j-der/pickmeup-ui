@@ -15,7 +15,6 @@ export default class NavButton extends Component {
     return(
       <span>
         <FlatButton>{this.props.text} </FlatButton>
-
       </span>
       )
   }
