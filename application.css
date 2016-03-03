@@ -83,7 +83,8 @@ p {
 
 .form-style {
   display: block;
-  text-align: left;
+  text-align: center;
+  margin-top: -25px;
 }
 
 input:-webkit-autofill {
@@ -239,4 +240,11 @@ li {
 
 }
 
+.normal {
+  text-align: left;
+  margin-top: -25px;
+}
 
+.hidden-flat-button {
+  display: none;
+}

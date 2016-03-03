@@ -44,10 +44,12 @@ export default class NewUser extends Component {
 
     return (
       <div>
-       <form onSubmit={this.axiosPost}>
+       <form
+       onSubmit={this.axiosPost}
+       className="form-style">
        <TextField
         id="avatar-field"
-        hintText="A photo"
+        hintText="URL to your photo"
         floatingLabelText="Avatar"
         ref="avatar"
         />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
