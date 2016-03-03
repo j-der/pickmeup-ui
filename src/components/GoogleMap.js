@@ -34,6 +34,12 @@ var GoogleMap = React.createClass({
           zoom: 14, 
           scrollwheel: false
         });
+
+        var originWindow = new google.maps.InfoWindow({
+          position: {lat, lng},
+          map: gMap,
+          content: "Start here."
+        })
         // get rides from database
         axios.get('http://localhost:3000/rides', {
           params: {
@@ -43,9 +49,11 @@ var GoogleMap = React.createClass({
         .then(function (response) {
           var rideLocation;
           var rides = response.data.rides;
+          console.log("rides is:", rides);
 
           rides.forEach(
             function (ride) {
+              console.log("ride is:", ride);
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
 
@@ -62,6 +70,7 @@ var GoogleMap = React.createClass({
                   position: {lat: rideLocation.lat(), lng: rideLocation.lng()},
                   map: gMap
                 });
+                console.log("marker", marker);
                 marker.addListener('click', function() {
                   infoWindow.open(gMap, marker);
                 });
@@ -70,7 +79,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentDidMount", response);
         });
 
         that.setState({mapVariable: gMap})
@@ -129,6 +138,12 @@ var GoogleMap = React.createClass({
           scrollwheel: false
         });
 
+        var originWindow = new google.maps.InfoWindow({
+          position: {lat, lng},
+          map: gMap,
+          content: "Start here."
+        })
+
         axios.get('http://localhost:3000/rides', {
           params: {
             userDestination: userDestination
@@ -164,7 +179,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentWillUpdate", response);
         });
 
         that.setState({mapVariable: gMap})
