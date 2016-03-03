@@ -21,46 +21,47 @@ const styles = {
 export default class PostRide extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {
-      autoHideDuration: 3000,
-      message: 'Seat request sent!',
-      open: false,
+      super(props);
+      this.state = {
+        autoHideDuration: 4000,
+        message: 'Seat request sent!',
+        open: false,
+      };
+    }
+
+    handleTouchTap = () => {
+      this.setState({
+        open: true,
+      });
     };
-  }
+
+    handleActionTouchTap = () => {
+      this.setState({
+        open: false,
+      });
+      alert('Seat request cancelled.');
+    };
+
+    handleChangeDuration = (event) => {
+      const value = event.target.value;
+      this.setState({
+        autoHideDuration: value.length > 0 ? parseInt(value) : 0,
+      });
+    };
+
+    handleRequestClose = () => {
+      this.setState({
+        open: false,
+      });
+    };
 
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
     this.handleTouchTap()
-    this.handleRequestClose()
+    this.props.handleClose()
   }
 
-  handleTouchTap = () => {
-    this.setState({
-      open: true,
-    });
-  };
-
-  handleActionTouchTap = () => {
-    this.setState({
-      open: false,
-    });
-    alert('Seat request cancelled');
-  };
-
-  handleChangeDuration = (event) => {
-    const value = event.target.value;
-    this.setState({
-      autoHideDuration: value.length > 0 ? parseInt(value) : 0,
-    });
-  };
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
 
   render() {
       return (
@@ -68,37 +69,6 @@ export default class PostRide extends React.Component {
           <form
             onSubmit={this.sendEmail}
             className="form-style">
-<<<<<<< HEAD
-            <div>
-            <TextField
-              style={styles.textfield}
-              id="name-field"
-              floatingLabelText="Your name"
-              ref="requestName"
-            />
-            </div>
-            <FlatButton
-              label="Send Request"
-              primary={true}
-              keyboardFocused={true}
-              type="submit"
-              onTouchTap={this.sendEmail}
-            />
-            <FlatButton
-              label="Cancel"
-              secondary={true}
-              onTouchTap={this.props.handleClose}
-            />
-            <Snackbar
-              open={this.state.open}
-              message={this.state.message}
-              action="undo"
-              autoHideDuration={this.state.autoHideDuration}
-              onActionTouchTap={this.handleActionTouchTap}
-              onRequestClose={this.handleRequestClose}
-            />
-            </form>
-=======
           <TextField
             style={styles.textfield}
             id="name-field"
@@ -116,15 +86,22 @@ export default class PostRide extends React.Component {
             primary={true}
             keyboardFocused={true}
             type="submit"
-            onTouchTap={this.props.handleClose}
+            onTouchTap={this.handleTouchTap}
           />
           <FlatButton
             label="Cancel"
             secondary={true}
             onTouchTap={this.props.handleClose}
           />
+         <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action="undo"
+          autoHideDuration={this.state.autoHideDuration}
+          onActionTouchTap={this.handleActionTouchTap}
+          onRequestClose={this.handleRequestClose}
+        />
           </form>
->>>>>>> 5724bdc8d669fe541c6a6cff575f43c0ab9f9435
         </div>
       );
     }
