@@ -15,17 +15,16 @@ const styles = {
   card: {
     marginTop: 1,
     marginBottom: 4,
+    fontFamily: 'Gotham Bold',
   },
 
-	request: {
-		float: 'right',
-		margin: '5px',
-		color: 'black',
-	},
+  cardHeader: {
+  	background: 'white',
+  },
 
 	color: {
 		background: 'white',
-		background: 'linear-gradient(white , lightgray)',
+
 	}
 };
 
@@ -97,6 +96,7 @@ export default class RideTweets extends React.Component {
 			      key={tile.id}
 			    >
 		        <CardHeader
+		        	style={styles.cardHeader}
 		          title={tile.title}
 		          subtitle={tile.user_first_name}
 		          avatar={tile.user_avatar}
@@ -106,14 +106,13 @@ export default class RideTweets extends React.Component {
 	        	<CardText
 	        		expandable={true}
 	        		style={styles.color}>
-	        		<p>{tile.user_first_name}</p>
-	        		<p>Number of seats available: {tile.available_seats}</p>
-	        		<p>{tile.details}</p>
+	        		<h3><i className="fa fa-user marker-rides"></i> {tile.user_first_name}</h3>
+	        		<h3>Number of seats available: <strong>{tile.available_seats}</strong></h3>
+	        		<p><i className="fa fa-map-marker marker-rides"></i> {tile.details}</p>
 	        			<ModalWindow
 	        				title="Request a Seat!"
 	        				label="Request a Seat"
-	        				index="2"
-	        				style={styles.request} />
+	        				index="2" />
 		        </CardText>
 			    </Card>
 			    ))}

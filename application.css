@@ -34,6 +34,11 @@ p {
   src: url('../fonts/Roboto-Light.ttf');
 }
 
+@font-face {
+  font-family: 'Roboto Medium';
+  src: url('../fonts/Roboto-Medium.ttf');
+}
+
 #map {
   height: 85%;
   width: 65%;
@@ -254,6 +259,14 @@ li {
 }
 
 .modal-content {
-  margin-top: -25px;
+  margin-top: -50px;
   padding: 10px;
+}
+
+.marker-color {
+  color: #ff4081;
+}
+
+.marker-rides{
+  color: #CADFAA;
 }

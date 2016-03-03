@@ -23,8 +23,8 @@ export default class PostRide extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      autoHideDuration: 4000,
-      message: 'You\'ve successfully requested a seat!',
+      autoHideDuration: 3000,
+      message: 'Seat request sent!',
       open: false,
     };
   }
@@ -32,8 +32,8 @@ export default class PostRide extends React.Component {
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
-
     this.handleTouchTap()
+    this.handleRequestClose()
   }
 
   handleTouchTap = () => {
@@ -76,20 +76,6 @@ export default class PostRide extends React.Component {
               ref="requestName"
             />
             </div>
-            <TextField
-              style={styles.textfield}
-              id="post-destination-field"
-              hintText="E.g. Lighthouse Labs"
-              floatingLabelText="Where to?"
-              ref="postDestination"
-            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <TextField
-              style={styles.textfield}
-              id="post-origin-field"
-              hintText="E.g. Steamwhistle Brewery"
-              floatingLabelText="Where from?"
-              ref="postOrigin"
-            /><br/>
             <FlatButton
               label="Send Request"
               primary={true}
@@ -102,6 +88,14 @@ export default class PostRide extends React.Component {
               secondary={true}
               onTouchTap={this.props.handleClose}
             />
+            <Snackbar
+              open={this.state.open}
+              message={this.state.message}
+              action="undo"
+              autoHideDuration={this.state.autoHideDuration}
+              onActionTouchTap={this.handleActionTouchTap}
+              onRequestClose={this.handleRequestClose}
+            />
             </form>
         </div>
       );
@@ -111,12 +105,3 @@ export default class PostRide extends React.Component {
 
 // <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
 
-
-// <Snackbar
-//   open={this.state.open}
-//   message={this.state.message}
-//   action="undo"
-//   autoHideDuration={this.state.autoHideDuration}
-//   onActionTouchTap={this.handleActionTouchTap}
-//   onRequestClose={this.handleRequestClose}
-// />
