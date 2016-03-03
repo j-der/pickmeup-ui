@@ -30,7 +30,8 @@ export default class PostRide extends React.Component {
   render() {
 
       return (
-        <div>
+        <div className="modal-content">
+        <p className="normal">Offering a ride? Let people know where you're headed, where you're going, and a brief description of the trip.</p>
           <form
             onSubmit={this.axiosPost}
             className = "form-style">

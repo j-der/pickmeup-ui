@@ -21,86 +21,87 @@ const styles = {
 export default class PostRide extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {
-      autoHideDuration: 4000,
-      message: 'You\'ve successfully requested a seat!',
-      open: false,
+      super(props);
+      this.state = {
+        autoHideDuration: 3000,
+        message: 'Seat request sent!',
+        open: false,
+      };
+    }
+
+    handleTouchTap = () => {
+      this.setState({
+        open: true,
+      });
     };
-  }
+
+    handleActionTouchTap = () => {
+      this.setState({
+        open: false,
+      });
+      alert('Seat request cancelled.');
+    };
+
+    handleChangeDuration = (event) => {
+      const value = event.target.value;
+      this.setState({
+        autoHideDuration: value.length > 0 ? parseInt(value) : 0,
+      });
+    };
+
+    handleRequestClose = () => {
+      this.setState({
+        open: false,
+      });
+    };
 
   sendEmail = (event) => {
     event.preventDefault();
     console.log('email sent to ride poster')
-
     this.handleTouchTap()
+    this.props.handleClose()
   }
 
-  handleTouchTap = () => {
-    this.setState({
-      open: true,
-    });
-  };
-
-  handleActionTouchTap = () => {
-    this.setState({
-      open: false,
-    });
-    alert('Seat request cancelled');
-  };
-
-  handleChangeDuration = (event) => {
-    const value = event.target.value;
-    this.setState({
-      autoHideDuration: value.length > 0 ? parseInt(value) : 0,
-    });
-  };
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
 
   render() {
       return (
         <div>
-          <form onSubmit={this.sendEmail}>
-            <div>
-            <TextField
-              style={styles.textfield}
-              id="name-field"
-              floatingLabelText="Your name"
-              ref="requestName"
-            />
-            </div>
-            <TextField
-              style={styles.textfield}
-              id="post-destination-field"
-              hintText="E.g. Lighthouse Labs"
-              floatingLabelText="Where to?"
-              ref="postDestination"
-            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <TextField
-              style={styles.textfield}
-              id="post-origin-field"
-              hintText="E.g. Steamwhistle Brewery"
-              floatingLabelText="Where from?"
-              ref="postOrigin"
-            /><br/>
-            <FlatButton
-              label="Send Request"
-              primary={true}
-              keyboardFocused={true}
-              type="submit"
-              onTouchTap={this.sendEmail}
-            />
-            <FlatButton
-              label="Cancel"
-              secondary={true}
-              onTouchTap={this.props.handleClose}
-            />
-            </form>
+          <form
+            onSubmit={this.sendEmail}
+            className="form-style">
+          <TextField
+            style={styles.textfield}
+            id="name-field"
+            floatingLabelText="Your name"
+            ref="requestName"
+          />
+          <div>
+          <TextField
+            hintText="E.g. Hi there! I'm interested!"
+            floatingLabelText="Message"
+          />
+          </div>
+          <FlatButton
+            label="Send Request"
+            primary={true}
+            keyboardFocused={true}
+            type="submit"
+            onTouchTap={this.handleTouchTap}
+          />
+          <FlatButton
+            label="Close"
+            secondary={true}
+            onTouchTap={this.props.handleClose}
+          />
+         <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action=""
+          autoHideDuration={this.state.autoHideDuration}
+          onActionTouchTap={this.handleActionTouchTap}
+          onRequestClose={this.handleRequestClose}
+        />
+          </form>
         </div>
       );
     }
@@ -109,12 +110,3 @@ export default class PostRide extends React.Component {
 
 // <input type="text" value={this.state.title} onChange={ev => this.setState({title: ev.target.value})} />
 
-
-// <Snackbar
-//   open={this.state.open}
-//   message={this.state.message}
-//   action="undo"
-//   autoHideDuration={this.state.autoHideDuration}
-//   onActionTouchTap={this.handleActionTouchTap}
-//   onRequestClose={this.handleRequestClose}
-// />

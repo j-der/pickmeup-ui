@@ -11,7 +11,7 @@ export default class ModalWindow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: this.props.open || false
     };
   }
 
@@ -23,6 +23,11 @@ export default class ModalWindow extends React.Component {
     this.setState({open: false});
   };
 
+
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({open: true})
+  // };
+
   render() {
     const actions = [
       <NewUser handleClose={this.handleClose} />,
@@ -33,7 +38,7 @@ export default class ModalWindow extends React.Component {
 
     return (
       <div>
-        <FlatButton onTouchTap={this.handleOpen} label={this.props.label} style={{margin: 5}} />
+        <FlatButton onTouchTap={this.handleOpen} label={this.props.label} style={this.props.open ? {display: 'none'} : {margin: 5}} />
 
         <Dialog
           title={this.props.title}

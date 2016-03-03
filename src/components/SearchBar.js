@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import Config from '../config';
 import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 
 export default class SearchBar extends React.Component {
 
@@ -24,17 +25,18 @@ export default class SearchBar extends React.Component {
       // props of handleSubmit from IndexPage
       <form className={this.props.cssClass} onSubmit={event => this.props.handleSubmit(event, this.state)}>
         <TextField
+          onChange={this.handleFromChange}
+          id="origin-field"
+          hintText="E.g. Lighthouse Labs"
+          floatingLabelText="Where from?"
+        />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TextField
           className="form-autofill"
           onChange={this.handleToChange}
           id="destination-field"
           hintText="E.g. Steamwhistle Brewery"
           floatingLabelText="Where to?"
-        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <TextField
-          onChange={this.handleFromChange}
-          id="origin-field"
-          hintText="E.g. Lighthouse Labs"
-          floatingLabelText="Where from?"
         />
         <FlatButton
             label="Search"

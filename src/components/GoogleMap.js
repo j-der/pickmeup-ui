@@ -31,9 +31,16 @@ var GoogleMap = React.createClass({
 
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
-          zoom: 14, 
+          zoom: 14,
           scrollwheel: false
         });
+
+        var originWindow = new google.maps.InfoWindow({
+         position: {lat, lng},
+         map: gMap,
+         content: "<p>Your starting point.<br/>Don't see a ride near you? Zoom out for more.</p>"
+       })
+
         // get rides from database
         axios.get('http://localhost:3000/rides', {
           params: {
@@ -50,8 +57,8 @@ var GoogleMap = React.createClass({
                 rideLocation = results[0].geometry.location;
 
                 var contentString = '<div id="content">'+
-                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
-                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+' <i class="fa fa-long-arrow-right"></i> '+ride.destination+'</h3>'+
+                  '<div id="bodyContent">'+'<i class="fa fa-car marker-color"></i> '+ ride.title +'<p><i class="fa fa-user marker-color"></i> '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
 
@@ -70,7 +77,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentDidMount", response);
         });
 
         that.setState({mapVariable: gMap})
@@ -129,6 +136,12 @@ var GoogleMap = React.createClass({
           scrollwheel: false
         });
 
+        var originWindow = new google.maps.InfoWindow({
+         position: {lat, lng},
+         map: gMap,
+         content: "<p>Your starting point.<br/>Don't see a ride near you? Zoom out for more.</p>"
+       })
+
         axios.get('http://localhost:3000/rides', {
           params: {
             userDestination: userDestination
@@ -143,8 +156,8 @@ var GoogleMap = React.createClass({
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
                 var contentString = '<div id="content">'+
-                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
-                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+' <i class="fa fa-long-arrow-right"></i> '+ride.destination+'</h3>'+
+                  '<div id="bodyContent">'+'<i class="fa fa-car marker-color"></i> '+ ride.title +'<p><i class="fa fa-user marker-color"></i> '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
 
@@ -164,7 +177,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentWillUpdate", response);
         });
 
         that.setState({mapVariable: gMap})

@@ -15,18 +15,21 @@ const styles = {
   card: {
     marginTop: 1,
     marginBottom: 4,
+    fontFamily: 'Gotham Bold',
   },
 
-	request: {
-		float: 'right',
-		margin: '5px',
-		color: 'black',
+  cardHeader: {
+  	background: 'white',
+  },
+
+	contentColor: {
+		background: 'white',
 	},
 
-	color: {
-		background: 'white',
-		background: 'linear-gradient(white , lightgray)',
-	}
+	cardActions: {
+		background: '#00BCD4',
+		textAlign: 'center',
+	},
 };
 
 export default class RideTweets extends React.Component {
@@ -50,14 +53,13 @@ export default class RideTweets extends React.Component {
 	}
 
 	loadRidesDetails = (userDestination) => {
-		var rideArray;
 		axios.get('http://localhost:3000/rides', {
 			params: {
 				userDestination: userDestination
 			}
 		})
 			.then( (response) => {
-			rideArray = response.data.rides
+
 			this.setState({rides: response.data.rides});
 			this.displayTweets();
 		})
@@ -85,40 +87,47 @@ export default class RideTweets extends React.Component {
 	}
 
 	render() {
-		// console.log('this.state:', this.state)
-		// console.log('this.state.titles:', this.state.titles[0])
-		// console.log('this is title', this.state.titles)
-		return(
+		if (this.state.rides.length === 0) {
+			return(
+				<h3>Sorry.<br/>No rides match your search.</h3>
+			)
+		} else {
 
-			<div className="ride-tweets">
-				{this.state.rides.map(tile => (
-			    <Card
-			      padding={1}
-			      style={styles.card}
-			      key={tile.id}
-			    >
-		        <CardHeader
-		          title={tile.title}
-		          subtitle={tile.user_first_name}
-		          avatar={tile.user_avatar}
-		          actAsExpander={true}
-		          showExpandableButton={true}
-		         />
-	        	<CardText
-	        		expandable={true}
-	        		style={styles.color}>
-	        		<p>{tile.user_first_name}</p>
-	        		<p>Number of seats available: {tile.available_seats}</p>
-	        		<p>{tile.details}</p>
-	        			<ModalWindow
-	        				title="Request a Seat!"
-	        				label="Request a Seat"
-	        				index="2"
-	        				style={styles.request} />
-		        </CardText>
-			    </Card>
-			    ))}
-			  </div>
-		);
+			return(
+				<div className="ride-tweets">
+					{this.state.rides.map(tile => (
+				    <Card
+				      padding={1}
+				      style={styles.card}
+				      key={tile.id}
+				    >
+			        <CardHeader
+			        	style={styles.cardHeader}
+			          title={tile.title}
+			          subtitle={tile.user_first_name}
+			          avatar={tile.user_avatar}
+			          actAsExpander={true}
+			          showExpandableButton={true}
+			         />
+		        	<CardText
+		        		expandable={true}
+		        		style={styles.color}>
+		        		<h3><i className="fa fa-user marker-rides"></i> {tile.user_first_name}</h3>
+		        		<h3>Number of seats available: <strong>{tile.available_seats}</strong></h3>
+		        		<p><i className="fa fa-map-marker marker-rides"></i> {tile.details}</p>
+		        		</CardText>
+                  <CardActions
+                    expandable={true}
+                    style={styles.cardActions}>
+                        <ModalWindow
+                            title="Request a Seat!"
+                            label="Request a Seat"
+                            index="2" />
+                  </CardActions>
+				    </Card>
+				    ))}
+				  </div>
+			);
+		}
 	}
 }
