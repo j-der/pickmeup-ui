@@ -39,7 +39,7 @@ export default class PostRide extends React.Component {
       this.setState({
         open: false,
       });
-      alert('Seat request cancelled.');
+      this.handleRequestClose
     };
 
     handleChangeDuration = (event) => {

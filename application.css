@@ -10,6 +10,15 @@ h1, h2, h3, h4 {
   color: #000;
 }
 
+.search-results {
+  font-family: 'Roboto Medium';
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
 p {
   font-family: 'Roboto Light'
 }
@@ -40,7 +49,7 @@ p {
 }
 
 #map {
-  height: 85%;
+  height: 70%;
   width: 65%;
   float: right;
   margin-top: 1;
@@ -81,7 +90,7 @@ p {
 
 .ride-tweets {
   width: 35%;
-  height: 85%;
+  height: 70%;
   float: left;
   overflow: auto;
 }
@@ -155,10 +164,10 @@ ul {
   padding-left: 210px;
   text-align: left;
   list-style: none;
-  animation: 6s linear 0s normal none infinite change;
-  -webkit-animation: 6s linear 0s normal none infinite change;
-  -moz-animation: 6s linear 0s normal none infinite change;
-  -o-animation: 6s linear 0s normal none infinite change;
+  animation: 6s ease-in-out 2s normal none infinite change;
+  -webkit-animation: 6s ease-in-out 2s normal none infinite change;
+  -moz-animation: 6s ease-in-out 2s normal none infinite change;
+  -o-animation: 6s ease-in-out 2s normal none infinite change;
 }
 ul li {
   line-height: 90px;
@@ -259,7 +268,7 @@ li {
 }
 
 div.modal-content {
-  margin-top: -25px;
+  margin-top: -50px;
   padding: 20px;
 }
 

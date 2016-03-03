@@ -44,7 +44,7 @@ export default class NewUser extends Component {
 
     return (
       <div className="modal-content">
-      <p className="normal">Join pickmeUp and connect with others today! Sign up as a driver or a passenger.</p>
+      <p className="normal">Join pickmeUp and connect with others today! With an account, you can post a ride, join one, or simply browse.</p>
        <form
        onSubmit={this.axiosPost}
        className="form-style">
@@ -53,7 +53,7 @@ export default class NewUser extends Component {
         hintText="URL to your photo"
         floatingLabelText="Avatar"
         ref="avatar"
-        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <TextField
         id="first-name-field"
         hintText="E.g. Donald"
@@ -65,7 +65,7 @@ export default class NewUser extends Component {
           hintText="E.g. Duck"
           floatingLabelText="Last name"
           ref="lastName"
-        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <TextField
           id="email-field"
           hintText="E.g. donaldduck@example.com"
@@ -78,7 +78,7 @@ export default class NewUser extends Component {
           type="password"
           floatingLabelText="Password"
           ref="password"
-        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <TextField
           id="password-confirmation-field"
           hintText="Pick something secure"
