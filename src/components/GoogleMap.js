@@ -50,8 +50,8 @@ var GoogleMap = React.createClass({
                 rideLocation = results[0].geometry.location;
 
                 var contentString = '<div id="content">'+
-                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
-                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+' <i class="fa fa-long-arrow-right"></i> '+ride.destination+'</h3>'+
+                  '<div id="bodyContent">'+'<i class="fa fa-car marker-color"></i> '+ ride.title +'<p><i class="fa fa-user marker-color"></i> '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
 
@@ -143,8 +143,8 @@ var GoogleMap = React.createClass({
               geocoder.geocode({address: ride.origin}, function (results) {
                 rideLocation = results[0].geometry.location;
                 var contentString = '<div id="content">'+
-                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+'  ---->  '+ride.destination+'</h3>'+
-                  '<div id="bodyContent">'+'<p><b>Title:</b> '+ ride.title +'<p>Posted By: '+ ride.user_first_name +'</p>'+
+                  '<h3 id="firstHeading" class="firstHeading">'+ride.origin+' <i class="fa fa-long-arrow-right"></i> '+ride.destination+'</h3>'+
+                  '<div id="bodyContent">'+'<i class="fa fa-car marker-color"></i> '+ ride.title +'<p><i class="fa fa-user marker-color"></i> '+ ride.user_first_name +'</p>'+
                   '</div>'+
                   '</div>';
 
