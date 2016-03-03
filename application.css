@@ -10,13 +10,10 @@ h1, h2, h3, h4 {
   color: #000;
 }
 
-.search-results {
+.results-title {
   font-family: 'Roboto Medium';
-  text-align: center;
-}
-
-.center {
-  text-align: center;
+  text-align: left;
+  padding: 10px;
 }
 
 p {
