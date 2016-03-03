@@ -59,10 +59,12 @@ const ToolbarExamplesSimple = () => (
       style={styles.toolbar}>
         <ModalWindow title="Post a ride" label="Post a ride" index="1" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <DropDownMenu />
+        <ModalWindow title="How it works" label="How it works" index="3" />
+        <ModalWindow title="Sign up" label="Sign up" index="0" />
     </ToolbarGroup>
   </Toolbar>
 );
 
 export default ToolbarExamplesSimple;
 
+<DropDownMenu />

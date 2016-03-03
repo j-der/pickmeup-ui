@@ -258,9 +258,9 @@ li {
   display: none;
 }
 
-.modal-content {
-  margin-top: -50px;
-  padding: 10px;
+div.modal-content {
+  margin-top: -25px;
+  padding: 20px;
 }
 
 .marker-color {
