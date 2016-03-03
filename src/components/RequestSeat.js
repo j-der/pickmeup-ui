@@ -60,7 +60,8 @@ export default class PostRide extends React.Component {
     console.log('email sent to ride poster')
 
     this.handleTouchTap()
-  };
+  }
+
 
   render() {
       return (
