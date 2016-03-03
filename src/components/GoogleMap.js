@@ -77,7 +77,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentDidMount", response);
         });
 
         that.setState({mapVariable: gMap})
@@ -177,7 +177,7 @@ var GoogleMap = React.createClass({
           );
         })
         .catch(function (response) {
-          console.log("the axios catch response is", response);
+          console.log("error in googleMap componentWillUpdate", response);
         });
 
         that.setState({mapVariable: gMap})
