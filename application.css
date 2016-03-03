@@ -49,7 +49,7 @@ p {
 }
 
 #map {
-  height: 70%;
+  height: 75%;
   width: 65%;
   float: right;
   margin-top: 1;
@@ -90,7 +90,7 @@ p {
 
 .ride-tweets {
   width: 35%;
-  height: 70%;
+  height: 75%;
   float: left;
   overflow: auto;
 }
