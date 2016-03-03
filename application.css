@@ -10,6 +10,15 @@ h1, h2, h3, h4 {
   color: #000;
 }
 
+.search-results {
+  font-family: 'Roboto Medium';
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
 p {
   font-family: 'Roboto Light'
 }
@@ -40,7 +49,7 @@ p {
 }
 
 #map {
-  height: 78%;
+  height: 70%;
   width: 65%;
   float: right;
   margin-top: 1;
@@ -81,7 +90,7 @@ p {
 
 .ride-tweets {
   width: 35%;
-  height: 78%;
+  height: 70%;
   float: left;
   overflow: auto;
 }

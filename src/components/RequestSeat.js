@@ -21,11 +21,46 @@ const styles = {
 export default class PostRide extends React.Component {
 
   constructor(props) {
+<<<<<<< HEAD
     super(props);
     this.state = {
       autoHideDuration: 4000,
       message: 'You\'ve successfully requested a seat!',
       open: false,
+=======
+      super(props);
+      this.state = {
+        autoHideDuration: 3000,
+        message: 'Seat request sent!',
+        open: false,
+      };
+    }
+
+    handleTouchTap = () => {
+      this.setState({
+        open: true,
+      });
+    };
+
+    handleActionTouchTap = () => {
+      this.setState({
+        open: false,
+      });
+      this.handleRequestClose
+    };
+
+    handleChangeDuration = (event) => {
+      const value = event.target.value;
+      this.setState({
+        autoHideDuration: value.length > 0 ? parseInt(value) : 0,
+      });
+    };
+
+    handleRequestClose = () => {
+      this.setState({
+        open: false,
+      });
+>>>>>>> 36946fc68d9ec06766b7af6c72285db9245ee46b
     };
   }
 
