@@ -68,41 +68,31 @@ export default class PostRide extends React.Component {
           <form
             onSubmit={this.sendEmail}
             className="form-style">
-            <div>
-            <TextField
-              style={styles.textfield}
-              id="name-field"
-              floatingLabelText="Your name"
-              ref="requestName"
-            />
-            </div>
-            <TextField
-              style={styles.textfield}
-              id="post-destination-field"
-              hintText="E.g. Lighthouse Labs"
-              floatingLabelText="Where to?"
-              ref="postDestination"
-            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <TextField
-              style={styles.textfield}
-              id="post-origin-field"
-              hintText="E.g. Steamwhistle Brewery"
-              floatingLabelText="Where from?"
-              ref="postOrigin"
-            /><br/>
-            <FlatButton
-              label="Send Request"
-              primary={true}
-              keyboardFocused={true}
-              type="submit"
-              onTouchTap={this.sendEmail}
-            />
-            <FlatButton
-              label="Cancel"
-              secondary={true}
-              onTouchTap={this.props.handleClose}
-            />
-            </form>
+          <TextField
+            style={styles.textfield}
+            id="name-field"
+            floatingLabelText="Your name"
+            ref="requestName"
+          />
+          <br/>
+          <TextField
+            hintText="E.g. Hi there! I'm interested!"
+            floatingLabelText="Message"
+          />
+          <br/>
+          <FlatButton
+            label="Send Request"
+            primary={true}
+            keyboardFocused={true}
+            type="submit"
+            onTouchTap={this.props.handleClose}
+          />
+          <FlatButton
+            label="Cancel"
+            secondary={true}
+            onTouchTap={this.props.handleClose}
+          />
+          </form>
         </div>
       );
     }

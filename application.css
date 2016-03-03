@@ -124,7 +124,7 @@ input:-webkit-autofill {
   height: 40px;
   position: absolute;
   top: 25%;
-  left: 50%;
+  left: 46%;
   margin-top: -15px;
   margin-left: -118px;
 }
@@ -248,7 +248,7 @@ li {
   display: none;
 }
 
-.modal-content {
+div.modal-content {
   margin-top: -25px;
   padding: 10px;
 }
