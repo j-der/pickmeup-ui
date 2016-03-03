@@ -96,7 +96,7 @@ export default class PostRide extends React.Component {
          <Snackbar
           open={this.state.open}
           message={this.state.message}
-          action="got it"
+          action=""
           autoHideDuration={this.state.autoHideDuration}
           onActionTouchTap={this.handleActionTouchTap}
           onRequestClose={this.handleRequestClose}
