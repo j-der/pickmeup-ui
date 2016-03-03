@@ -155,10 +155,10 @@ ul {
   padding-left: 210px;
   text-align: left;
   list-style: none;
-  animation: 6s linear 0s normal none infinite change;
-  -webkit-animation: 6s linear 0s normal none infinite change;
-  -moz-animation: 6s linear 0s normal none infinite change;
-  -o-animation: 6s linear 0s normal none infinite change;
+  animation: 6s ease-in-out 2s normal none infinite change;
+  -webkit-animation: 6s ease-in-out 2s normal none infinite change;
+  -moz-animation: 6s ease-in-out 2s normal none infinite change;
+  -o-animation: 6s ease-in-out 2s normal none infinite change;
 }
 ul li {
   line-height: 90px;

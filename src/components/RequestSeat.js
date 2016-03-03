@@ -30,9 +30,9 @@ export default class PostRide extends React.Component {
   }
 
   sendEmail = (event) => {
-    event.preventDefault();
+
     console.log('email sent to ride poster')
-    this.handleTouchTap()
+    event.handleTouchTap()
     this.handleRequestClose()
   }
 
@@ -68,13 +68,18 @@ export default class PostRide extends React.Component {
           <form
             onSubmit={this.sendEmail}
             className="form-style">
-<<<<<<< HEAD
             <div>
             <TextField
               style={styles.textfield}
               id="name-field"
               floatingLabelText="Your name"
               ref="requestName"
+            />
+            </div>
+            <div>
+            <TextField
+            hintText="E.g. Hi there! I'm interested!"
+            floatingLabelText="Message"
             />
             </div>
             <FlatButton
@@ -98,33 +103,6 @@ export default class PostRide extends React.Component {
               onRequestClose={this.handleRequestClose}
             />
             </form>
-=======
-          <TextField
-            style={styles.textfield}
-            id="name-field"
-            floatingLabelText="Your name"
-            ref="requestName"
-          />
-          <br/>
-          <TextField
-            hintText="E.g. Hi there! I'm interested!"
-            floatingLabelText="Message"
-          />
-          <br/>
-          <FlatButton
-            label="Send Request"
-            primary={true}
-            keyboardFocused={true}
-            type="submit"
-            onTouchTap={this.props.handleClose}
-          />
-          <FlatButton
-            label="Cancel"
-            secondary={true}
-            onTouchTap={this.props.handleClose}
-          />
-          </form>
->>>>>>> 5724bdc8d669fe541c6a6cff575f43c0ab9f9435
         </div>
       );
     }

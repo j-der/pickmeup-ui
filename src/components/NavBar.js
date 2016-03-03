@@ -33,6 +33,7 @@ const styles = {
   },
   navbarTitle: {
     fontFamily: 'Gotham Light',
+    fontWeight: 'bold',
     color: '#fff',
   },
   button: {
