@@ -30,9 +30,9 @@ export default class PostRide extends React.Component {
   }
 
   sendEmail = (event) => {
-
+    event.preventDefault();
     console.log('email sent to ride poster')
-    event.handleTouchTap()
+    this.handleTouchTap()
     this.handleRequestClose()
   }
 
