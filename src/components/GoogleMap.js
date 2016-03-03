@@ -31,15 +31,16 @@ var GoogleMap = React.createClass({
 
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: {lat, lng},
-          zoom: 14, 
+          zoom: 14,
           scrollwheel: false
         });
 
         var originWindow = new google.maps.InfoWindow({
-          position: {lat, lng},
-          map: gMap,
-          content: "Start here."
-        })
+         position: {lat, lng},
+         map: gMap,
+         content: "Your starting point! Zoom out to see available rides."
+       })
+
         // get rides from database
         axios.get('http://localhost:3000/rides', {
           params: {
@@ -136,10 +137,10 @@ var GoogleMap = React.createClass({
         });
 
         var originWindow = new google.maps.InfoWindow({
-          position: {lat, lng},
-          map: gMap,
-          content: "Start here."
-        })
+         position: {lat, lng},
+         map: gMap,
+         content: "Your starting point! Zoom out to see available rides."
+       })
 
         axios.get('http://localhost:3000/rides', {
           params: {

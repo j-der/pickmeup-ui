@@ -22,10 +22,14 @@ const styles = {
   	background: 'white',
   },
 
-	color: {
+	contentColor: {
 		background: 'white',
+	},
 
-	}
+	cardActions: {
+		background: '#00BCD4',
+		textAlign: 'center',
+	},
 };
 
 export default class RideTweets extends React.Component {
@@ -55,6 +59,11 @@ export default class RideTweets extends React.Component {
 			}
 		})
 			.then( (response) => {
+<<<<<<< HEAD
+=======
+				console.log('response is: ', response)
+			rideArray = response.data.rides
+>>>>>>> jd-wednesday
 			this.setState({rides: response.data.rides});
 			this.displayTweets();
 		})
@@ -82,7 +91,6 @@ export default class RideTweets extends React.Component {
 	}
 
 	render() {
-		console.log("this.state.rides inside render:", this.state.rides);
 		if (this.state.rides.length === 0) {
 			return(
 				<h3>Sorry.<br/>No rides match your search.</h3>
