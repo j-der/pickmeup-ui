@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-  font-family: 'Avenir'
+  font-family: 'Roboto Light'
 }
 
 @font-face {
@@ -27,6 +27,11 @@ p {
 @font-face {
   font-family: 'Gotham Light';
   src: url('../fonts/Gotham_21023.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('../fonts/Roboto-Light.ttf');
 }
 
 #map {

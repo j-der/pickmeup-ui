@@ -89,7 +89,6 @@ export default class RideTweets extends React.Component {
 		// console.log('this.state.titles:', this.state.titles[0])
 		// console.log('this is title', this.state.titles)
 		return(
-
 			<div className="ride-tweets">
 				{this.state.rides.map(tile => (
 			    <Card
