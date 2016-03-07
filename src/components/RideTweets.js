@@ -59,8 +59,7 @@ export default class RideTweets extends React.Component {
 			}
 		})
 			.then( (response) => {
-			console.log('response is: ', response)
-			rideArray = response.data.rides
+
 			this.setState({rides: response.data.rides});
 			this.displayTweets();
 		})
@@ -116,11 +115,15 @@ export default class RideTweets extends React.Component {
 		        		<h3><i className="fa fa-user marker-rides"></i> {tile.user_first_name}</h3>
 		        		<h3>Number of seats available: <strong>{tile.available_seats}</strong></h3>
 		        		<p><i className="fa fa-map-marker marker-rides"></i> {tile.details}</p>
-		        			<ModalWindow
-		        				title="Request a Seat!"
-		        				label="Request a Seat"
-		        				index="2" />
-			        </CardText>
+		        		</CardText>
+                  <CardActions
+                    expandable={true}
+                    style={styles.cardActions}>
+                        <ModalWindow
+                            title="Request a Seat!"
+                            label="Request a Seat"
+                            index="2" />
+                  </CardActions>
 				    </Card>
 				    ))}
 				  </div>
