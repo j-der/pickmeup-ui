@@ -8,7 +8,8 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import ModalWindow from './ModalWindow';
 import NavButton from './NavButton';
-import DropDownMenu from './DropDownMenu'
+import DropDownMenu from './DropDownMenu';
+import { Link } from 'react-router';
 // import MenuItem from 'material-ui/lib/menus/menu-item';
 // import DropDownMenu from 'material-ui/lib/DropDownMenu';
 
@@ -51,9 +52,11 @@ const ToolbarExamplesSimple = () => (
   <Toolbar
     style={styles.root}>
     <ToolbarGroup firstChild={true} float="left">
-      <ToolbarTitle
-        text="pickmeUp"
-        style={styles.navbarTitle} />
+      <Link to='/'>
+        <ToolbarTitle
+          text="pickmeUp"
+          style={styles.navbarTitle} />
+      </Link>
     </ToolbarGroup>
     <ToolbarGroup
       float="right"
